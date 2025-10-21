@@ -880,6 +880,7 @@ a.learn-more:hover .button-text { color: #fff; }
 }
 .produtos .learn-more .button-text {
     color: #fff;
+    top: 2px;
 }
 .produtos .learn-more .icon.arrow::before {
     border-top-color: #000000;
