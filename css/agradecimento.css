@@ -1,0 +1,156 @@
+/* =================================================================== */
+/* == ESTILOS P/ PÁGINA DE AGRADECIMENTO (VERSÃO ROHMES MÁQUINAS)   == */
+/* =================================================================== */
+
+@keyframes fadeInUpV2 {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Container principal da página */
+.thank-you-page-v2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+    padding: 40px 15px;
+    background-color: #f0f5fa;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Container do conteúdo centralizado */
+.thank-you-container-v2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 480px;
+    width: 100%;
+    position: relative;
+}
+
+/* Estilo do logotipo circular */
+.logo-container {
+    width: 90px;
+    height: 90px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -45px; /* Puxa o logo para sobrepor o card */
+    position: relative;
+    z-index: 3;
+    animation: fadeInUpV2 0.6s 0.2s ease-out both;
+}
+
+.logo-container img {
+    max-width: 50px;
+    height: auto;
+}
+
+/* O card principal com o conteúdo */
+.thank-you-box-v2 {
+    background-color: #ffffff;
+    padding: 65px 30px 25px; /* Padding superior maior para o logo */
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    animation: fadeInUpV2 0.8s 0.4s ease-out both;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estilos dos textos dentro do card */
+.thank-you-box-v2 .brand-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #888;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.thank-you-box-v2 .titulo-pagina {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #103b63; /* Cor principal do tema */
+    margin-top: 0;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.thank-you-box-v2 p {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0 auto 30px;
+    max-width: 380px;
+}
+
+/* Estilo do botão do WhatsApp */
+.thank-you-box-v2 .btn-whatsapp {
+    background-color: #25D366;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 14px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+}
+
+.thank-you-box-v2 .btn-whatsapp:hover {
+    background-color: #1DA851;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
+}
+
+.thank-you-box-v2 .btn-whatsapp i {
+    font-size: 1.2rem;
+}
+
+/* Rodapé de sucesso dentro do card */
+.success-footer {
+    border-top: 1px solid #e9ecef;
+    width: 100%;
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.success-footer i {
+    font-size: 1rem;
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 576px) {
+    .thank-you-box-v2 {
+        padding: 65px 20px 20px;
+    }
+    .thank-you-box-v2 .titulo-pagina {
+        font-size: 1.5rem;
+    }
+    .thank-you-box-v2 p {
+        font-size: 0.95rem;
+    }
+}

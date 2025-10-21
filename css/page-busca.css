@@ -1,0 +1,58 @@
+/* css/page-busca.css */
+
+.page-busca-container { /* Add a wrapper div in page-busca.php if needed for this class */
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.page-busca-container .search-results-summary {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 2.5rem !important; /* from PHP */
+}
+.page-busca-container .search-results-summary strong {
+  font-weight: bold;
+  color: #0f3c63;
+}
+.page-busca-container .search-results-summary b.busca {
+  color: #dc3545; /* Example: highlight search term */
+}
+
+/* .banner-container styles are similar to categorias.php.
+   If they are identical, these can be global. If there are variations for search results: */
+.page-busca-container .banner-container {
+  margin-bottom: 3rem;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 1.5rem; /* Example difference */
+}
+
+.page-busca-container .banner-container .produto-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+.page-busca-container .banner-container img[src*="via.placeholder.com"] {
+  border: 1px dashed #ccc; /* Style for placeholder */
+}
+
+.page-busca-container .banner-container .nome_produtos {
+  font-size: 1.5rem; /* Slightly smaller for search results list */
+  font-weight: bold;
+  color: #0f3c63;
+  margin-bottom: 1rem;
+}
+
+/* .learn-more.variant-6 and .botao-produtos might be global. */
+.page-busca-container .banner-container .learn-more.variant-6 {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.page-busca-container .alert-warning { /* For "Nenhuma máquina encontrada." */
+  margin-top: 2rem;
+}
+.nome_produtos {
+    font-family: 'Poppins';
+    font-weight: 600;
+}

@@ -1,0 +1,740 @@
+/* css/sobre-nos.css */
+
+/* =================================================================== */
+/* == SEÇÃO SOBRE NÓS (QUEM SOMOS) - ESTILOS IMPORTADOS DO HOME.CSS  == */
+/* =================================================================== */
+
+.space {
+    margin-top: 40px;
+    display: block;
+}
+
+.secao-sobre-nos-fundo {
+  min-height: 90vh; 
+  width: 100%;
+  background-image: url('../assets/img/fundo-sobre-nos-2.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  padding: 80px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.secao-sobre-nos-fundo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(16, 60, 100, 0.9);
+  z-index: 1;
+}
+
+.conteudo-sobreposto {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  color: white;
+}
+
+.conteudo-sobreposto h2,
+.conteudo-sobreposto h4 {
+    color: white;
+}
+
+.conteudo-sobreposto h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 38px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.conteudo-sobreposto p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+  color: #fff;
+  line-height: 40px;
+  text-align: left;
+}
+
+.video-flutuante {
+  float: right;
+  width: 48%;
+  margin-left: 30px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.frase-sobre {
+  margin-top: 20px;
+  padding: 10px 0;
+}
+
+.frase-sobre h4 {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: left;
+    font-size: 1.8rem;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+/* =================================================================== */
+/* == SEÇÃO DEPOIMENTOS (NOSSOS CLIENTES) - ESTILOS DO HOME.CSS     == */
+/* =================================================================== */
+
+.depoimentos {
+    padding: 50px 10px;
+}
+
+.depoimentos h2 {
+  margin-bottom: 50px;
+  color: #002F52;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+}
+
+.depoimentos .swiper {
+    height: 370px;
+    padding-bottom: 50px;
+}
+
+.video-slide-item {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  height: 300px;
+  border-radius: 12px;
+  border: 2px solid #e0e0e0;
+  box-sizing: border-box;
+  padding: 6px;
+}
+
+.video-slide-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+  border-radius: 6px;
+}
+
+.video-slide-item:hover img {
+  transform: scale(1.1);
+}
+
+.video-slide-item::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  border-radius: 6px;
+  background-color: rgba(9, 35, 59, 0.6);
+  z-index: 1;
+  transition: background-color 0.3s ease;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  padding: 20px;
+  z-index: 2;
+}
+
+.video-slide-item:hover .video-overlay {
+  opacity: 1;
+}
+
+.video-overlay-text {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.video-overlay-play-icon {
+  font-size: 4rem;
+  color: #fff;
+}
+
+.depoimentos .swiper-pagination-bullet {
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  background-color: #0f3c63 !important;
+  opacity: 0.5 !important;
+  transition: all 0.3s ease !important;
+}
+
+.depoimentos .swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  transform: scale(1.2);
+}
+
+
+/* =================================================================== */
+/* == SEÇÃO CLIENTES (MARQUEE) - ESTILOS DO HOME.CSS                == */
+/* =================================================================== */
+
+.clientes {
+    background-color: #002F52;
+    padding: 40px 0;
+    overflow: hidden;
+}
+
+.clientes-marquee {
+  width: 100%;
+}
+
+.clientes-track {
+    display: flex;
+    width: max-content;
+    animation: slide-left 40s linear infinite;
+    align-items: center;
+    gap: 100px;
+}
+
+.cliente-logo img {
+    height: 50px;
+    object-fit: contain;
+    display: block;
+    filter: grayscale(100%) brightness(100);
+    transition: filter 0.3s ease;
+}
+.cliente-logo:hover img {
+    filter: grayscale(0%) brightness(1);
+}
+
+@keyframes slide-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+
+/* =================================================================== */
+/* == SEÇÃO MAPA DE CLIENTES - ESTILOS DO HOME.CSS                  == */
+/* =================================================================== */
+
+.mapa-clientes {
+    padding: 3rem 0;
+}
+
+.mapa-clientes .numeros {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.item-numero {
+  display: flex;
+  align-items: center;
+}
+
+.counter {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 20px;
+  font-family: 'Poppins', sans-serif;
+  color: #003965;
+}
+
+.numeros p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: #003965;
+  margin: 0 70px -20px 20px;
+  line-height: 22px;
+}
+
+.frase {
+    font-family: 'Poppins', sans-serif;
+    color: #003965;
+    width: 100%;
+    padding: 2% 0% 3% 54%;
+    font-weight: 200;
+    z-index: 1;
+    position: relative;
+}
+
+.mapa-container {
+  position: relative;
+  text-align: center;
+  margin-top: -80px;
+}
+
+.mapa-mundi {
+  width: 100%;
+  height: auto;
+}
+
+.mapa-brasil {
+  position: absolute;
+  top: 22%;
+  left: 38%;
+  transform: translate(-50%, -50%);
+  width: 360px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.mapa-brasil.scale-in {
+  animation: scaleIn 2s ease-out forwards, bounce 2s ease-in-out infinite 2s;
+}
+
+.sede-ponto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 4px #fff, 0 0 7px #fff, 0 0 10px #fff;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.sede-ponto.pontos-visiveis {
+  opacity: 1;
+  visibility: visible;
+  z-index: 10;
+  animation: blink-animation 1.5s infinite;
+}
+
+@keyframes scaleIn {
+  0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.05); }
+}
+
+@keyframes blink-animation {
+  0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.7); }
+}
+
+
+/* =================================================================== */
+/* == SEÇÃO LINHA DO TEMPO ELEGANTE (VERSÃO FINAL CORRIGIDA)      == */
+/* =================================================================== */
+
+.timeline-elegant-section {
+    padding: 80px 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden; /* Previne barras de rolagem horizontais */
+    background-image: url('../assets/img/fundo-timeline.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.timeline-elegant-section h2 {
+    color: #002F52;
+    font-weight: bold;
+    margin-bottom: 80px;
+}
+
+.timeline-elegant-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* A Linha Vertical Central */
+.timeline-elegant-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 3px;
+    background: repeating-linear-gradient(to bottom, #dee2e6, #dee2e6 4px, transparent 4px, transparent 8px);
+    transform: translateX(-50%);
+}
+
+/* A Linha Animada de Preenchimento */
+.timeline-elegant-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 3px;
+    background-color: #0f3c63;
+    transform: translateX(-50%) scaleY(0);
+    transform-origin: top;
+    transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 1;
+}
+
+.timeline-elegant-container.aos-animate::after {
+    transform: translateX(-50%) scaleY(1);
+}
+
+.timeline-elegant-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    margin-bottom: 50px;
+    z-index: 3;
+    
+    /* Efeito de entrada para o card (começa invisível) */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.timeline-elegant-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Itens da Direita */
+.timeline-elegant-item:nth-child(odd) {
+    left: 50%;
+}
+
+/* Itens da Esquerda */
+.timeline-elegant-item:nth-child(even) {
+    left: 0;
+}
+
+/* A linha horizontal que conecta o card ao eixo central */
+.timeline-elegant-item::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    width: 40px;
+    height: 3px;
+    background-color: #dee2e6;
+    z-index: 0;
+}
+.timeline-elegant-item:nth-child(odd)::before {
+    left: 0;
+}
+.timeline-elegant-item:nth-child(even)::before {
+    right: 0;
+}
+
+.timeline-elegant-marker {
+    position: absolute;
+    top: 40px;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 4px solid #0f3c63;
+    border-radius: 50%;
+    z-index: 2;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+.timeline-elegant-item:nth-child(odd) .timeline-elegant-marker {
+    left: -10px;
+}
+.timeline-elegant-item:nth-child(even) .timeline-elegant-marker {
+    right: -10px;
+}
+
+.timeline-elegant-content {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 47, 82, 0.08);
+    transition: all 0.3s ease;
+}
+
+.timeline-elegant-image {
+    position: relative;
+    overflow: hidden;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    aspect-ratio: 1 / 1;
+}
+.timeline-elegant-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.timeline-elegant-text {
+    padding: 20px 25px;
+}
+
+/* =================================================================== */
+/* == ESTILO PARA OS BLOCOS PADRÃO DA TIMELINE (AZUL)             == */
+/* =================================================================== */
+
+.timeline-elegant-item:not(:last-child) .timeline-elegant-content {
+    background-color: #103c64;
+}
+
+.timeline-elegant-item:not(:last-child) .timeline-elegant-text h3 {
+    color: #ffffff;
+}
+
+.timeline-elegant-item:not(:last-child) .timeline-elegant-text p {
+    color: #f0f0f0;
+}
+
+.timeline-elegant-item:not(:last-child) .timeline-elegant-marker {
+    background-color: #ffffff;
+    border-color: #103c64;
+}
+
+.timeline-elegant-item:not(:last-child):hover .timeline-elegant-content {
+    background-color: #1a4c7d;
+    transform: translateY(-8px);
+    box-shadow: 0 10px 35px rgba(26, 76, 125, 0.4);
+}
+
+.timeline-elegant-item:not(:last-child):hover .timeline-elegant-marker {
+    background-color: #103c64;
+    border-color: #ffffff;
+    transform: translateY(-50%) scale(1.25);
+}
+
+.timeline-elegant-item:not(:last-child):hover .timeline-elegant-image img {
+    transform: scale(1.05);
+}
+
+/* =================================================================== */
+/* == ESTILO ESPECÍFICO PARA O ÚLTIMO BLOCO DA TIMELINE (Dourado) == */
+/* =================================================================== */
+
+.timeline-elegant-item:last-child .timeline-elegant-content {
+    /* MODIFICADO: Substituído a cor sólida por um gradiente linear */
+    background: #FFD700; /* Fallback para navegadores antigos */
+    background: linear-gradient(145deg, #FFD700 0%, #FDBB2D 25%, #EAC435 50%, #FDBB2D 75%, #FFD700 100%);
+    border: 1px solid #c0930f; /* Adiciona uma borda sutil para mais profundidade */
+}
+
+.timeline-elegant-item:last-child .timeline-elegant-text h3 {
+    color: #000000;
+    font-weight: 700;
+}
+
+.timeline-elegant-item:last-child .timeline-elegant-text p {
+    color: #333333;
+}
+
+.timeline-elegant-item:last-child .timeline-elegant-marker {
+    /* MODIFICADO: Gradiente também no marcador para consistência */
+    background: linear-gradient(145deg, #FFD700, #FDBB2D);
+    border-color: #a47d0d;
+}
+
+.timeline-elegant-item:last-child::before {
+    background-color: #FFD700; 
+}
+
+.timeline-elegant-item:last-child:hover .timeline-elegant-content {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 35px rgba(255, 215, 0, 0.4);
+}
+
+.timeline-elegant-item:last-child:hover .timeline-elegant-marker {
+    transform: translateY(-50%) scale(1.25);
+    background-color: #DAA520;
+    border-color: #fff;
+}
+
+.timeline-elegant-item:last-child:hover .timeline-elegant-image img {
+    transform: scale(1.05);
+}
+
+/* =================================================================== */
+/* == SETA CURVADA E ANIMADA (ADAPTADA PARA ANIMAÇÃO DE ENTRADA)   == */
+/* =================================================================== */
+
+.timeline-elegant-item:not(:last-child)::after {
+    opacity: 0;
+    transition: opacity 0.5s ease-out 0.3s; 
+}
+
+.timeline-elegant-item.is-visible:not(:last-child)::after {
+    opacity: 1;
+}
+
+/* Seta para Cima (itens da direita) */
+.timeline-elegant-item:nth-child(odd):not(:last-child)::after {
+    content: url('data:image/svg+xml;utf8,<svg width="220" height="180" viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><marker id="arrowhead-up" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="%230f3c63"></path></marker></defs><style>.caminho-animado{animation:MoverPontilhado 1s linear infinite;}@keyframes MoverPontilhado{to{stroke-dashoffset:-20;}}</style><path class="caminho-animado" d="M 215 175 C 180 175, 80 130, 5 5" stroke="%230f3c63" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 6" marker-end="url(%23arrowhead-up)"/></svg>');
+    width: 220px;
+    height: 180px;
+    position: absolute;
+    top: 100%;
+    margin-top: 10px;
+    left: 0px;
+    z-index: 2;
+    transform: rotate(277deg);
+}
+
+/* Seta para Baixo (itens da esquerda) */
+.timeline-elegant-item:nth-child(even):not(:last-child)::after {
+    content: url('data:image/svg+xml;utf8,<svg width="220" height="180" viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><marker id="arrowhead-down" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="%230f3c63"></path></marker></defs><style>.caminho-animado{animation:MoverPontilhado 1s linear infinite;}@keyframes MoverPontilhado{to{stroke-dashoffset:-20;}}</style><path class="caminho-animado" d="M 5 5 C 40 5, 140 50, 215 175" stroke="%230f3c63" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 6" marker-end="url(%23arrowhead-down)"/></svg>');
+    width: 220px;
+    height: 180px;
+    position: absolute;
+    top: 100%;
+    margin-top: 10px;
+    right: 0px;
+    left: auto;
+    z-index: 2;
+     transform: scaleX(1) rotate(6deg)
+}
+
+
+/* =================================================================== */
+/* == RESPONSIVO (AJUSTES FINAIS)                                 == */
+/* =================================================================== */
+
+@media (max-width: 767px) {
+    .timeline-elegant-container::before,
+    .timeline-elegant-container::after {
+        left: 20px;
+        transform: translateX(0);
+    }
+    .timeline-elegant-item,
+    .timeline-elegant-item:nth-child(even),
+    .timeline-elegant-item:nth-child(odd) {
+        width: 100%;
+        padding: 0 0 0 50px;
+        left: 0;
+        margin-bottom: 40px;
+    }
+    .timeline-elegant-item::before {
+        left: 20px;
+        width: 30px;
+    }
+    .timeline-elegant-marker,
+    .timeline-elegant-item:nth-child(even) .timeline-elegant-marker,
+    .timeline-elegant-item:nth-child(odd) .timeline-elegant-marker {
+        left: 20px;
+        top: 40px;
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+    /* Ajuste da seta no mobile */
+    .timeline-elegant-item:not(:last-child)::after,
+    .timeline-elegant-item:nth-child(odd):not(:last-child)::after,
+    .timeline-elegant-item:nth-child(even):not(:last-child)::after {
+        content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="64" viewBox="0 0 24 64"><style>.caminho-animado{animation:MoverPontilhado 1s linear infinite;}@keyframes MoverPontilhado{to{stroke-dashoffset:-20;}}</style><path class="caminho-animado" d="M12 0 L12 56 M6 50 L12 56 L18 50" fill="none" stroke="%230f3c63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6"/></svg>');
+        width: 24px;
+        height: 64px;
+        top: 100%;
+        margin-top: 10px;
+        left: 20px; 
+        right: auto;
+        transform: none;
+    }
+}
+
+/* =================================================================== */
+/* == ESTILOS RESPONSIVOS (AJUSTES PARA MOBILE)                     == */
+/* =================================================================== */
+
+@media (max-width: 768px) {
+
+  /* --- Seção Sobre Nós --- */
+  .space {
+    display: none;
+  }
+
+  .video-flutuante {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 30px; /* Adiciona um respiro abaixo do vídeo */
+  }
+
+  .conteudo-sobreposto h2 {
+    font-size: 28px !important;
+    text-align: center;
+    margin: 0 0 30px 0;
+  }
+
+  .conteudo-sobreposto p {
+    font-size: 18px; /* Ajuste para melhor leitura */
+    line-height: 1.7; /* Melhora o espaçamento entre linhas */
+    text-align: center;
+  }
+
+  .frase-sobre h4 {
+    text-align: center;
+    margin: 30px 0 0 0;
+    font-size: 18px;
+  }
+
+  /* --- Seção Mapa de Clientes --- */
+  .mapa-clientes {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .mapa-container {
+    padding: 130px 0 !important;
+    margin-top: -40px; /* Ajusta o espaçamento superior */
+  }
+
+  .mapa-brasil {
+    top: 40%;
+    left: 50%; /* Centraliza melhor o pino */
+    transform: translateX(-50%); /* Garante a centralização */
+    width: 50%; /* Ajusta o tamanho do mapa do Brasil */
+  }
+
+  .mapa-clientes .numeros {
+    justify-content: center !important;
+    flex-direction: column; /* Empilha os contadores */
+    gap: 20px;
+  }
+
+  .item-numero {
+    display: block !important;
+    text-align: center;
+  }
+  
+  .mapa-clientes .numeros p {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  .frase {
+    padding: 0 15px !important; /* Adiciona padding lateral */
+    margin-top: 40px !important;
+    text-align: center;
+    font-size: 18px; /* Ajusta o tamanho da fonte */
+  }
+}

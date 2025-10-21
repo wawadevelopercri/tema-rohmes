@@ -1,0 +1,288 @@
+/* =================================================================== */
+/* == ESTILOS PARA A SEÇÃO DE PRODUTOS (<section class="produtos">) == */
+/* =================================================================== */
+
+/* Bloco de código com a transição mais suave */
+
+/* NOVO: Pseudo-elemento para a imagem de fundo */
+
+/* NOVO: Aplicamos o zoom no pseudo-elemento */
+
+/* Sobrescreve a regra antiga para garantir que o overlay fique por cima */
+
+/* =================================================================== */
+/* == ESTILOS PARA A SEÇÃO BANNER PROMOCIONAL                       == */
+/* =================================================================== */
+
+/* =================================================================== */
+/* == ESTILOS PARA A SEÇÃO PÓS-VENDAS                               == */
+/* =================================================================== */
+
+/* =================================================================== */
+/* == ESTILOS PARA A SEÇÃO SOBRE NÓS                                == */
+/* =================================================================== */
+
+/* Para limpar o float do vídeo */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* =================================================================== */
+/* == ESTILOS PARA A SEÇÃO DEPOIMENTOS                              == */
+/* =================================================================== */
+
+/* =================================================================== */
+/* == ESTILOS PARA A SEÇÃO DE LOGOS DE CLIENTES (MARQUEE)           == */
+/* =================================================================== */
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* =================================================================== */
+/* == ESTILOS PARA A SEÇÃO MAPA DE CLIENTES                         == */
+/* =================================================================== */
+
+.mapa-clientes .numeros {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.item-numero {
+  display: flex;
+  align-items: center;
+}
+
+.counter {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 20px;
+  font-family: 'Poppins', sans-serif;
+  color: #003965;
+}
+
+.numeros p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: #003965;
+  margin: 0 70px -20px 20px;
+  line-height: 22px;
+}
+
+.frase {
+    font-family: 'Poppins', sans-serif;
+    color: #003965;
+    width: 100%;
+    padding: 2% 0% 3% 54%;
+    font-weight: 200;
+    z-index: 1;
+    position: relative;
+}
+
+.mapa-container {
+  position: relative;
+  text-align: center;
+  margin-top: -80px;
+}
+
+.mapa-mundi {
+  width: 100%;
+  height: auto;
+}
+
+.mapa-brasil {
+  position: absolute;
+  top: 22%;
+  left: 38%;
+  transform: translate(-50%, -50%);
+  width: 360px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+@keyframes scaleIn {
+  0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.05); }
+}
+
+@keyframes blink-animation {
+  0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.7); }
+}
+
+
+/* =================================================================== */
+/* == ESTILOS GERAIS DE BOTÕES (LEARN MORE)                         == */
+/* =================================================================== */
+
+/* --- Botão Padrão (Saiba mais escuro) - .learn-more --- */
+
+/* Variação para a seção de produtos */
+
+
+/* --- Botão learn-more-2 (grande, fundo branco no hover) --- */
+
+/* --- Botão learn-more-5 (grande, fundo cinza-azulado) --- */
+
+
+/* --- Variação 3 (Fundo Azul Escuro) - .learn-more.variant-3 --- */
+
+
+/* =================================================================== */
+/* == ESTILOS RESPONSIVOS (MEDIA QUERIES)                           == */
+/* =================================================================== */
+
+@media (max-width: 768px) {
+
+
+  /* Seção Produtos */
+
+  /* Banner Promocional */
+
+  /* Seção Pós-vendas */
+
+  /* Seção Sobre Nós */
+
+  /* Seção Depoimentos e Clientes */
+
+  /* Seção Mapa */
+  .mapa-clientes {
+    margin-top: 0;
+  }
+ .mapa-container {
+        padding: 130px 0 !important;
+        margin-bottom: -100px;
+    }
+  .mapa-brasil {
+    top: 40%;
+    left: 37%;
+    width: 31%;
+  }
+  .mapa-clientes .numeros {
+    justify-content: center !important;
+  }
+  .item-numero {
+    display: block !important;
+  }
+  .mapa-clientes .numeros p {
+    margin: 0 20px 0 10px;
+    font-size: 16px;
+  }
+  .frase {
+    padding: 0 !important;
+    margin-top: 40px !important;
+    text-align: center;
+    font-size: 20px;
+  }
+}
+
+
+/* =================================================================== */
+/* == CSS ESPECÍFICO PARA OS SWIPERS DA HOMEPAGE (INDEX.PHP)        == */
+/* =================================================================== */
+
+/* --- Estilos Gerais para os Swipers da Página --- */
+/* Este padding é útil para dar espaço para a paginação abaixo dos slides */
+
+/* --- Estilos da Paginação (Bullets) --- */
+/* Container da paginação */
+
+/* Estilo base dos 'bullets' (bolinhas) */
+
+/* Bullet ativo */
+
+/* Efeito hover nos bullets */
+
+/* Animação para o hover */
+@keyframes pulseWhite {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+/* =================================================================== */
+/* == EFEITO HOVER AZUL PARA PAGINAÇÃO DO BANNER PROMOCIONAL        == */
+/* =================================================================== */
+
+/* --- 1. Animação de Pulso (Azul) --- */
+/* (Se já adicionou no header-swiper.css, não precisa duplicar, mas não há problema se o fizer) */
+@keyframes pulseBlue {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 59, 99, 0.7); /* Cor azul do tema */
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(16, 59, 99, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 59, 99, 0);
+  }
+}
+
+
+
+
+/* --- 4. Efeito Hover no Dot do Banner Promocional --- */
+
+/* --- 5. Mostrar Tooltip no Hover --- */
+
+/* =================================================================== */
+/* == EFEITO HOVER COM TOOLTIP PARA PAGINAÇÃO DAS CATEGORIAS        == */
+/* =================================================================== */
+
+/* --- 1. Estilo do Tooltip (Caixa de Texto) --- */
+
+/* --- 2. Estilo da Seta do Tooltip --- */
+
+/* --- 3. Efeito Hover no Dot das Categorias --- */
+/* A animação 'pulseWhite' já existe no seu CSS, então apenas a ativamos no hover */
+
+/* --- 4. Mostrar Tooltip no Hover --- */
+
+/* =================================================================== */
+/* == ESTILOS OTIMIZADOS PARA O CARROSSEL E NAVEGAÇÃO (COM WRAPPER) == */
+/* =================================================================== */
+
+/* NOVO: Define o wrapper como o container de posicionamento e cria o espaço para as setas */
+
+/* O contêiner do Swiper agora volta a esconder o que transborda */
+
+/* Estilo base para as flechas (sem alteração) */
+
+/* Efeito de hover para as flechas (sem alteração) */
+
+/* Conteúdo da flecha com CSS (sem alteração) */
+
+/* --- ALTERAÇÃO PRINCIPAL NO POSICIONAMENTO --- */
+/* A flecha "Próximo" agora se alinha à borda direita do espaço criado pelo wrapper */
+
+/* A flecha "Anterior" agora se alinha à borda esquerda do espaço criado pelo wrapper */
+
+/* --- AJUSTES RESPONSIVOS --- */
+@media (max-width: 768px) {
+  /* Remove o espaço lateral e esconde as setas em telas menores */
+}
+
+.mapa-clientes{
+    margin-top: 50px;
+}

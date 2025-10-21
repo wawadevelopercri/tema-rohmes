@@ -1,0 +1,76 @@
+.client-logo-carousel {
+    width: 100%;
+    height: auto;
+    padding: 30px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* AQUI DEFINIMOS O TAMANHO FIXO DO CONTAINER DE CADA LOGO */
+.client-logo-carousel .swiper-slide {
+    /* Define a largura exata que cada logo deve ocupar */
+    width: 200px !important; /* !important ajuda a garantir que o JS não sobrescreva */
+    height: 41px;
+
+    /* Centraliza a imagem perfeitamente dentro deste espaço */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* AQUI GARANTIMOS QUE A IMAGEM SE AJUSTE BEM DENTRO DO CONTAINER */
+.client-logo-carousel .swiper-slide img {
+    /* A imagem ocupa o espaço disponível, mas sem ultrapassar os limites */
+    max-width: 100%;
+    max-height: 100%;
+    
+    /* object-fit: contain é essencial para não distorcer os logos */
+    object-fit: contain;
+
+    width: auto;
+    height: auto;
+    transition: all 0.3s ease;
+}
+
+.client-logo-carousel .swiper-slide:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Estilos das setas (sem alteração) */
+.client-logo-carousel .swiper-button-prev,
+.client-logo-carousel .swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    background-color: rgba(0, 0, 0, 1);
+    border-radius: 50%;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+.client-logo-carousel .swiper-button-prev:hover,
+.client-logo-carousel .swiper-button-next:hover {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.client-logo-carousel .swiper-button-prev::after,
+.client-logo-carousel .swiper-button-next::after {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.client-logo-carousel .swiper-button-prev {
+    left: 10px;
+}
+
+.client-logo-carousel .swiper-button-next {
+    right: 10px;
+}
+.client-logos-section h2 {
+    font-family: 'Poppins';
+    color: #0f3c63;
+}

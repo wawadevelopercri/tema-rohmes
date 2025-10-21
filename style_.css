@@ -1,0 +1,4148 @@
+/*
+Theme Name: Rohmes
+Theme URI: http://rohmes.com.br
+Author: Wagner
+Author URI: http://rohmes.com.br
+Description: Tema site Rohmes.
+Version: 1.0 (Optimized and Fixed)
+*/
+
+/* =================== BASE =================== */
+body.loading *:not(.logo-loader) {
+  visibility: hidden !important;
+}
+
+body.loading {
+  overflow: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+    height: auto;
+    background-color: #f1f1f1;
+}
+
+/* =================== GENERAL COMPONENTS =================== */
+
+/* Ícones e logos no topo */
+.icones_banner_personalizado {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 0px;
+}
+
+.icones_banner_personalizado h4 {
+  width: 31%;
+  margin: 0 0 -6px 0px;
+  font-size: 15px;
+  color: #003864;
+}
+
+.logos_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  perspective: 1000px;
+}
+
+.logos_wrapper .circulo {
+  display: flex;
+  flex: 0 1 80px;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  margin-left: -30px;
+  border-radius: 50%;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.7s;
+}
+
+.logos_wrapper .circulo:hover {
+  transform: rotateY(360deg);
+}
+
+.logos_wrapper .circulo img {
+    width: 100%;
+    max-width: 90px;
+    height: auto;
+}
+
+.whatsapp-fixo {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  background-color: #103B63;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.whatsapp-fixo i {
+    color: #fff;
+    font-size: 30px;
+}
+
+.whatsapp-fixo img {
+  width: 32px;
+  height: 32px;
+}
+
+.whatsapp-fixo:hover {
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  background-color: #0d2f4f;
+}
+
+.topo-fixo {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  z-index: 9999;
+  width: 60px;
+  height: 60px;
+  background-color: #103B63;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Ícone */
+.topo-fixo i {
+  color: #fff;
+  font-size: 30px;
+}
+
+/* Envoltório do ícone — aqui aplicamos o hover */
+.topo-fixo .icon-wrapper {
+  transition: transform 0.3s ease;
+}
+
+/* Hover apenas no conteúdo interno, evitando conflito com a animação do botão */
+.topo-fixo:hover .icon-wrapper {
+ transform: scale(1.15) rotate(5deg);
+}
+
+/* Quando o botão deve aparecer */
+.topo-fixo.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+
+
+#imagem-categoria-hover {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  opacity: 1;
+  transform: scale(1);
+}
+
+#imagem-categoria-hover.fade-out {
+  opacity: 0;
+  transform: scale(1.02); /* Leve zoom out antes da troca */
+}
+
+#imagem-categoria-hover.fade-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Container principal do loader (tela cheia) */
+/* Preloader visível no início */
+.logo-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+.logo-loader.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.logo-loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition-delay: 0.3s;
+}
+
+/* Caixa azul circular que segura o logo */
+.logo-box {
+  padding: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 140px;
+  height: 140px;
+}
+
+/* Define o tamanho do SVG */
+.logo-loader svg {
+  width: 100px;
+  height: auto;
+}
+
+/* --- Regra Final para o Logo SVG --- */
+/* Garante que o traço seja aplicado a qualquer forma dentro do SVG do loader */
+.logo-loader svg * {
+  stroke: #103c64 !important;
+  fill: none !important;
+  stroke-width: 15px !important;
+}
+
+.menu-background {
+    background-color: #103b63;
+    border-radius: 10px;
+    position: relative;
+    z-index: 2;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 0 10px;
+    width: calc(100% - 20px); 
+}
+
+.bradcamp {
+  font-family: 'Poppins', sans-serif;
+  color: #103b63;
+}
+
+.bradcamp a {
+  text-decoration: none;
+  color: #103b63;
+  transition: color 0.3s ease;
+}
+
+.bradcamp a:hover {
+  text-decoration: none;
+  color: #091f33;
+}
+
+.direitos {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 200;
+    padding-top: 0px;
+}
+
+.full-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap; /* MUDANÇA CRÍTICA: Impede a quebra de linha */
+    gap: clamp(0rem, 0vw, 0rem);
+    min-height: 100vh;
+    width: 100%;
+    max-width: 1700px;
+    margin: 0 auto;
+    padding: 0 2rem; /* Adiciona um respiro nas laterais */
+    box-sizing: border-box;
+}
+.header-swiper .coluna-imagem {
+    flex: 1 1 60%;
+}
+
+.header-swiper .coluna-texto {
+    flex: 1 1 40%;
+}
+
+
+/* ======================================================= */
+/* CSS FINAL COM LAYOUT MOBILE CORRIGIDO                   */
+/* ======================================================= */
+
+
+
+.pos-vendas h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #103b63;
+    font-size: 38px;
+    font-weight: 700;
+    text-align: left;
+    padding-left: 30px;
+    margin: 0px 0px 50px 0px;
+}
+
+/* O contêiner que organiza as 3 caixas */
+.pos-vendas .certifications-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    padding: 1rem 0;
+}
+
+/* A caixa de cada item (Layout DESKTOP) */
+.pos-vendas .certification-item {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 160px;
+    position: relative;
+    height: 160px;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    background-color: #0e385d;
+    border-bottom-right-radius: 22px;
+    border-top-left-radius: 22px;
+}
+
+/* O ícone que aparece por padrão (Layout DESKTOP) */
+.pos-vendas .icon-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    z-index: 2;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.pos-vendas .icon-wrapper img {
+    width: 60%;
+    filter: brightness(0) invert(1);
+}
+
+/* Estilo do Tooltip Flutuante (Layout DESKTOP) */
+.pos-vendas .description {
+    position: absolute;
+    top: 105%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    height: auto;
+    background-color: #062745;
+    color: #fff;
+    border: 1px solid #062745;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    font-weight: 400;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 10;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Borda da flecha do tooltip */
+/* 1. A "BORDA" da flecha (triângulo maior, cinza, que fica atrás) */
+.pos-vendas .description::before {
+    content: '';
+    position: absolute;
+    bottom: 100%; /* Posiciona no topo do tooltip */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    border-width: 9px; /* Um pouco maior que a flecha de preenchimento */
+    border-style: solid;
+    /* Define a cor da borda do triângulo */
+    border-color: transparent transparent #062745 transparent; 
+}
+
+/* 2. O "PREENCHIMENTO" da flecha (triângulo menor, branco, que fica na frente) */
+.pos-vendas .description::after {
+    content: '';
+    position: absolute;
+    bottom: 100%; /* Posiciona no topo do tooltip */
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* 1px menor que a borda para criar o efeito visual da borda de 1px */
+    border-width: 8px; 
+    border-style: solid;
+    /* Define a cor do preenchimento do triângulo */
+    border-color: transparent transparent #062745 transparent; 
+}
+
+/* Lógica do Hover (Apenas para DESKTOP) */
+.pos-vendas .certification-item:hover .description {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* ======================================================= */
+/* --- RESPONSIVIDADE PARA MOBILE (REFEITA DO ZERO) ---    */
+/* ======================================================= */
+@media (max-width: 768px) {
+    
+
+  .pos-vendas .icon-wrapper img {
+    width: 43%;
+}
+
+    /* 1. Organiza os itens em coluna */
+    .pos-vendas .certifications-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* 2. Ajusta a caixa principal para o mobile */
+    .pos-vendas .certification-item {
+        height: auto; /* Altura se ajusta ao conteúdo */
+        width: 90%;
+        max-width: 350px; /* Limita a largura máxima */
+        padding: 2rem 1.5rem; /* Espaçamento interno */
+        cursor: default; /* Remove o cursor de ponteiro */
+    }
+
+    /* 3. RESETA o posicionamento do ícone e da descrição */
+    .pos-vendas .icon-wrapper,
+    .pos-vendas .description {
+        position: static; /* ESSENCIAL: Volta ao fluxo normal do documento */
+        transform: none;  /* RESETA o transform */
+        opacity: 1;       /* Garante que ambos fiquem visíveis */
+        visibility: visible;
+        width: 100%;
+        height: auto;
+    }
+
+    /* 4. Estiliza o ícone para o layout de coluna */
+    .pos-vendas .icon-wrapper {
+        margin-bottom: 1.5rem; /* Espaço entre o ícone e o texto */
+    }
+
+    /* 5. RESETA o estilo de tooltip da descrição */
+    .pos-vendas .description {
+        box-shadow: none;
+        border: none;
+        background-color: transparent;
+        color: #ffffff;
+        padding: 0;
+        text-align: center;
+        font-size: 15px;
+        font-weight: 400;
+    }
+    
+    /* 6. ESCONDE a flecha do tooltip no mobile */
+    .pos-vendas .description::before,
+    .pos-vendas .description::after {
+        display: none;
+    }
+
+    /* 7. DESATIVA a lógica de hover no mobile */
+     .pos-vendas .certification-item:hover .description {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+/* =================== NAVIGATION & MENU =================== */
+.navbar-expand-lg {
+    z-index: 9;
+}
+
+.navbar a,
+.navbar .dropdown-menu a {
+  color: white !important;
+}
+
+.navbar .nav-link,
+.navbar-brand,
+.dropdown-menu a {
+  color: #ffffff;
+  transition: color 0.3s ease;
+  font-size: 16px;
+}
+
+.navbar .nav-link:hover,
+.dropdown-menu a:hover {
+  color: #7fb0dd !important;
+}
+
+.navbar-brand img {
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
+    margin-left: 16px;
+    height: 35px;
+}
+
+/* --- Dropdown Menu --- */
+.dropdown-menu {
+background-color: #103B63 !important;
+background: linear-gradient(180deg, rgba(16, 59, 99, 1) 0%, rgba(16, 59, 99, 1) 45%, rgba(18, 68, 115, 1) 100%);
+    z-index: 9999 !important;
+    border-bottom-right-radius: 10px !important;
+    border-top-left-radius: 0px !important;
+    border: 0px !important;
+    border-top-right-radius: 0px !important;
+    border-bottom-left-radius: 10px !important;
+    display: block !important;
+    transform: translateY(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    overflow: hidden;
+}
+
+.dropdown-item:focus, 
+.dropdown-item:hover {
+    background-color: transparent !important;
+    color: #1e2125;
+}
+
+.dropdown-menu.mega-dropdown {
+    min-width: 490px;
+    padding: 1rem;
+    position: absolute;
+    top: 100%;
+    left: 0;   
+}
+
+.dropdown-menu a {
+  white-space: nowrap;
+}
+
+.nav-item.dropdown {
+  position: relative !important;
+}
+
+/* --- Dynamic Menu Scroll --- */
+.your-menu-selector {
+    position: relative;
+    top: 10px;
+    transition: top 0.4s ease-out, opacity 0.4s ease-out;
+    width: calc(100% - 20px);
+    margin: 0 10px;
+    z-index: 1000;
+}
+
+.your-menu-selector.menu-fixed {
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    width: auto; /* Esta linha foi ADICIONADA */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    top: -150px; 
+    opacity: 0;
+}
+
+.your-menu-selector.menu-fixed.menu-visible {
+    top: 10px;
+    opacity: 1;
+}
+
+
+
+/* Animação de abertura para dropdowns */
+.dropdown-menu {
+  display: block; /* necessário para animar */
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.dropdown-menu.show-animated {
+  max-height: 500px; /* ajuste conforme o tamanho dos menus */
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.whatsapp {
+    font-size: 29px;
+    color: #fff;
+}
+/* =================== SEARCH (ADAPTADO COM HOVER E ANIMAÇÃO) =================== */
+.search-group {
+    background-color: #103b63;
+    border-radius: 25px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    border-radius: 10px;
+    padding: 5px 15px;
+    transition: all 0.4s ease;
+}
+
+
+.search-group:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(16, 60, 99, 0.5);
+    background: #062745;
+}
+
+.search-group input {
+    color: #fff;
+    font-weight: 200;
+    font-size: 16px;
+}
+
+.search-input, .busca {
+    background-color: transparent !important;
+    border: none;
+    color: #fff;
+    border-radius: 25px;
+    padding-left: 15px;
+    font-size: 18px;
+    transition: color 0.3s ease;
+    -webkit-appearance: none; /* ADICIONADO: Garante fundo transparente */
+    appearance: none;
+}
+
+/* ADICIONADO: Estiliza o botão 'X' de limpar para a cor branca */
+.search-input::-webkit-search-cancel-button,
+.busca::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>");
+    background-size: 20px 20px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.search-input::-webkit-search-cancel-button:hover,
+.busca::-webkit-search-cancel-button:hover {
+    opacity: 0.7;
+}
+
+
+.search-input:focus, .busca:focus {
+    color: #7fb0dd;
+    outline: none;
+}
+
+.input-group-text {
+    color: #ffffff !important;
+}
+
+.busca {
+    font-size: 20px;
+    min-width: 0;
+    flex-grow: 1;
+    outline: none;
+}
+
+.busca::placeholder {
+    color: #fff !important;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.botao-busca {
+    background: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px 0 15px; 
+    font-size: 22px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.botao-busca:hover {
+    color: #7fb0dd;
+    transform: rotate(15deg) scale(1.2);
+}
+
+/* Adicionado para remover o foco padrão do navegador ao clicar */
+.botao-busca:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.search-icon {
+    background-color: transparent;
+    border-left: none;
+    border-radius: 0 25px 25px 0;
+}
+
+.search-icon i {
+    color: #fff;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.botao-busca:hover i {
+    transform: scale(1.2);
+    color: #7fb0dd;
+}
+
+.img-menu {
+    height: 68px !important;
+    right: 0;
+    position: absolute;
+    bottom: 12px;
+}
+.input-group>.form-control{
+  border: none;
+}
+
+.botao-busca {
+    background: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px 0 15px; 
+    font-size: 22px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.botao-busca:hover {
+    color: #7fb0dd;
+    transform: rotate(15deg) scale(1.2);
+    /* box-shadow: 0 0 8px rgba(255, 255, 255, 0.6); */ /* EFEITO REMOVIDO */
+}
+/* Adicionado para remover o foco padrão do navegador ao clicar */
+.botao-busca:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.search-icon {
+    background-color: transparent;
+    border-left: none;
+    border-radius: 0 25px 25px 0;
+}
+
+.search-icon i {
+    color: #fff;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.botao-busca:hover i {
+    transform: scale(1.2);
+    color: #fff;
+}
+
+
+/* =================== BUTTONS =================== */
+.btn-outline-light {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.btn-outline-light:hover {
+  background-color: #7fb0dd;
+  border-color: #7fb0dd;
+  color: #103b63;
+}
+
+.btn-outline-success {
+  transition: all 0.3s ease;
+  border-radius: 20px;
+  padding: 8px 15px;
+}
+
+/* --- WhatsApp Buttons --- */
+.botao-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 20px;
+    background-color: #25D366;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.botao-whatsapp:hover {
+    background-color: #1DA851;
+}
+
+.botao-whatsapp .bi-whatsapp {
+    margin-right: 8px;
+}
+
+.whatsapp-banner {
+    border-radius: 10px 0 10px 0;
+    background-color: #062745;
+    padding: 0px 10px 0px 8px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.whatsapp-banner:hover {
+  background-color: rgba(1, 11, 19, 0.9);
+  color: #fff;
+}
+
+.whatsapp-banner i {
+  font-size: 1.6em;
+  transition: transform 0.3s ease;
+  padding: 8px;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.whatsapp-banner:hover i {
+  transform: rotate(20deg) scale(1.2);
+}
+
+/* --- Learn More Buttons (VERSÃO FINAL COMPLETA E CORRIGIDA) --- */
+
+/* =================================================================== */
+/* --- 1. REGRAS GERAIS PARA TODOS OS BOTÕES "LEARN MORE" --- */
+/* =================================================================== */
+
+a.learn-more,
+a.learn-more-2,
+a.learn-more-4,
+a.learn-more-5 {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: auto;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    height: auto;
+}
+
+/* O fundo que expande (Círculo) */
+.learn-more .circle,
+.learn-more-2 .circle-2,
+.learn-more-4 .circle-4,
+.learn-more-5 .circle-5 {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    margin: 0;
+    border-radius: 1.625rem;
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+/* O texto do botão */
+.learn-more .button-text,
+.learn-more-2 .button-text-2,
+.learn-more-4 .button-text-4,
+.learn-more-5 .button-text-5 {
+    position: relative;
+    z-index: 2;
+    display: block;
+    text-align: left;
+    white-space: nowrap;
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+/* O ícone da seta */
+.learn-more .icon,
+.learn-more-2 .icon-2,
+.learn-more-4 .icon-4,
+.learn-more-5 .icon-5 {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+.learn-more .icon.arrow,
+.learn-more-2 .arrow-2,
+.learn-more-4 .arrow-4,
+.learn-more-5 .arrow-5 {
+    width: 16px;
+    height: 0.125rem;
+    background: none;
+}
+
+.learn-more .icon.arrow::before,
+.learn-more-2 .arrow-2::before,
+.learn-more-4 .arrow-4::before,
+.learn-more-5 .arrow-5::before {
+    position: absolute;
+    content: '';
+    width: 0.625rem;
+    height: 0.625rem;
+    transform: rotate(45deg);
+}
+
+/* =================================================================== */
+/* --- 2. ESTILOS ESPECÍFICOS E CORRIGIDOS PARA CADA VARIAÇÃO --- */
+/* =================================================================== */
+
+/* --- Botão Padrão (Saiba mais escuro) --- */
+.learn-more .circle {
+    width: 40px;
+    height: 40px;
+    background: #103b63;
+}
+.learn-more .icon.arrow { left: 8px; }
+.learn-more .icon.arrow::before { top: -0.25rem; right: 0.0625rem; border-top: 0.125rem solid #fff; border-right: 0.125rem solid #fff; }
+.learn-more .button-text {
+    padding: 0.4rem 1rem 0.5rem 2.8rem;
+    color: #103b63;
+    font-weight: 400;
+    font-size: clamp(0.85rem, 0.8rem + 0.25vw, 1rem);
+    margin-left: 10px;
+}
+a.learn-more:hover .circle { width: 100%; }
+a.learn-more:hover .icon.arrow { transform: translate(1rem, 0); }
+a.learn-more:hover .button-text { color: #fff; }
+
+/* --- Botão learn-more-2 (grande, fundo branco no hover) --- */
+a.learn-more-2:hover { color: #113b63; }
+.learn-more-2 .circle-2 { width: 43px; height: 43px; background: #fff; }
+.learn-more-2 .arrow-2 { left: 12px; }
+.learn-more-2 .arrow-2::before { top: -0.25rem; right: 0.0625rem; border-top: 0.125rem solid #113b63; border-right: 0.125rem solid #113b63; }
+.learn-more-2 .button-text-2 {
+    padding: 0.2rem 1.5rem 0.75rem 4rem;
+    color: #fff;
+    font-weight: 200;
+    font-size: clamp(1.1rem, 0.8rem + 1.2vw, 1.56rem);
+}
+a.learn-more-2:hover .circle-2 { width: 100%; }
+a.learn-more-2:hover .arrow-2 { transform: translate(1rem, 0); }
+a.learn-more-2:hover .button-text-2 { color: #113b63; }
+
+/* --- Botão learn-more-4 (pequeno, fundo cinza-azulado) --- */
+.learn-more-4 .circle-4 { width: 33px; height: 33px; background: #c2d4e6; }
+.learn-more-4 .arrow-4 { left: 8px; }
+.learn-more-4 .arrow-4::before { top: -0.25rem; right: 0.0625rem; border-top: 0.125rem solid #062745; border-right: 0.125rem solid #062745; }
+.learn-more-4 .button-text-4 {
+    padding: 0.5rem 1rem 0.5rem 2.8rem;
+    color: #062745;
+    font-weight: 400;
+    font-size: clamp(0.85rem, 0.8rem + 0.25vw, 1rem);
+}
+a.learn-more-4:hover .circle-4 { width: 100%; }
+a.learn-more-4:hover .arrow-4 { transform: translate(1rem, 0); }
+
+/* --- Botão learn-more-5 (grande, fundo cinza-azulado) --- */
+a.learn-more-5:hover { color: #113b63; }
+.learn-more-5 .circle-5 { width: 43px; height: 43px; background: #c2d4e6; }
+.learn-more-5 .arrow-5 { left: 12px; }
+.learn-more-5 .arrow-5::before { top: -0.25rem; right: 0.0625rem; border-top: 0.125rem solid #113b63; border-right: 0.125rem solid #113b63; }
+.learn-more-5 .button-text-5 {
+    padding: 0.5rem 1.5rem 0.75rem 4rem;
+    color: #0f3c63;
+    font-weight: 300;
+    font-size: clamp(0.9rem, 0.8rem + 1vw, 1.2rem);
+}
+a.learn-more-5:hover .circle-5 { width: 100%; }
+a.learn-more-5:hover .arrow-5 { transform: translate(1rem, 0); }
+
+/* --- Variação 3 (Fundo Azul Escuro) --- */
+.learn-more.variant-3 .circle { width: 48px; height: 48px; background: #103b63; }
+.learn-more.variant-3 .icon.arrow::before { right: -2px; border-color: #fff; }
+.learn-more.variant-3 .button-text {
+    padding: 0.7rem 1.5rem 0.7rem 4rem;
+    color: #103b63;
+    font-weight: 400;
+    font-size: clamp(0.9rem, 0.8rem + 0.5vw, 1.1rem);
+}
+.learn-more.variant-3:hover .circle { width: 100%; }
+.learn-more.variant-3:hover .button-text { color: #fff; }
+
+/* Correção para a paginação não sobrepor o botão no banner promocional */
+.banner-promocional .swiper-pagination {
+    margin-top: 0px;
+    padding-bottom: 20px;
+    position: relative;
+}
+/* =================================================================== */
+/* --- AJUSTE ESPECIAL PARA O BOTÃO "SAIBA MAIS" DENTRO DA SEÇÃO PRODUTOS --- */
+/* =================================================================== */
+
+/*
+  Esta regra só se aplica a um link com a classe .learn-more
+  que esteja DENTRO de um elemento com a classe .produtos
+*/
+
+/* 1. Define o fundo do círculo inicial como branco */
+.produtos .learn-more .circle {
+    background: #ffffff;
+    border: 1px solid #e0e0e0; /* Adiciona uma borda sutil para visibilidade */
+}
+
+/* 2. Define a cor do texto e da seta como preta */
+.produtos .learn-more .button-text {
+    color: #fff;
+}
+.produtos .learn-more .icon.arrow::before {
+    border-top-color: #000000;
+    border-right-color: #000000;
+}
+
+/* 3. Garante que, ao passar o mouse, o texto continue preto */
+.produtos a.learn-more:hover .button-text {
+    color: #000000;
+}
+
+/* 4. Garante que, ao passar o mouse, a seta continue preta */
+.produtos a.learn-more:hover .icon.arrow::before {
+    border-top-color: #000000;
+    border-right-color: #000000;
+}
+/* --- Variação 6 (Fundo Azul Escuro, Maior) --- */
+a.learn-more.variant-6 { font-size: inherit; }
+.learn-more.variant-6 .circle { width: 48px; height: 48px; background: #103b63; }
+.learn-more.variant-6 .icon.arrow::before { right: -6px; border-color: #fff; }
+.learn-more.variant-6 .button-text {
+    padding: 0.6rem 1.5rem 0.6rem 4rem;
+    color: #103b63;
+    font-weight: 400;
+    font-size: clamp(0.9rem, 0.8rem + 0.5vw, 1.125rem);
+}
+.learn-more.variant-6:hover .circle { width: 100%; }
+.learn-more.variant-6:hover .button-text { color: #fff; }
+
+/* Regra final genérica */
+.botao {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.botoes_produtos, .botoes_produtos-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.botao-produtos, .botao-produtos-2 {
+    border-radius: 10px 0 10px 0;
+    padding: 0px 10px 0px 10px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    margin: 0 10px 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    height: 60px;
+    font-size: 14px;
+}
+.botao-produtos {
+    background-color: #062745;
+    color: #fff;
+}
+.botao-produtos-2 {
+    color: #103b63;
+}
+
+.botao-produtos:hover {
+  background-color: rgba(1, 11, 19, 0.9);
+  color: #fff;
+}
+.botao-produtos-2:hover {
+  color: #000;
+}
+
+.botao-produtos i, .botao-produtos-2 i {
+  margin-right: 10px;
+  font-size: 1.6em;
+  transition: transform 0.3s ease, color 0.3s ease;
+  padding: 8px;
+  border-radius: 50%;
+  background-color: transparent;
+}
+.botao-produtos:hover i, .botao-produtos-2:hover i {
+  transform: rotate(20deg) scale(1.2);
+}
+.botao-produtos-2:hover i {
+  color: #000;
+}
+
+
+/* =================== BANNER & BACKGROUND =================== */
+.pecas-consumiveis img {
+    margin-top: 40px;
+}
+.fundo {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.overlay-conteudo {
+    position: relative;
+    z-index: 2;
+}
+
+
+
+.overlay-image {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-65%);
+  max-width: 1920px;
+  z-index: 1;
+  pointer-events: none;
+  width: 100%;
+}
+.banner-container {
+    position: relative; /* Necessário para o posicionamento absoluto do contador */
+    background: #f3f3f3;
+    border-radius: 10px;
+}
+/* Estilo para o contador de produtos na página de categorias */
+.product-counter {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: #103b63;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    /* box-shadow: 0 2px 5px rgb(0 0 0 / .2); */
+    border: 3px dotted #d1d1d1;
+}
+
+.product-counter.counter-right {
+    left: auto; /* Remove a propriedade 'left' herdada */
+    right: 15px; /* Adiciona a propriedade 'right' */
+}
+/* Ajuste para telas menores (mobile) */
+@media (max-width: 992px) {
+    .product-counter {
+        top: 10px;
+        left: 10px;
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+}
+
+.banner-container-fluido {
+    display: flex;
+    width: 100%;
+    min-height: 70vh;
+    position: relative;
+    overflow: visible !important; /* CORREÇÃO APLICADA */
+}
+
+.coluna-texto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+}
+
+.coluna-texto,
+.coluna-imagem {
+  flex: 1; /* MUDE DE '1 1 50%' PARA APENAS '1' */
+  margin-top: -100px;
+}
+
+.coluna-imagem {
+    z-index: 1;
+    
+}
+
+.container-acoes {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* --- Banner Icons --- */
+.icones_banner_personalizado {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+}
+.icones_banner_personalizado h4 {
+    color: #003660;
+    font-size: 16px;
+    margin: 0;
+    width: 47%;
+}
+.icones_banner_personalizado .circulo {
+    display: block;
+    max-width: 100%;
+    margin-left: -16px;
+}
+.icones_banner_personalizado img {
+    width: 80px;
+}
+.icones_banner_personalizado img:first-child {
+    margin-left: 0px;
+}
+.logos_wrapper {
+    display: flex;
+}
+
+/* --- Efeito Hover 3D para Logos --- */
+
+/* 1. Container das logos */
+/* Adicionamos 'perspective' para criar um espaço 3D. Sem isso, a rotação parece plana. */
+.logos_wrapper {
+  display: flex;
+  justify-content: center; /* Centraliza os logos horizontalmente */
+  align-items: center;
+  flex-wrap: wrap; /* Permite que os logos quebrem a linha em telas menores */
+  
+  /* A MÁGICA 3D COMEÇA AQUI */
+  perspective: 1000px; 
+}
+
+/* 2. O círculo que contém a logo */
+/* Este é o elemento que vai girar. */
+.circulo {
+ 
+  border-radius: 50%; /* Garante que a div seja um círculo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+
+  
+  /* A MÁGICA DA ANIMAÇÃO */
+  transition: transform 0.7s; /* Duração da animação de rotação */
+  transform-style: preserve-3d; /* Essencial para que a rotação seja de fato 3D */
+  cursor: pointer;
+}
+
+/* 3. O efeito ao passar o mouse */
+/* Quando o mouse estiver sobre o círculo, aplicamos a rotação. */
+.circulo:hover {
+  transform: rotateY(180deg); /* Roda 360 graus no eixo Y (vertical) */
+}
+
+/* 4. Estilo da imagem dentro do círculo */
+.circulo img {
+  max-width: 100%; /* Garante que a logo não ultrapasse o círculo */
+  height: auto;
+  border-radius: 0; /* Garante que a imagem não herde o border-radius se não for desejado */
+}
+
+
+
+/* =================== TEXT & TYPOGRAPHY =================== */
+.text-primary { color: #0055a5; }
+.text-dark { color: #333; }
+
+.headline {
+    color: #103c64;
+    font: normal 400 35px 'Poppins', sans-serif;
+    text-align: left;
+    width: 100%;
+    line-height: 50px;
+    margin-bottom: 20px;
+    margin-top: 130px;
+}
+.headline b {
+  font-weight: 900;
+}
+
+.sub-headline-1 {
+    color: #103c64;
+    font: normal 300 20px / 30px 'Poppins', sans-serif;
+    text-align: left;
+    margin-bottom: 50px;
+    /* width: 597px; */ /* REMOVA ou comente esta linha */
+    max-width: 620px;   /* ADICIONE esta linha */
+}
+
+.sub-headline-1 b {
+  font-weight: 700;
+}
+
+.sub-headline-2 {
+    color: #103c64;
+    font: normal 300 20px / 30px 'Poppins', sans-serif;
+    text-align: left;
+    margin-bottom: 50px;
+    line-height: 40px;
+    
+}
+.sub-headline strong, .sub-headline b {
+  font-weight: 900;
+}
+
+
+.sub-headline-2 b {
+    background-color: #003964;
+    color: #fff;
+    padding: 3px 8px 3px 8px;
+    font-style: italic;
+}
+
+
+.titulo h2 {
+  background-color: #103b63;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 0 10px 10px 0;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bolder;
+  display: inline-block;
+}
+
+.titulo h3 {
+  background-color: #00621c;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 0 10px 10px 0;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 100;
+  display: inline-block;
+  font-size: 16px;
+}
+
+/* =================== ICONS =================== */
+.icon-hover-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.icon-hover-wrapper i {
+  background-color: #fff;
+  color: #103b63;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.icon-hover-wrapper:hover i {
+  transform: rotate(90deg);
+  color: #000;
+}
+.icone-bloco.vazio {
+  visibility: hidden;
+}
+
+
+
+.fundo-slide-2{
+  background: linear-gradient(180deg,rgba(255, 255, 255, 1) 100%, rgba(241, 241, 241, 1) 0%);
+}
+
+
+/* =================== PRODUCTS SECTION =================== */
+.produtos {
+  background: linear-gradient(180deg,rgba(255, 255, 255, 1) 0%, rgba(241, 241, 241, 1) 100%);
+    margin-top: -25px;
+}
+.fundo-produtos {
+    position: relative;
+    padding-bottom: 50px;
+    padding-left: 30px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.diagonal-overlay-2 {
+    position: absolute;
+    left: -11vw;
+    height: 1000px;
+    pointer-events: none;
+    max-width: none;
+}
+.titulo-produtos h2 {
+    color: #fff;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1.2;
+    font-family: 'Poppins', sans-serif;
+    padding-top: 100px;
+}
+.titulo-produtos h3 {
+    color: #fff;
+    font-weight: 100;
+    font-size: 21px;
+    line-height: 40px;
+    margin: 60px 0 27px;
+    font-family: 'Poppins', sans-serif;
+}
+.titulo-produtos b {
+    font-weight: bold;
+}
+.titulo-produtos {
+    position: relative;
+    width: 50%;
+}
+.produtos .col-12 {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.titulo-produtos {
+  width: 100%;
+  max-width: 100%;
+  flex-grow: 1;
+}
+.mySwiper {
+  width: 100%;
+  max-width: 100%;
+  flex-grow: 1;
+}
+
+.produtos .swiper-pagination {
+    margin-top: 50px;
+}
+
+/* =================== CAROUSELS =================== */
+.carousel-item {
+  transition: transform 0.6s ease;
+}
+.carousel-inner {
+  transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1) !important;
+}
+.carousel-fade .carousel-item {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  display: block;
+}
+.carousel-fade .carousel-item.active,
+.carousel-fade .carousel-item-next.carousel-item-start,
+.carousel-fade .carousel-item-prev.carousel-item-end {
+  opacity: 1;
+  z-index: 1;
+}
+.carousel-control-next, .carousel-control-prev {
+    position: absolute;
+    top: 190px;
+}
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    margin-top: 200px;
+    filter: invert(28%) sepia(69%) saturate(507%) hue-rotate(179deg) brightness(92%) contrast(92%);
+}
+
+/* --- Carousel Indicators (Refactored) --- */
+.carousel-indicators [data-bs-target] {
+  width: 25px !important;
+  height: 25px !important;
+  border-radius: 50% !important;
+  background-color: #fff !important; /* Default color */
+  border: 2px solid transparent !important;
+  margin: 0 5px !important;
+  opacity: 1 !important;
+  transition: background-color 0.3s, transform 0.3s, border-color 0.3s, box-shadow 0.3s !important;
+}
+.carousel-indicators [data-bs-target]:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(15, 60, 99, 0.6);
+  animation: pulse 1s infinite;
+}
+.carousel-indicators .active {
+  background-color: #7fb0dd !important;
+  transform: scale(1.2);
+  border-color: #0f3c63;
+  box-shadow: 0 0 8px rgba(15, 60, 99, 0.6);
+}
+/* Specific Carousel Indicator Colors */
+
+#carrosel-suporte .carousel-indicators{
+  top: 440px;
+}
+
+#carouselProdutos .carousel-indicators [data-bs-target],
+#carrosel-suporte .carousel-indicators [data-bs-target],
+#carrosel-promocional .carousel-indicators [data-bs-target] {
+  background-color: #103c64 !important;
+}
+#carrosel-promocional .carousel-indicators [data-bs-target]:hover {
+  border-color: #062745;
+}
+#carrosel-promocional .carousel-indicators .active {
+  background-color: #062745 !important;
+  border-color: #062745;
+}
+
+/* --- Products Carousel --- */
+.produtos .carousel-inner {
+    padding: 230px 80px 65px 80px;
+}
+.produtos .carousel-control-next-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23062745'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+}
+.carousel-item .icone-bloco {
+    min-height: 250px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+    background-image: linear-gradient(to bottom, white, black);
+    filter: grayscale(100%);
+    padding: 30px;
+    border-radius: 20px 0 20px 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 23vw;
+    text-align: center;
+    color: white;
+    transition: all 0.4s ease;
+    flex-direction: column;
+    overflow: hidden;
+}
+.icone-bloco:hover {
+  filter: grayscale(0%);
+  background-color:#082035;
+  background-blend-mode: overlay;
+}
+.icone-bloco .texto {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.4s ease;
+    z-index: 1;
+    font-size: 24px;
+    line-height: 1.4;
+    color: #103c64;
+    width: 13vw;
+}
+.icone-bloco .texto p {
+    margin: 0 auto;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #000;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    width: 80%;
+}
+.icone-bloco:hover .texto p {
+  opacity: 0;
+}
+.hover-content {
+    width: 10vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    pointer-events: none;
+}
+.icone-bloco:hover .hover-content {
+  opacity: 1;
+  pointer-events: auto;
+}
+.hover-frase {
+    font-size: 1vw;
+    font-weight: 600;
+    color: white;
+    border: 1px solid #fff;
+    padding: 15px;
+    border-radius: 20px 0 20px 0;
+    width: 100%;
+}
+
+/* --- Clientes/Logo Carousel --- */
+
+.cliente-logo img {
+  height: 60px;
+  object-fit: contain;
+  display: block;
+  filter: brightness(0) invert(1);
+}
+
+.clientes-marquee {
+  overflow: hidden;
+  width: 100%;
+}
+
+.clientes-track {
+    display: flex;
+    width: max-content;
+    animation: slide-left 40s linear infinite;
+    align-items: center;
+    gap: 100px;
+}
+
+.cliente-logo img {
+    height: 50px;
+    object-fit: contain;
+    display: block;
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.clientes {
+    background-color: #002F52;
+    padding: 50px 0 50px 0;
+    margin-top: 50px;
+}
+.clientes h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #103c64;
+    margin: 0 0 40px 0;
+}
+.clientes-swiper .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px; 
+  height: 100px;
+  padding: 10px;
+}
+.clientes-swiper .swiper-slide img {
+    max-height: 50px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    filter: grayscale(100%) invert(100%);
+}
+.clientes-swiper {
+  position: relative;
+  padding: 20px 0;
+}
+.clientes-swiper::before,
+.clientes-swiper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 10;
+  pointer-events: none;
+}
+.clientes-swiper::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(0, 47, 82, 0.7), transparent);
+}
+.clientes-swiper::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(0, 47, 82, 0.7), transparent);
+}
+#carouselClientes { cursor: grab; }
+#carouselClientes.dragging { cursor: grabbing; user-select: none; }
+.logo-containerr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    margin: 40px !important;
+}
+.logo-containerr img {
+    height: 56px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.logo-containerr img:hover {
+    transform: scale(1.1);
+}
+
+/* --- Promotional Carousel --- */
+#carrosel-promocional, 
+#carrosel-promocional .carousel-inner, 
+#carrosel-promocional .carousel-item {
+    min-height: 400px;
+    margin-top: -42px;
+}
+#carrosel-promocional .carousel-item {
+  transition: opacity 1s ease-in-out;
+  min-height: 780px;
+}
+#carrosel-promocional .carousel-item img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+#carrosel-promocional .carousel-item .row {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+#carrosel-promocional .carousel-item .solda-laser,
+#carrosel-promocional .carousel-item .col-md-9,
+#carrosel-promocional .carousel-item .col-md-8 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.solda {
+  font-family: 'Poppins', sans-serif;
+  color: #062745;
+  font-size: 50px;
+  font-weight: 300;
+}
+.laser {
+  font-family: 'Poppins', sans-serif;
+  color: #062745;
+  font-size: 78px;
+  font-weight: 900;
+}
+
+.swiper-promocional{
+  margin-top: -150px;
+}
+.banner-promocional {
+    background-image: url(assets/img/fundo-banner-promocional-2.png);
+    background-size: contain;
+    margin-top: clamp(0px, -25vw, -100px);
+    z-index: 0;
+    position: relative;
+    padding: 50px 0px 0px 0px;
+}
+.banner-promocional h2 {
+    line-height: 47px;
+    margin-top: 120px;
+}
+.banner-promocional p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    line-height: 24px;
+    color: #062745;
+}
+
+/* --- CORREÇÃO: Estilos para a Paginação Específica do Swiper Promocional --- */
+
+/* Estiliza os próprios pontos (bullets) */
+.swiper-pagination-promocional .swiper-pagination-bullet {
+  width: 25px !important;
+  height: 25px !important;
+  border-radius: 50% !important;
+  background-color: #0f3c63 !important; /* Cor azul escuro do ponto */
+  border: 2px solid transparent !important;
+  margin: 0 5px !important;
+  opacity: 1 !important;
+  transition: background-color 0.3s, transform 0.3s, border-color 0.3s, box-shadow 0.3s !important;
+  cursor: pointer;
+}
+
+/* Efeito de hover */
+.swiper-pagination-promocional .swiper-pagination-bullet:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(15, 60, 99, 0.6);
+}
+
+/* Estilo do ponto ativo */
+.swiper-pagination-promocional .swiper-pagination-bullet-active {
+  background-color: #103c64 !important;
+  transform: scale(1.2);
+  border-color: #0f3c63;
+  box-shadow: 0 0 8px rgba(15, 60, 99, 0.6);
+}
+
+/* Garante que tooltips de outros carrosséis não apareçam aqui */
+.swiper-pagination-promocional .swiper-pagination-bullet::before,
+.swiper-pagination-promocional .swiper-pagination-bullet::after {
+    display: none !important;
+}
+
+.categoriaSwiper {
+  width: 100%;
+  padding: 20px 0;
+  overflow: clip; /* Adicione esta linha */
+}
+
+.categoriaSwiper .swiper-slide {
+  width: auto; /* ou uma largura específica para manter o layout */
+  min-width: 250px; /* evitar que fiquem muito estreitos */
+  box-sizing: border-box;
+}
+
+.banner-promocional  .swiper-pagination-bullet::before{
+  display: none;
+}
+.banner-promocional  .swiper-pagination-bullet::after{
+  display: none;
+}
+
+
+.banner-promocional .swiper-pagination-bullet {
+  width: 25px !important;
+  height: 25px !important;
+  border-radius: 50% !important;
+  background-color: #0f3c63 !important;
+  border: 2px solid transparent !important;
+  margin: 0 5px !important;
+  opacity: 1 !important;
+  transition: background-color 0.3s, transform 0.3s, border-color 0.3s, box-shadow 0.3s !important;
+  cursor: pointer;
+}
+
+/* Hover com brilho branco */
+.banner-promocional .swiper-pagination-bullet:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  animation: pulseWhite 1s infinite;
+}
+
+/* Bullet ativo */
+.banner-promocional .swiper-pagination-bullet-active {
+  background-color: #103c64 !important;
+  transform: scale(1.2);
+  border-color: #0f3c63;
+  box-shadow: 0 0 8px rgba(15, 60, 99, 0.6);
+}
+
+.banner-promocional .swiper-pagination-bullet {
+  position: relative;
+}
+
+
+
+
+
+
+
+.header-swiper .swiper-pagination-bullet {
+  width: 25px !important;
+  height: 25px !important;
+  border-radius: 50% !important;
+  background-color: #0f3c63 !important;
+  border: 2px solid transparent !important;
+  margin: 0 5px !important;
+  opacity: 1 !important;
+  transition: background-color 0.3s, transform 0.3s, border-color 0.3s, box-shadow 0.3s !important;
+  cursor: pointer;
+}
+
+/* Hover com brilho branco */
+.header-swiper .swiper-pagination-bullet:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  animation: pulseWhite 1s infinite;
+}
+
+/* Bullet ativo */
+.header-swiper .swiper-pagination-bullet-active {
+  background-color: #103c64 !important;
+  transform: scale(1.2);
+  border-color: #0f3c63;
+  box-shadow: 0 0 8px rgba(15, 60, 99, 0.6);
+}
+
+.header-swiper .swiper-pagination-bullet {
+  position: relative;
+}
+
+
+
+
+
+.depoimentos .swiper-pagination-bullet {
+  width: 25px !important;
+  height: 25px !important;
+  border-radius: 50% !important;
+  background-color: #0f3c63 !important;
+  border: 2px solid transparent !important;
+  margin: 0 5px !important;
+  opacity: 1 !important;
+  transition: background-color 0.3s, transform 0.3s, border-color 0.3s, box-shadow 0.3s !important;
+  cursor: pointer;
+}
+
+/* Hover com brilho branco */
+.depoimentos .swiper-pagination-bullet:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(15, 60, 99, 0.6);
+  animation: pulseWhite 1s infinite;
+}
+
+/* Bullet ativo */
+.depoimentos .swiper-pagination-bullet-active {
+  background-color: #103c64 !important;
+  transform: scale(1.2);
+  border-color: #0f3c63;
+  box-shadow: 0 0 8px rgba(15, 60, 99, 0.6);
+}
+
+.depoimentos .swiper-pagination-bullet {
+  position: relative;
+}
+
+
+
+
+.swiper-pagination-bullet {
+  width: 25px !important;
+  height: 25px !important;
+  border-radius: 50% !important;
+  background-color: #fff !important;
+  border: 2px solid transparent !important;
+  margin: 0 5px !important;
+  opacity: 1 !important;
+  transition: background-color 0.3s, transform 0.3s, border-color 0.3s, box-shadow 0.3s !important;
+  cursor: pointer;
+}
+
+/* Hover com brilho branco */
+.swiper-pagination-bullet:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  animation: pulseWhite 1s infinite;
+}
+
+/* Bullet ativo */
+.swiper-pagination-bullet-active {
+  background-color: #7fb0dd !important;
+  transform: scale(1.2);
+  border-color: #0f3c63;
+  box-shadow: 0 0 8px rgba(15, 60, 99, 0.6);
+}
+
+.swiper-pagination-bullet {
+  position: relative;
+}
+
+/* Tooltip principal */
+.swiper-pagination-bullet::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 186%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    color: #103b63;
+    padding: 6px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 13px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+/* Flechinha */
+.swiper-pagination-bullet::before {
+  content: "";
+  position: absolute;
+  bottom: 135%; /* ajusta para colar à caixa */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Mostrar tooltip ao hover */
+.swiper-pagination-bullet:hover::after,
+.swiper-pagination-bullet:hover::before {
+  opacity: 1;
+}
+
+
+
+@keyframes pulseWhite {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+
+
+/* =================== PRODUCT LISTING & CARDS =================== */
+.produto-card:hover .produto-imagem {
+  transform: scale(1.05);
+}
+.produto-imagem-wrapper {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.produto-imagem {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+.produto-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(16, 60, 100, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.produto-card:hover .produto-overlay {
+  opacity: 1;
+}
+.overlay-icons {
+  display: flex;
+  gap: 20px;
+}
+.overlay-icons .icon {
+  color: #fff;
+  font-size: 36px;
+  padding: 12px;
+  border-radius: 50%;
+  transition: transform 0.3s ease, background-color 0.3s;
+}
+.overlay-icons .icon:hover {
+  transform: scale(1.2);
+  color: #fff;
+}
+.card-title {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+
+/*
+============================================================
+  ANIMAÇÃO DE BORDA COM SVG (EFEITO TRAÇO E BRILHO)
+============================================================
+*/
+
+/* O contêiner do SVG */
+.border-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Permite que o clique atravesse o SVG */
+  z-index: 4;
+  opacity: 0; /* Começa invisível */
+  transition: opacity 0.4s ease-out;
+}
+
+/* O caminho (path) que será animado */
+.border-path {
+  fill: transparent;
+  stroke: #fff;
+  stroke-width: 3px;
+  /* As 2 linhas de stroke-dasharray e stroke-dashoffset devem ser removidas daqui */
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  filter: drop-shadow(0 0 4px #fff) drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+/* Quando passar o mouse no card... */
+/* Quando passar o mouse sobre o overlay, aciona a animação na borda "irmã" */
+.categoria-slide:hover .border-svg {
+  opacity: 1;
+}
+
+.categoria-slide:hover .border-path {
+  stroke-dashoffset: 0;
+}
+/* --- Product Category Swiper --- */
+.produtos .swiper-slide, .produtos .categoria-slide {
+    height: auto;
+    aspect-ratio: 4 / 3;
+    background-size: cover;
+    background-position: center;
+    border-radius: 0;
+    border-bottom-right-radius: 70px;
+    border-top-left-radius: 70px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    height: 421px;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins';
+    border: 1px solid #172955
+}
+.produtos .overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(9, 35, 59, 0.6);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    align-content: center;
+    flex-wrap: nowrap;
+}
+.produtos .nome {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    z-index: 2;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    text-transform: uppercase;
+}
+.produtos .overlay:hover .nome {
+  /* AQUI: Move o título 30 pixels para cima */
+  transform: translateY(-90px);
+}
+.produtos .hover-content {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 2;
+    pointer-events: none; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    inset: 0;
+    padding: 20px;
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.produtos .overlay:hover .hover-content {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.produtos .descricao {
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-transform: lowercase;
+}
+.produtos .descricao::first-letter {
+  text-transform: uppercase;
+}
+.categoriaSwiper {
+    position: relative;
+    padding: 5% 0% 7% 0% !important;
+}
+.alinhar-botao {
+    top: var(--swiper-navigation-top-offset, 27%) !important;
+}
+.swiper-button-next, .swiper-button-prev {
+    color: #fff !important;
+    top: 50% !important;
+    transform: translateY(-380%);
+    position: absolute !important;
+    z-index: 10;
+}
+
+
+/* =================== PRODUCT DETAIL PAGE =================== */
+.titulo-produto {
+  font-family: 'Poppins', sans-serif;
+  color: #103b63;
+}
+.thumbnail-img {
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 40px;
+  text-align: center;
+}
+.thumbnail-img.active {
+  border-color: #103b63;
+  padding: 10px;
+  border-radius: 5px;
+}
+.thumbnail-img:last-child {
+    margin-bottom: 0px;
+}
+.main-img {
+  max-height: 500px;
+  object-fit: contain;
+  transition: opacity 0.5s ease;
+}
+.carousel-thumbs {
+  max-height: 500px;
+  overflow-y: auto;
+}
+.carousel-thumbs::-webkit-scrollbar {
+  width: 6px;
+}
+.carousel-thumbs::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+.descricao-produto p, .descricao-produto h3, .produtos-relacionados h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  line-height: 36px;
+  color: #103b63;
+}
+.descricao-produto h3, .produtos-relacionados h3 {
+  font-weight: bold;
+}
+.descricao-produto p {
+  font-weight: 300;
+}
+
+/* --- Product Spec Table --- */
+.tabela-produtos .d-flex {
+  display: flex;
+  align-items: stretch;
+}
+.spec-title {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  background-color: #003660;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 10px;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  width: 60px;
+}
+.spec-text {
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+.spec-table {
+  max-width: 700px;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: white;
+  width: 100%;
+}
+.table-row {
+  display: flex;
+  padding: 10px;
+}
+.spec-left,
+.spec-right {
+  background-color: #f0f5fa;
+  padding: 12px 16px;
+  font-weight: 600;
+  width: 100%;
+  text-transform: uppercase;
+}
+.spec-right {
+  border-radius: 0 10px 10px 0;
+}
+.tabela-produtos h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  line-height: 36px;
+  color: #103b63;
+  font-weight: bold;
+}
+
+/* --- Product Advantages --- */
+.vantagens-maquinas ul {
+    list-style: none;
+    text-align: left;
+    margin: 0;
+    padding-left: 0;
+}
+.vantagens-maquinas li {
+  background-color: #103b63;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 19px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+}
+.vantagens-maquinas i {
+    background-color: #fff;
+    color: #103b63;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Product Page Tabs --- */
+.nav-tabs .nav-link {
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #555;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  padding: 10px 20px;
+  font-size: 22px;
+  font-family: 'Poppins', sans-serif;
+}
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+    border-color: #103b63;
+    color: #103b63 !important;
+    background-color: #f9f9f9;
+    border-radius: 5px 5px 0 0;
+}
+.nav-tabs .nav-link.active {
+    border-color: #003965;
+    color: #103b63 !important;
+    background-color: #fff;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
+}
+.tab-content {
+  border: 1px solid #dee2e6;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+.tab-content > .tab-pane {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+.tab-content > .tab-pane.active.show {
+  opacity: 1;
+}
+
+/* =================== DEPOIMENTOS (TESTIMONIALS) =================== */
+
+/* Container da seção */
+.depoimentos {
+    padding: 50px 10px 10px 10px;
+    margin-top: 0px;
+}
+
+.depoimentos h2 {
+  margin-bottom: 50px;
+  color: #002F52;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+}
+
+/* Swiper básico */
+.swiper {
+  padding-bottom: 40px;
+}
+
+/* Slide de vídeo */
+.video-slide-item {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  height: 300px;
+  border-radius: 12px;
+  border: 2px solid #e0e0e0;
+  box-sizing: border-box;
+  padding: 6px;
+}
+
+/* Imagem do vídeo */
+.video-slide-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+  border-radius: 6px;
+}
+
+.video-slide-item:hover img {
+  transform: scale(1.1);
+}
+
+/* Overlay no hover */
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  padding: 20px;
+  z-index: 2;
+}
+
+.video-slide-item:hover .video-overlay {
+  opacity: 1;
+}
+
+.video-overlay-text {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.video-overlay-play-icon {
+  font-size: 4rem;
+  color: #fff;
+}
+
+/* Camada escurecida sobre imagem */
+.video-slide-item::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  border-radius: 6px;
+  background-color: rgba(9, 35, 59, 0.6);
+  z-index: 1;
+  transition: background-color 0.3s ease;
+}
+
+/* Paginação (dots) */
+.swiper-pagination {
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.swiper-pagination-bullet {
+  background-color: #fff;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  margin: 0 6px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #103c64;
+  opacity: 1;
+}
+
+/* Elementos adicionais da seção */
+
+
+/* Aspas decorativas */
+.quote-text {
+  position: relative;
+  padding: 20px;
+}
+
+.quote-text::before,
+.quote-text::after {
+  font-family: serif;
+  font-size: 2em;
+  color: #103c64;
+  position: absolute;
+}
+
+.quote-text::before {
+  content: "❝";
+  top: 0;
+  left: -15px;
+}
+
+.quote-text::after {
+  content: "❞";
+  bottom: 0;
+  left: 255px;
+  top: 75px;
+}
+
+
+/* ================================================= */
+/* CSS COMPLETO E CORRIGIDO PARA O TOOLTIP         */
+/* ================================================= */
+
+/* O container principal, não muda */
+.has-tooltip {
+  position: relative;
+}
+
+/* A Caixa de Texto do Tooltip */
+.has-tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 6px); /* Espaço para a flecha */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  color: #002f52;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: normal;
+  white-space: nowrap;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+}
+
+
+.depoimentos .swiper {
+    height: 370px;
+}
+
+
+/* A Flecha do Tooltip */
+.has-tooltip::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: #ffffff transparent transparent transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    pointer-events: none;
+    z-index: 10;
+    top: -6px;
+}
+
+/* Regra ÚNICA para mostrar a Caixa e a Flecha no Hover */
+.has-tooltip:hover::after,
+.has-tooltip:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.logo { display: flex; flex-direction: column; justify-content: center; align-items: center;}
+
+.logo-top, .logo-bottom { display: flex; justify-content: center; align-items: center; padding: 20px;}
+
+.logo-top { gap: 30px;}
+
+.pos-vendass h2 { font-size: 30px; margin-top: 50px; font-family: 'Poppins'; text-align: center; margin-bottom: 50px; font-weight: 700; color: #003964;}
+/* =================== SOBRE-NOS (ABOUT US) =================== */
+
+.alinhar-video {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    height: 450px;
+}
+
+
+
+
+.secao-sobre-nos-fundo {
+  /* Define a altura mínima como 100% da altura da tela (viewport height) */
+  min-height: 100vh; 
+  width: 100%;
+
+  /* Define a imagem de fundo */
+  /* IMPORTANTE: Ajuste o caminho para a sua imagem */
+  background-image: url('assets/img/fundo-sobre-nos-2.png');
+
+  /* Faz a imagem cobrir todo o container sem distorcer */
+  background-size: cover;
+
+  /* Centraliza a imagem no container */
+  background-position: center center;
+
+  /* Evita que a imagem se repita */
+  background-repeat: no-repeat;
+  
+  /* Mantém a imagem fixa enquanto o conteúdo rola (efeito parallax) - Opcional */
+  background-attachment: fixed;
+
+  /* Necessário para o posicionamento do overlay e do conteúdo */
+  position: relative; 
+  
+  /* Adiciona um preenchimento interno para o conteúdo não colar nas bordas */
+  padding: 80px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* (OPCIONAL, MAS RECOMENDADO) Overlay escuro para melhorar a legibilidade do texto */
+.secao-sobre-nos-fundo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(16, 60, 100, 0.9); /* Cor preta com 50% de opacidade */
+  z-index: 1; /* Coloca o overlay acima do background */
+}
+
+/* Garante que o conteúdo fique visível acima do overlay */
+.conteudo-sobreposto {
+  position: relative; /* ou 'static' por padrão já funciona */
+  z-index: 2; /* Coloca o conteúdo acima do overlay */
+  width: 100%;
+  /* Define a cor do texto para branco para garantir a leitura sobre o fundo escuro */
+  color: white; 
+}
+
+/* Ajuste a cor dos títulos e links se necessário */
+.conteudo-sobreposto h2,
+.conteudo-sobreposto h4 {
+    color: white;
+}
+
+.sobre-nos h2 {
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  font-size: 38px;
+  font-weight: 700;
+  text-align: left;
+  padding-left: 30px;
+}
+.sobre-nos p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+  color: #fff;
+  line-height: 40px;
+  text-align: left;
+  padding-left: 30px;
+}
+.frase-sobre {
+  margin-top: 20px;
+  padding: 10px 0;
+}
+.video iframe {
+    border-radius: 15px;
+}
+.frase-sobre h4 {
+    margin: 0 0 50px 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: left;
+    font-size: 1.8rem;
+    padding-left: 30px;
+}
+.sobre-nos-imagens {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+.sobre-nos-imagens::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+.sobre-nos .photo {
+  flex: 0 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+.sobre-nos .photo img {
+    width: 100%;
+    max-width: 286px;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    border-radius: 10px;
+    border: 1px solid #d8d8d8;
+}
+.sobre-nos .glow-wrap {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+.sobre-nos .glow {
+  display: block;
+  position: absolute;
+  width: 40%;
+  height: 200%;
+  background: rgba(255, 255, 255, .2);
+  top: 0;
+  filter: blur(5px);
+  transform: rotate(45deg) translate(-450%, 0);
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.sobre-nos .photo:hover .glow {
+  transform: rotate(45deg) translate(450%, 0);
+  transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.sobre-nos .photo:hover img,
+.sobre-nos .photo:hover .glow-wrap {
+  margin-top: 0;
+}
+
+
+/* --- ADICIONE ESTAS NOVAS REGRAS --- */
+
+.video-flutuante {
+  /* Faz o vídeo "flutuar" para a direita do container */
+  float: right; 
+
+  /* Define a largura do vídeo. Ajuste conforme necessário. */
+  width: 48%; 
+  
+  /* Cria um espaço à esquerda para o texto não colar no vídeo */
+  margin-left: 30px; 
+
+  /* Cria um espaço abaixo do vídeo */
+  margin-bottom: 20px;
+
+  /* Alinha o topo do vídeo com o início do texto */
+  margin-top: 10px;
+}
+
+/* Garante que o container se ajuste corretamente ao conteúdo flutuante */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+body.lb-disable-scrolling {
+  overflow-x: hidden !important;
+}
+
+/* --- MODIFICAÇÃO SUGERIDA --- */
+
+/* É bom remover o padding-left fixo para que o texto se alinhe à grade */
+.sobre-nos h2,
+.sobre-nos p,
+.frase-sobre h4 {
+  padding-left: 0; /* Removemos o padding fixo */
+}
+
+
+@media (max-width: 767px) {
+  .video-flutuante {
+    float: none; /* Desativa a flutuação */
+    width: 100%; /* Faz o vídeo ocupar a largura total */
+    margin-left: 0; /* Remove a margem lateral */
+  }
+}
+/* =================== MAPA CLIENTES =================== */
+.mapa-container {
+  position: relative;
+  text-align: center;
+  margin-top: -80px;
+}
+.mapa-mundi {
+  width: 100%;
+  height: auto;
+}
+.mapa-brasil {
+  position: absolute;
+  top: 22%;
+  left: 38%;
+  transform: translate(-50%, -50%);
+  width: 360px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.mapa-brasil.scale-in {
+  animation: scaleIn 2s ease-out forwards, bounce 2s ease-in-out infinite 2s;
+}
+.mapa-clientes .numeros {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 0;
+}
+.counter {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 20px;
+  font-family: 'Poppins', sans-serif;
+  color: #003965;
+}
+.numeros p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: #003965;
+  margin: 0 70px -20px 20px;
+  line-height: 22px;
+}
+.item-numero {
+  display: flex;
+  align-items: center;
+}
+.frase {
+    font-family: 'Poppins', sans-serif;
+    color: #003965;
+    width: 100%;
+    padding: 2% 0% 3% 54%;
+    font-weight: 200;
+    z-index: 1;
+    position: relative;
+}
+.sede-ponto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 4px #fff, 0 0 7px #fff, 0 0 10px #fff;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+.sede-ponto.pontos-visiveis {
+  opacity: 1;
+  visibility: visible;
+  z-index: 10;
+  animation: blink-animation 1.5s infinite;
+}
+
+
+/* =================== FORMS =================== */
+.contato label, .trabalhe_conosco label {
+  color: #002F52;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+.contato .form-control, .trabalhe_conosco .form-control,
+.contato .form-select, .trabalhe_conosco .form-select,
+.contato textarea, .trabalhe_conosco textarea {
+  background-color: #f3f4f4;
+  border: none;
+  border-radius: 0.25rem;
+  color: #002F52;
+}
+.contato .form-control::placeholder, .trabalhe_conosco .form-control::placeholder,
+.contato textarea::placeholder, .trabalhe_conosco textarea::placeholder {
+  color: #6c757d;
+}
+.contato p, .trabalhe_conosco p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    line-height: 30px;
+    text-align: left;
+    color: #002F52;
+}
+.contato form, .trabalhe_conosco form {
+  margin-bottom: 50px;
+}
+.form-control:focus, .form-select:focus, textarea:focus {
+  box-shadow: none;
+  border-color: #ccc;
+}
+.btn-custom {
+  cursor: pointer !important;
+  color: #fff !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 20px !important;
+  background-color: #002F52 !important;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 0.25rem;
+  float: right;
+}
+
+/* --- Accordion (Job Openings) --- */
+.accordion-item {
+    border-radius: 0.5rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid #ced4da;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+.accordion-button:not(.collapsed) {
+    color: #0a58ca;
+    background-color: #e9ecef;
+    font-weight: 600;
+}
+.accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+.accordion-header button {
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+.accordion-body {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+.job-details h5 {
+    color: #343a40;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+}
+.job-details ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+.job-details li {
+    margin-bottom: 0.25rem;
+}
+
+/* =================== FOOTER =================== */
+footer {
+    background-color: #113b63;
+    padding: 50px 0px 50px;
+    background-image: url(assets/img/fundo-footer.png);
+    background-size: inherit;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+footer img {
+  margin-bottom: 20px;
+}
+footer p {
+  margin-bottom: 20px;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 200;
+  line-height: 30px;
+}
+footer a {
+  color: #fff;
+  transition: color 0.3s ease;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
+  font-size: 15px;
+}
+footer a:hover {
+  color: #7fb0dd;
+}
+footer h3 {
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 26px;
+  margin-bottom: 25px;
+}
+footer .row > div {
+  padding-left: 30px;
+}
+footer .empresa-footer ul {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 0;
+}
+footer .empresa-footer li {
+  list-style: none;
+  margin: 10px;
+  width: 30px;
+  font-size: 17px;
+}
+footer .empresa-footer li:first-child { margin-left: 0; }
+.duas-colunas-wrapper {
+  display: flex;
+  gap: 20px;
+}
+.duas-colunas {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 400px;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  flex: 1;
+}
+.duas-colunas li {
+  list-style: none;
+  margin-bottom: 8px;
+}
+.categoria-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  text-decoration: none;
+  color: #fff;
+}
+.categoria-link i {
+  margin-top: 2px;
+}
+.social i {
+  font-size: 21px;
+}
+
+/* =================== MISC & UTILITIES =================== */
+.fixed-top {
+  right: 10px !important;
+  left: 10px !important;
+}
+.gslide-image {
+    background-color: #fff;
+    padding: 20px;
+}
+.fade-section {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.fade-section.visible {
+  opacity: 1;
+}
+#cookie-notice .cn-button:not(.cn-button-custom) {
+    color: #fff !important;
+}
+
+
+/* =================== PÓS-VENDA PAGE =================== */
+
+/* --- Fix: Galeria de Treinamentos (Mobile) --- */
+.mySwiper-galeria .swiper-slide {
+  height: auto;
+}
+
+.mySwiper-galeria .swiper-slide a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.mySwiper-galeria .swiper-slide img {
+  width: 100%;
+  height: auto;
+  max-height: 220px;
+  object-fit: cover; 
+}
+
+.mySwiper-galeria .swiper-button-next,
+.mySwiper-galeria .swiper-button-prev {
+  color: #103b63;
+  --swiper-navigation-size: 25px; /* Tamanho do ícone da seta */
+}
+
+/* =================== ANIMATIONS =================== */
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(15, 60, 99, 0.6); }
+  50% { transform: scale(1.1); }
+  70% { box-shadow: 0 0 0 10px rgba(244, 244, 244, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244, 244, 244, 0); }
+}
+@keyframes scaleIn {
+  0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+@keyframes bounce {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.05); }
+}
+@keyframes blink-animation {
+  0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.7); }
+}
+
+/* =================== MEDIA QUERIES (Consolidated) =================== */
+
+
+/* --- Screens up to 992px (Tablets e Mobile) --- */
+/* Corrigido: Garante que a sobreposição fique ancorada à esquerda em telas grandes */
+/*
+  =======================================================
+  CORREÇÃO COMPLETA PARA TELAS GRANDES (LARGAS)
+  =======================================================
+*/
+@media (min-width: 1600px) {
+  /* Ajusta a sobreposição diagonal azul */
+  .diagonal-overlay-2 {
+    /* 1. Mantém o elemento ancorado à esquerda sem "estourar" */
+    left: clamp(-300px, -11vw, 0px);
+
+    /* 2. Força o elemento a acompanhar a largura total do container */
+    width: 100%;
+    
+    /* 3. A altura se ajusta automaticamente para não distorcer o formato diagonal */
+    height: auto;
+    
+    /* 4. Limite máximo para o SVG em telas gigantescas (opcional, mas recomendado) */
+    max-width: 2500px; 
+  }
+
+  /* Ajusta a altura da seção para se adaptar ao novo tamanho do fundo */
+  .fundo-produtos {
+    height: auto; /* A altura da seção agora será dinâmica */
+    min-height: 902px; /* Garante que a seção nunca seja menor que a altura original */
+    padding-bottom: 50px; /* Adiciona um respiro na parte inferior */
+  }
+}
+
+/* --- Screens up to 992px (Tablets e Mobile) --- */
+@media (max-width: 992px) {
+  /* Estilos originais de 1200px */
+
+  /* ===== FIX START ===== */
+  .header-swiper {
+    position: relative;
+    height: auto;
+  }
+  /* ===== FIX END ===== */
+  
+  .fundo form { margin-bottom: 10px;}
+  .learn-more .button-text { margin-left: 0; }
+
+  .learn-more .circle { margin: -12px 0 0 0px; }
+  .produtos .carousel-inner { padding: 21% 80px 65px; }
+  .banner-promocional { margin-top: 0x; }
+  .titulo-produtos h2 { padding-top: 20px; font-size: 23px; }
+  .titulo-produtos h3 { font-size: 16px; width: auto; line-height: 24px; }
+  .titulo-produtos { padding-bottom: 10px; }
+  .icone-bloco .texto p { font-size: 15px; }
+  /* .diagonal-overlay-2 { left: -21px; height: 1100px; top: -1%; } */
+  .solda { font-size: 29px; }
+  .video-img { width: 340px !important; }
+
+  /* Estilos originais de 768px e 1200px (ajustados para 992px) */
+  .banner-promocional h2 { margin-top: 360px; }
+
+  /* Estilos originais de 992px */
+  /* ===== FIX START ===== */
+  .headline { margin-top: 40px; text-align: center !important; width: 100% !important; }
+  /* ===== FIX END ===== */
+  .sub-headline { line-height: 30px; font-size: 20px; text-align: center; width: auto; margin-top: 50px; margin-bottom: 50px; }
+  .menu-background { padding: 5px 10px !important; }
+  .navbar-brand img { margin-left: 0; }
+  .whatsapp-banner { float: unset; margin: 0 auto; }
+  .icones_banner { width: 90%; }
+  .icones_banner img { margin: 0 auto; }
+  .icones_banner img:first-child { margin-left: auto; }
+  .produtos .carousel-inner { padding: 18% 11% 50px !important; }
+  
+  #carouselProdutos { margin-top: 20px; }
+  .nav-tabs .nav-link { font-size: 12px !important; padding: 10px 5px !important; }
+  .carousel-thumbs { text-align: center; margin-bottom: 60px; }
+  .fotos-maquinas { padding: 20px; margin: 40px 40px 40px 0; }
+/* Define a aparência do botão para o mobile */
+
+a.learn-more-2 .button-text-2 {
+    font-size: 20px;
+    line-height: 1.7;
+    color: #0f3c63; /* CORRIGIDO: Texto do botão agora é branco */
+    padding: 0.2rem 1.5rem 0.75rem 4rem; /* Ajuste no padding para alinhar */
+}
+.learn-more-2 .circle-2 {
+    background: #0f3c63; /* CORRIGIDO: Fundo do círculo agora é branco */
+}
+.learn-more-2 .arrow-2::before {
+    border-top: 0.125rem solid #fff; /* CORRIGIDO: Seta agora é azul */
+    border-right: 0.125rem solid #fffd; /* CORRIGIDO: Seta agora é azul */
+}
+a.learn-more-2:hover .button-text-2 {
+    color: #ffffff;
+}
+.learn-more .button-text {
+    padding: 0.0rem 1rem 0.5rem 2.8rem !important;
+    color: #103b63;
+    font-weight: 400;
+    font-size: clamp(0.85rem, 0.8rem + 0.25vw, 1rem);
+    margin-left: 10px;
+}
+a.learn-more-2:hover .circle-2 {
+    width: 100%;
+}
+.veja-mais {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px; /* Adiciona um espaço acima do botão */
+    margin-bottom: 50px;
+}
+.veja-mais {
+    margin: 0 auto;
+    padding: 0;
+}
+.button-text-2 {
+    display: inline-block;
+    /* removendo qualquer comportamento que desalinhe */
+    margin: 0;
+    float: none;
+}
+
+.categoriaSwiper {
+    padding: 5% 0% 17% 0% !important;
+}
+
+  .icone-bloco { height: 215px !important; }
+  .icone-bloco .texto { width: 130px !important; }
+  .icone-bloco .texto p { font-size: 13px !important; }
+  .hover-content { width: 230px; }
+  .hover-frase { font-size: 14px !important; width: 50% !important; }
+  .banner-promocional {
+    height: auto !important;
+    min-height: auto !important;
+    margin-top: 0px; /* Changed from -710px to 0px */
+    background-size: cover;
+    padding-bottom: 50px;
+  }
+  .banner-promocional h2 { margin: 00px auto; text-align: center; }
+  .banner-promocional p { height: auto !important; text-align: center; margin-bottom: 50px; }
+ /* Correção do espaçamento do banner no mobile */
+    .banner-promocional .swiper-slide .row {
+        margin-bottom: 20px;
+    }
+  a.learn-more { margin: 0 auto; }
+  #carrosel-promocional .carousel-indicators { margin-top: 50px !important; }
+  .fundo-produtos { height: auto; background-size: cover; overflow: hidden; }
+  .sobre-nos { background-size: cover; background-position: unset; padding: 50px 0 110px; }
+  .sobre-nos h2 { font-size: 28px !important; text-align: center; margin: 50px 0; padding-left: 0 !important; }
+  .sobre-nos p { font-size: 21px; line-height: 33px; text-align: center; padding-left: 0 !important; }
+  .frase-sobre { position: static; margin-top: 50px; text-align: center; width: 100%; margin-bottom: 50px; }
+  .frase-sobre h4 { font-size: 18px; position: relative !important; text-align: center; margin: 0; }
+  .sobre-nos-imagens { padding-top: 8px; margin-top: 0px; gap: 0; }
+  .sobre-nos .photo { box-shadow: none; margin: 10px; text-align: center; }
+  .sobre-nos .photo img { width: 148px; max-width: 218px; margin: 0 10px; }
+  .sobre-nos-container { display: flex !important; flex-wrap: nowrap !important; align-items: center !important; justify-content: center !important; text-align: center !important; gap: 20px !important; flex-direction: row !important; }
+  .pos-vendass h2 { font-size: 30px; margin-top: 50px; }
+  .logo { margin-top:50px; width: auto !important; display: flex; flex-direction: column-reverse; flex-wrap: nowrap; align-items: center; justify-content: center; }
+  .depoimentos { margin-top: -100px !important; }
+  .depoimentos .carousel-inner { padding: 0 20px; }
+  #carouselDoisItens { padding: 50px 0 0; }
+  .depoimentos .testimonial { max-width: 100%; margin: 20px auto; font-size: 19px; padding: 0 10px; }
+  .depoimentos .stars i { margin: 0 0 0 7px; font-size: 14px; }
+  .depoimentos .acoes { flex-direction: column; align-items: center; padding: 10px; text-align: center; }
+  .depoimentos .acoes .video, .depoimentos .acoes .nome { margin: 10px 0; }
+  .depoimentos .acoes a { font-size: 12px; }
+  .depoimentos .nome { font-size: 11px; }
+  .quote-text { padding: 0; }
+  .depoimentos .quote-start { top: -10px; left: 0; font-size: 30px; }
+  .depoimentos .quote-end { bottom: -20px; right: 20px; font-size: 30px; }
+  .fundo-depoimentos { background-image: none !important; height: auto; background-size: cover; margin-bottom: 30px; }
+  .mapa-clientes { margin-top: 0; }
+  .mapa-container { padding: 130px 0 !important; }
+  .mapa-brasil { top: 40%; left: 37%; width: 31%; }
+  .mapa-clientes .numeros { justify-content: center !important; }
+  .item-numero { display: block !important; }
+  .mapa-clientes .numeros p { margin: 0 20px 0 10px; font-size: 16px; }
+  .frase { padding: 0 !important; margin-top: 40px !important; text-align: center; font-size: 20px; }
+  footer { padding: 60px 0 30px; }
+  footer .row > div { padding-left: 0; text-align: center; }
+  footer p { text-align: center; }
+  footer h3 { text-align: center; }
+  footer .empresa-footer ul { justify-content: center; margin-bottom: 50px; }
+  .duas-colunas li { width: 100%; }
+  .banner-secundarios { margin-top: 150px !important; }
+  .carousel-indicators { z-index: 1 !important; }
+
+  .descricao-produto h3 { margin-top: 50px; }
+
+  /* Estilos originais de 768px (Mobile), agora aplicados a partir de 992px */
+  a.learn-more { margin-top: 50px;} /* Sobrescreve o de 1200px (136px) */
+    .headline { text-align: center !important; width: 100% !important; font-size: 30px; line-height: 37px;}
+  .coluna-texto, .coluna-imagem { flex: 1 1 100%; max-width: 100%; text-align: center; }
+     .coluna-texto {
+        margin-left: 0;
+        margin-bottom: 50px;
+    }
+  .coluna-imagem { margin-left: 0; }
+  .coluna-imagem img { max-width: 100%; height: auto; }
+  .container-acoes { justify-content: center; gap: 15px; }
+  .links-footer { display: flex; flex-direction: column !important; align-items: center !important; justify-content: center; }
+  .banner-content-flex-mobile, .banner-container-fluido, .d-flex.justify-content-center.align-items-center[style*="height: 100vh"] { flex-direction: column !important; height: auto !important; min-height: auto !important; padding-top: 30px; padding-bottom: 30px; }
+  .banner-content-flex-mobile > .headline { order: 1 !important; font-size: 30px !important; text-align: center !important; line-height: 1.3 !important; margin-bottom: 25px !important; width: 90%; max-width: 600px; padding: 0 10px; box-sizing: border-box; align-self: center; }
+  .banner-content-flex-mobile > .coluna-imagem { order: 2 !important; width: 100%; max-width: 90%; margin: 0 auto 25px !important; padding: 0; }
+  .banner-content-flex-mobile > .coluna-imagem .imagem-banner-fluido { max-width: 100%; height: auto; margin: 0 !important; }
+  .banner-content-flex-mobile > .sub-headline { order: 3 !important; font-size: 1rem !important; text-align: center !important; width: 90%; max-width: 550px; margin: 0 auto 25px !important; line-height: 1.5 !important; padding: 0 10px; box-sizing: border-box; align-self: center; }
+  .banner-content-flex-mobile > .whatsapp-banner { order: 4 !important; align-self: center; margin-bottom: 25px !important; }
+  .banner-content-flex-mobile > .icones_banner_personalizado { order: 5 !important; width: 90%; max-width: 500px; margin: 0 auto; align-self: center; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .banner-content-flex-mobile > .icones_banner_personalizado .logos_wrapper { justify-content: center; }
+  .banner-content-flex-mobile > .icones_banner_personalizado h4 { text-align: center; }
+  .icones_banner_personalizado { display: flex; align-items: center; width: 100%; justify-content: space-between; padding: 0; }
+  .icones_banner_personalizado .logos_wrapper {display: flex; align-items: center; flex-shrink: 0; flex-direction: row; flex-wrap: nowrap; }
+  .icones_banner_personalizado .logos_wrapper img { height: 40px; width: auto; margin-left: -12px; }
+  .icones_banner_personalizado .logos_wrapper img:first-child { margin-left: 0; }
+  .icones_banner_personalizado h4 { font-size: 12px; line-height: 1.35; color: #003660; margin: -32px 0 0 5px; text-align: left; width: 100%; }
+  .icones_banner_personalizado h4 .numero-destaque { color: #3ddc84; font-weight: bold; }
+  .titulo-produtos h3 { margin: 40px 0 27px !important; }
+  .fundo { height: auto !important; overflow: visible !important; }
+  .bg-video { height: 100%; }
+  .botoes_produtos { padding: 0 15px; flex-wrap: wrap; justify-content: center; }
+  .duas-colunas-wrapper { flex-direction: column; align-items: center; gap: 0; margin-bottom: 20px; }
+  .duas-colunas { width: 100%; max-width: 400px; margin-bottom: 0px; align-items: stretch; }
+  .duas-colunas:last-child { margin-bottom: 50px; }
+  .duas-colunas li { width: 100%; }
+  .categoria-link { justify-content: center; width: 100%; }
+
+
+  .col-12 { flex-direction: column; align-items: flex-start; }
+  .titulo-produtos, .mySwiper { max-width: 100%; width: 100%; }
+ .categoriaSwiper {
+    padding-bottom: 0 !important;
+    margin-bottom: 30px !important; /* Corrected from 50vh to 30px */
+  }
+      .categoriaSwiper {
+        width: 100%;
+        min-width: unset;
+        margin: 0 auto;
+        margin-bottom: 50px;
+    }
+  .swiper-button-next, .swiper-button-prev { transform: translateY(-20%) !important; }
+  .alinhar-botao { top: var(--swiper-navigation-top-offset, 33%) !important; }
+  
+
+  /* Estilos originais de 767.98px */
+  .frase-sobre h4 { text-align: center; margin: 0; }
+  .video { margin-bottom: 50px; }
+
+  /* Estilos originais de 480px (Small Mobile) */
+    .diagonal-overlay-2 { height: 86%}
+  .clientes .swiper { height: 150px;}
+  .categoriaSwiper .swiper-slide { min-width: auto;}
+  .titulo-produtos { padding: 10px; }
+  .titulo-produtos h2 { font-size: 29px; text-align: center; }
+  .titulo-produtos h3 { font-size: 16px; width: 100%; margin: 20px 0 27px; text-align: center; }
+  .solda-laser { padding-left: 28px !important; }
+
+
+   
+
+       .clientes {
+        padding: 10px 0 10px 0px;
+        margin-top: -1px;
+    }
+
+    .logo img{
+      height: 60px;
+    }
+
+    
+    .frase-video h2, iframe {
+    margin-top: 0px !important;
+}
+.fundo-frase-video {
+    padding: 50px 0px 60px 0px !important;
+}
+
+.esconde-scroolbar {
+    overflow: hidden;
+}
+
+.fundo-frase-video-3 .video-item-container {
+    height: 210px !important;
+}
+#carrosel-suporte .carousel-indicators {
+    top: 520px;
+}
+.fundo-frase-video-3 .swiper {
+    height: 280px !important;
+}
+
+.dropdown-menu {
+    background: none;
+}
+.dropdown-menu.mega-dropdown {
+    min-width: auto;
+}
+.dropdown-menu.mega-dropdown {
+    padding: 0;
+}
+.pos-vendas h2 {
+        font-size: 28px;
+        text-align: center;
+        padding-left: 0;
+    }
+
+.fundo-frase-video-3 {
+    padding-top: 0!important;
+    padding-bottom: 50px!important;
+    padding-right: 0!important;
+    margin-top: 0px!important;
+}
+}
+
+
+
+
+.dropdown-menu.show-animated {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+
+
+.nav-item.dropdown.show > .nav-link .dropdown-icon {
+  transform: rotate(180deg);
+}
+/* Remove a seta padrão do Bootstrap */
+.nav-link.dropdown-toggle::after {
+  display: none !important;
+}
+
+/* Estilo inicial da seta */
+.dropdown-icon {
+  transition: transform 0.3s ease;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+/* Quando o menu está aberto, rotaciona a seta */
+.dropdown.show .dropdown-toggle .dropdown-icon {
+  transform: rotate(180deg);
+}
+
+
+.form-control:focus {
+    border-color: #fff !important;
+    box-shadow: none !important;
+}
+
+/* Correção para o layout da seção de produtos no mobile */
+@media (max-width: 992px) {
+
+    /* 1. Esconde o fundo azul em SVG, que é complexo de alinhar no mobile */
+    .fundo-produtos .diagonal-overlay-2 {
+        display: none;
+    }
+
+    /* 2. Aplica um fundo azul sólido a toda a seção de produtos */
+    .fundo-produtos {
+        background-color: #0f3c63; /* Adiciona a cor de fundo azul */
+        background-image: none;
+        padding: 40px 0; /* Ajusta o padding vertical */
+        height: auto !important;
+        overflow: hidden;
+    }
+
+    /* 3. Garante que o título da seção seja branco e legível */
+    .titulo-produtos {
+        padding-bottom: 10px;
+    }
+
+    .titulo-produtos h2 {
+        color: #ffffff;
+        text-align: center;
+        font-size: 28px;
+        padding-top: 20px;
+    }
+
+    /* 4. Remove a margem e o padding exagerados do carrossel que empurravam o botão para baixo */
+    .categoriaSwiper {
+        padding-bottom: 0 !important;
+        margin-bottom: 30px !important; /* CORRIGIDO: Remove o '50vh' de margem */
+    }
+    
+    /* 5. Garante que a paginação (pontos) do carrossel continue visível e com espaço */
+    .categoriaSwiper .swiper-pagination {
+        position: relative;
+        bottom: auto;
+        margin-top: 25px;
+    }
+
+    /* 6. Remove margens do botão "Conheça a linha" para um alinhamento correto */
+    .veja-mais {
+        margin-top: 0;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    /* 7. Ajusta o botão para que o texto interno fique branco sobre o fundo azul */
+    a.learn-more-2 .button-text-2 {
+      color: #ffffff;
+      font-size: 20px;
+    }
+    
+    /* 8. Ajusta a seta do botão para que o fundo seja branco */
+    .learn-more-2 .circle-2 {
+      background: #ffffff;
+    }
+    
+    /* 9. Ajusta a cor da seta para o azul escuro */
+    .learn-more-2 .arrow-2::before {
+      border-top-color: #0f3c63;
+      border-right-color: #0f3c63;
+    }
+    
+    /* 10. Efeito hover para o botão no mobile */
+    a.learn-more-2:hover .button-text-2 {
+      color: #0f3c63;
+    }
+    
+    a.learn-more-2:hover .circle-2 {
+      background: #ffffff;
+    }
+    .space {
+        display: none;
+    }
+
+
+    .banner-promocional .swiper-pagination {
+    margin-top: 70px;
+}
+    .banner-promocional {
+        padding-bottom: 0px;
+    }
+}
+.produto-img{
+    max-height: 410px !important;
+}
+.banner-container{ 
+    background: #f3f3f3;
+    border-radius: 10px;
+    padding-bottom: 50px;
+    padding-top: 50px;
+    height: 570px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: column-reverse;
+}
+
+/* Remove o espaço em branco extra entre seções no mobile */
+@media (max-width: 992px) {
+
+  .produtos .overlay:hover .nome {
+  /* AQUI: Move o título 30 pixels para cima */
+  transform: translateY(-100px);
+}
+  .space {
+    display: none;
+  }
+}
+
+.categoria-slide:hover {
+    border: 1px solid #3f709b;
+}
+
+.titulo-pagina {
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #103b63;
+}
+.sub-titulo-pagina b{
+  color: #000;
+
+}
+
+.banner-container .botao-whatsapp {
+    background-color: #000;
+    font-weight: 400;
+}
+
+/* =================== SWIPER BANNER HEADER (DOTS ONLY) =================== */
+
+/* O container principal do Swiper no header */
+.header-swiper {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* Garante que os dots da paginação fiquem visíveis sobre o banner */
+.header-swiper .swiper-pagination {
+    bottom: 30px !important; /* Lowered from 110px to create more space above */
+    position: absolute; /* Changed to absolute to position relative to the viewport-sized swiper */
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+/* Oculta os tooltips de outros swipers na paginação do header */
+.header-swiper .swiper-pagination-bullet::after,
+.header-swiper .swiper-pagination-bullet::before {
+    display: none !important;
+}
+
+
+
+/*
+============================================================
+  ANIMAÇÕES DO BANNER SWIPER (COM ANIMAÇÃO INICIAL)
+============================================================
+*/
+
+/* 1. Keyframe para a Animação Inicial
+   - Define a animação que vai do estado oculto/deslocado para o estado visível/final.
+*/
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 2. Aplica a Animação APENAS no Carregamento da Página
+   - Usando a classe 'body.loading', aplicamos a animação @keyframes apenas uma vez.
+   - 'animation-fill-mode: both' garante que o elemento permaneça no estado final após a animação.
+*/
+body.loading .swiper-slide-active .headline,
+body.loading .swiper-slide-active .sub-headline-1,
+body.loading .swiper-slide-active .sub-headline-2,
+body.loading .swiper-slide-active .container-acoes > a,
+body.loading .swiper-slide-active .icones_banner_personalizado,
+body.loading .swiper-slide-active .coluna-imagem img {
+    animation-name: fadeInUp;
+    animation-duration: 0.7s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+}
+
+/* 3. Atrasos para a Animação INICIAL em Cascata
+*/
+body.loading .swiper-slide-active .headline { animation-delay: 0.3s; }
+body.loading .swiper-slide-active .sub-headline-1,
+body.loading .swiper-slide-active .sub-headline-2 { animation-delay: 0.5s; }
+body.loading .swiper-slide-active .container-acoes > a { animation-delay: 0.7s; }
+body.loading .swiper-slide-active .icones_banner_personalizado { animation-delay: 0.9s; }
+body.loading .swiper-slide-active .coluna-imagem img { animation-delay: 0.6s; }
+
+
+/* 4. Lógica de TRANSIÇÃO para as Trocas de Slide (após o carregamento)
+   - Este é o código da solução anterior, que continuará funcionando para as trocas de slides.
+   - Ele só terá efeito depois que a classe 'loading' for removida do <body>.
+*/
+.swiper-slide .headline,
+.swiper-slide .sub-headline-1,
+.swiper-slide .sub-headline-2,
+.swiper-slide .container-acoes > a,
+.swiper-slide .icones_banner_personalizado,
+.swiper-slide .coluna-imagem img {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.swiper-slide-active .headline,
+.swiper-slide-active .sub-headline-1,
+.swiper-slide-active .sub-headline-2,
+.swiper-slide-active .container-acoes > a,
+.swiper-slide-active .icones_banner_personalizado,
+.swiper-slide-active .coluna-imagem img {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.swiper-slide-active .headline { transition-delay: 0.2s; }
+.swiper-slide-active .sub-headline-1,
+.swiper-slide-active .sub-headline-2 { transition-delay: 0.4s; }
+.swiper-slide-active .container-acoes > a { transition-delay: 0.6s; }
+.swiper-slide-active .icones_banner_personalizado { transition-delay: 0.8s; }
+.swiper-slide-active .coluna-imagem img { transition-delay: 0.5s; }
+
+
+/* 5. (Opcional) Transição de Fade para o Slide
+*/
+.header-swiper .swiper-slide {
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+}
+
+.header-swiper .swiper-slide-active {
+    opacity: 1;
+}
+
+/* =================== SCROLL DOWN ARROW (VERSÃO SUAVE) =================== */
+.scroll-down-arrow-container {
+    border-radius: 100px;
+    position: absolute;
+    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    text-align: center;
+    width: 68px;
+    height: 68px;
+}
+
+.scroll-down-arrow {
+    display: inline-block;
+    color: #002F52;
+    font-size: 30px; /* Aumentei um pouco o ícone para compensar a falta do círculo */
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    /* Aplicando a nova animação suave */
+    animation: soft-float 3s ease-in-out infinite;
+}
+
+.scroll-down-arrow:hover {
+    color: #00192d /* Efeito de hover mais discreto */
+}
+
+/* Nova animação: movimento suave para cima e para baixo */
+@keyframes soft-float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px); /* Movimento mais curto e suave */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade: Oculta a flecha em telas menores para não poluir a interface */
+@media (max-width: 768px) {
+    .scroll-down-arrow-container {
+        display: none;
+    }
+
+ /* CORREÇÃO APLICADA AQUI */
+    .header-swiper {
+        position: relative;
+        height: auto; /* Garante que a altura se ajuste ao conteúdo do slide */
+    }
+
+.sub-headline-1 {
+    text-align: center;
+    width: 100%;
+}
+
+.full-center {
+    min-height: auto;
+    margin-top: 100px; /* Adds space from the top menu */
+  }
+
+  header {
+    margin-bottom: 0; /* Removes potential extra space below the header */
+  }
+.icones_banner_personalizado {
+        margin-top: 25px;
+   }
+.sub-headline-1 {
+    margin-bottom: 25px;
+}
+.sub-headline-2 {
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 47px;
+    margin-top: 30px;
+}
+    .swiper-pagination {
+        position: relative !important;
+        margin-top: -20px;
+        margin-bottom: 20px;
+    }
+
+    .swiper-promocional {
+    margin-top: 0px;
+}
+}
+
+
+
+.banner-fullscreen {
+    background: linear-gradient(135deg, #f1f1f1, #ffffff);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    color: #002F52;
+    position: relative;
+    overflow: hidden;
+}
+.banner-text {
+    max-width: 530px;
+    z-index: 2;
+}
+
+.selos-container .selo span{
+  color: #002F52;
+}
+
+.banner-text h2 {
+    font-size: clamp(36px, 4.5vw, 48px);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+.banner-text p {
+  font-size: 22px;
+  line-height: 1.6;
+  margin-bottom: 35px;
+}
+
+.selos-container {
+  display: flex; /* Alinha os botões lado a lado */
+  flex-wrap: wrap; /* Permite que os botões quebrem para a linha de baixo se não houver espaço */
+  gap: 12px; /* Cria um espaçamento consistente entre os botões */
+  justify-content: flex-start; /* Alinha os botões ao início (ou use 'center' para centralizar) */
+}
+
+.selo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease, background 0.3s ease;
+    border: 1px solid #103b63;
+}
+
+.selo i {
+  font-size: 22px;
+  color: #002F52;
+}
+
+.selo:hover {
+  transform: scale(1.05);
+  background: rgba(255,255,255,0.25);
+}
+
+.btn-banner {
+  display: inline-flex;
+  align-items: center;
+  background-color: #002F52;
+  color: #fff;
+  padding: 16px 34px;
+  border-radius: 40px;
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-banner:hover {
+  background-color: #011422;
+  transform: scale(1.05);
+}
+
+.banner-image {
+  z-index: 2;
+  animation: float 6s ease-in-out infinite;
+}
+
+.banner-image img {
+  max-width: 820px;
+  width: 100%;
+  filter: drop-shadow(0 18px 35px rgba(0,0,0,0.5));
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+  .banner-fullscreen {
+    flex-direction: column;
+    text-align: center;
+    height: auto;
+    padding: 60px 20px;
+  }
+  .banner-image img {
+    max-width: 95%;
+    margin-top: 40px;
+  }
+  .selos-container {
+    justify-content: center;
+  }
+}
+
+
+/*
+============================================================
+  ANIMAÇÕES DO BANNER SWIPER (COM ANIMAÇÃO INICIAL)
+============================================================
+*/
+
+/* 1. Keyframe para a Animação Inicial
+   - Define a animação que vai do estado oculto/deslocado para o estado visível/final.
+*/
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 2. Aplica a Animação APENAS no Carregamento da Página
+   - Usando a classe 'body.loading', aplicamos a animação @keyframes apenas uma vez.
+   - 'animation-fill-mode: both' garante que o elemento permaneça no estado final após a animação.
+*/
+body.loading .swiper-slide-active .headline,
+body.loading .swiper-slide-active .sub-headline-1,
+body.loading .swiper-slide-active .sub-headline-2,
+body.loading .swiper-slide-active .container-acoes > a,
+body.loading .swiper-slide-active .icones_banner_personalizado,
+body.loading .swiper-slide-active .coluna-imagem img,
+body.loading .swiper-slide-active .selo /* ADICIONADO */ {
+    animation-name: fadeInUp;
+    animation-duration: 0.7s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+}
+
+/* 3. Atrasos para a Animação INICIAL em Cascata
+*/
+body.loading .swiper-slide-active .headline { animation-delay: 0.3s; }
+body.loading .swiper-slide-active .sub-headline-1,
+body.loading .swiper-slide-active .sub-headline-2 { animation-delay: 0.5s; }
+body.loading .swiper-slide-active .container-acoes > a { animation-delay: 0.7s; }
+body.loading .swiper-slide-active .icones_banner_personalizado { animation-delay: 0.9s; }
+body.loading .swiper-slide-active .coluna-imagem img { animation-delay: 0.6s; }
+
+/* ADICIONADO: Atrasos para os selos na animação inicial */
+body.loading .swiper-slide-active .selo:nth-child(1) { animation-delay: 0.6s; }
+body.loading .swiper-slide-active .selo:nth-child(2) { animation-delay: 0.7s; }
+body.loading .swiper-slide-active .selo:nth-child(3) { animation-delay: 0.8s; }
+
+
+/* 4. Lógica de TRANSIÇÃO para as Trocas de Slide (após o carregamento)
+   - Este é o código da solução anterior, que continuará funcionando para as trocas de slides.
+   - Ele só terá efeito depois que a classe 'loading' for removida do <body>.
+*/
+.swiper-slide .headline,
+.swiper-slide .sub-headline-1,
+.swiper-slide .sub-headline-2,
+.swiper-slide .container-acoes > a,
+.swiper-slide .icones_banner_personalizado,
+.swiper-slide .coluna-imagem img,
+.swiper-slide .selo /* ADICIONADO */ {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.swiper-slide-active .headline,
+.swiper-slide-active .sub-headline-1,
+.swiper-slide-active .sub-headline-2,
+.swiper-slide-active .container-acoes > a,
+.swiper-slide-active .icones_banner_personalizado,
+.swiper-slide-active .coluna-imagem img,
+.swiper-slide-active .selo /* ADICIONADO */ {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.swiper-slide-active .headline { transition-delay: 0.2s; }
+.swiper-slide-active .sub-headline-1,
+.swiper-slide-active .sub-headline-2 { transition-delay: 0.4s; }
+
+/* ADICIONADO: Atrasos para os selos na troca de slide */
+.swiper-slide-active .selo:nth-child(1) { transition-delay: 0.5s; }
+.swiper-slide-active .selo:nth-child(2) { transition-delay: 0.6s; }
+.swiper-slide-active .selo:nth-child(3) { transition-delay: 0.7s; }
+
+.swiper-slide-active .container-acoes > a { transition-delay: 0.8s; } /* Atraso ajustado */
+.swiper-slide-active .icones_banner_personalizado { transition-delay: 1s; } /* Atraso ajustado */
+.swiper-slide-active .coluna-imagem img { transition-delay: 0.5s; }
+
+
+/* 5. (Opcional) Transição de Fade para o Slide
+*/
+.header-swiper .swiper-slide {
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+}
+
+.header-swiper .swiper-slide-active {
+    opacity: 1;
+}
+
+/* Estilos dos selos (já existentes no seu código, mantidos para contexto) */
+.selos-container {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 35px;
+  flex-wrap: wrap;
+}
+
+.selo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease, background 0.3s ease;
+    border: 1px solid #103b63;
+}
+
+/* ======================================================= */
+/* --- CORREÇÃO v6: RESOLVENDO SOBREPOSIÇÃO E PONTOS --- */
+/* ======================================================= */
+@media (max-width: 768px) {
+
+    /* 1. CORRIGE A SOBREPOSIÇÃO
+       - Mudar a posição do <header> para 'relative' força-o a ocupar
+         seu espaço no fluxo da página, empurrando o conteúdo de baixo para o lugar correto.
+    */
+    header {
+        position: relative;
+        height: auto;
+    }
+    
+    .fundo {
+        height: auto !important;
+    }
+
+    /* Remove o posicionamento absoluto do Swiper */
+.header-swiper {
+        position: static;
+        height: auto;
+        background-color: #fff;
+    }
+
+    /* Define uma altura mínima para os slides e espaçamento interno */
+    .header-swiper .swiper-slide {
+        height: auto;
+        padding: 10px 0px 0px 0px;
+        display: flex;
+        align-items: flex-start;
+        box-sizing: border-box;
+        background-color: #fff;
+    }
+
+    /* Reseta o contêiner interno do conteúdo */
+   .full-center {
+        padding: 0 !important;
+        min-height: auto !important;
+    }
+
+    /* 2. GARANTE A VISIBILIDADE DOS PONTOS DE NAVEGAÇÃO
+       - A posição 'absolute' os coloca na parte inferior do slide.
+       - O 'z-index' garante que eles fiquem na frente de tudo.
+    */
+    .header-swiper .swiper-pagination {
+        display: block !important; /* Força a exibição */
+        position: absolute;
+        bottom: 30px;
+        left: 0;
+        width: 100%;
+        z-index: 10;
+        padding: 50px 0px 0px 0px;
+    }
+.order-1 {
+    width: 100%;
+}
+    /* --- Otimizações de conteúdo que já tínhamos feito --- */
+    .headline { font-size: 26px !important; line-height: 1.3 !important; margin-bottom: 15px; }
+    .sub-headline-1, .sub-headline-2 {
+        font-size: 16px !important;
+        line-height: 36px !important;
+        margin-bottom: 21px !important;
+    }
+    .selos-container { gap: 10px; margin-top: 10px !important; margin-bottom: 25px !important; justify-content: center; }
+    .selo { padding: 8px 12px; font-size: 13px; }
+    .selo i { font-size: 16px; }
+    .botao {
+    margin-bottom: 0px;
+}
+}

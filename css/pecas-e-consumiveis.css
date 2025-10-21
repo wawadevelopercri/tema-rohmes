@@ -1,0 +1,74 @@
+/* Estilos Adicionais para a Página de Peças */
+
+/* Efeito de hover suave nos botões */
+.btn-primary, .btn-outline-light {
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: #0d2e4c !important; /* Um tom mais escuro de #103c64 */
+    border-color: #0d2e4c !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Efeito de zoom e sombra nos cards de produtos ao passar o mouse */
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15) !important;
+}
+
+/* Efeito sutil nos cards de categorias */
+.category-card {
+    overflow: hidden; /* Garante que a imagem não saia do card */
+    transition: box-shadow 0.3s ease;
+}
+
+.category-card img {
+    transition: transform 0.4s ease;
+}
+
+.category-card:hover {
+     box-shadow: 0 8px 16px rgba(0,0,0,0.15) !important;
+}
+
+.category-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Ajustes no banner */
+.bg-image .mask {
+    transition: background-color 0.4s ease;
+}
+
+.bg-image:hover .mask {
+    background-color: rgba(16, 60, 100, 0.7) !important;
+}
+
+/* Estilos para a Sidebar de Categorias */
+.category-sidebar .list-group-item {
+    border-radius: 0;
+    border-left: 3px solid transparent; /* Borda esquerda invisível por padrão */
+    transition: all 0.2s ease-in-out;
+    font-weight: 500;
+}
+
+.category-sidebar .list-group-item:hover,
+.category-sidebar .list-group-item:focus {
+    background-color: #f8f9fa; /* Cor de fundo suave ao passar o mouse */
+    border-left: 3px solid #103c64; /* Borda esquerda fica visível com a cor principal */
+    color: #103c64; /* Muda a cor do texto */
+    transform: translateX(5px);
+}
+
+.category-sidebar .list-group-item:first-child {
+    border-top: none;
+}
+
+.category-sidebar .list-group-item:last-child {
+    border-bottom: none;
+}

@@ -1,0 +1,318 @@
+/* css/produtos.css */
+
+.produto-detalhe-titulo { /* Added class for h2 in produtos.php */
+  padding: 1.5rem 0;
+  text-align: center;
+  color: #0f3c63;
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem; /* Removed default margin from .container */
+}
+
+section.fotos-produtos .carousel-thumbs img.thumbnail-img {
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.2s ease;
+  opacity: 0.7;
+  max-width: 100%; /* Ensure thumbs are responsive */
+}
+
+section.fotos-produtos .carousel-thumbs img.thumbnail-img.active,
+section.fotos-produtos .carousel-thumbs img.thumbnail-img:hover {
+  border-color: #0f3c63; /* Highlight color */
+  opacity: 1;
+}
+
+section.fotos-produtos .fotos-maquinas { /* Container for main image */
+  padding: 0; /* Remove padding if border is on it */
+}
+section.fotos-produtos .fotos-maquinas img#mainImage {
+  max-width: 100%;
+  height: auto;
+  /* border: 1px solid #ddd; (already has .border class) */
+  border-radius: 4px; /* from .rounded */
+}
+
+section.fotos-produtos .vantagens-maquinas ul {
+  list-style: none;
+  padding-left: 0;
+  text-align: left;
+}
+
+section.fotos-produtos .vantagens-maquinas ul li.icon-hover-wrapper {
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+section.fotos-produtos .vantagens-maquinas ul li .icon-hover {
+  margin-right: 10px;
+  color: #0f3c63; /* Icon color */
+  width: 20px; /* Ensure icons align well */
+  text-align: center;
+}
+
+/* Tabela de Especificações */
+.tabela-produtos h3 {
+  font-size: 1.5rem;
+  color: #0f3c63;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #0f3c63;
+}
+
+.tabela-produtos .spec-title {
+  background-color: #0f3c63;
+  color: white;
+  padding: 1rem;
+  font-weight: bold;
+  text-align: center; /* Was already centered in PHP */
+  writing-mode: vertical-rl; /* If you want vertical text */
+  transform: rotate(180deg); /* Correct orientation for vertical-rl */
+  white-space: nowrap;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.tabela-produtos .spec-table .table-row {
+  display: flex;
+  border-bottom: 1px solid #eee;
+}
+.tabela-produtos .spec-table .table-row:last-child {
+  border-bottom: none;
+}
+
+.tabela-produtos .spec-left.spec-label {
+  flex: 0 0 40%; /* Adjust width of label column */
+  padding: 0.75rem;
+  font-weight: 500;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.tabela-produtos .spec-right.spec-value {
+  flex: 1;
+  padding: 0.75rem;
+  color: #555;
+}
+
+.botoes_produtos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Space between buttons */
+  justify-content: flex-start; /* Align buttons to the start */
+}
+
+.botoes_produtos .botao-produtos {
+  background-color: #0f3c63;
+  color: white;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+.botoes_produtos .botao-produtos:hover {
+  background-color: #0a2c47;
+}
+.botoes_produtos .botao-produtos i {
+  margin-right: 8px;
+}
+
+.descricao-produto h3 {
+  font-size: 1.5rem;
+  color: #0f3c63;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #0f3c63;
+}
+.descricao-produto p {
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+/* Produtos Relacionados */
+section.produtos-relacionados {
+  padding: 2rem 0;
+  background-color: #f8f9fa; /* Light background for this section */
+}
+section.produtos-relacionados h3 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #0f3c63;
+  margin-bottom: 2rem !important; /* from PHP */
+}
+
+.produto-card {
+  border: 1px solid #ddd;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  background-color: #fff;
+}
+.produto-card:hover {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  transform: translateY(-5px);
+}
+
+.produto-imagem-wrapper {
+  position: relative;
+  overflow: hidden; /* Ensures overlay icons stay within bounds */
+  height: 200px; /* Fixed height for uniform cards, adjust as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.produto-imagem-wrapper .produto-imagem {
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+.produto-card:hover .produto-imagem {
+  transform: scale(1.05);
+}
+
+.produto-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 60, 99, 0.7); /* Dark blue overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.produto-card:hover .produto-overlay {
+  opacity: 1;
+}
+
+.overlay-icons .icon {
+  color: white;
+  font-size: 1.5rem;
+  margin: 0 10px;
+  transition: transform 0.2s ease;
+}
+.overlay-icons .icon:hover {
+  transform: scale(1.2);
+}
+
+.produto-card .card-body {
+  padding: 1rem;
+}
+.produto-card .card-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #0f3c63;
+  margin-bottom: 0; /* Already centered and at bottom via flex */
+}
+
+/* Adicione este código ao final do seu arquivo produtos.css */
+
+/* Estilos para Dispositivos Móveis (telas com largura máxima de 767.98px) */
+@media (max-width: 767.98px) {
+  
+  /* Faz a imagem principal ocupar mais espaço verticalmente */
+  section.fotos-produtos .fotos-maquinas img#mainImage {
+    max-height: none; /* Remove a restrição de altura máxima */
+  }
+
+  /* Transforma a coluna de miniaturas em uma galeria horizontal rolável */
+  section.fotos-produtos .carousel-thumbs {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto; /* Adiciona a barra de rolagem horizontal */
+    white-space: nowrap; /* Impede que as imagens quebrem a linha */
+    justify-content: flex-start; /* Alinha as imagens à esquerda */
+    margin-top: 15px; /* Adiciona um espaço acima das miniaturas */
+    padding-bottom: 10px; /* Garante espaço para a barra de rolagem não sobrepor as imagens */
+  }
+
+  /* Ajusta o tamanho e o espaçamento de cada miniatura no modo mobile */
+  section.fotos-produtos .carousel-thumbs img.thumbnail-img {
+    flex: 0 0 90px; /* Não permite que a imagem encolha ou estique, define uma largura base */
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    margin-right: 10px; /* Espaçamento entre as miniaturas */
+    margin-bottom: 0;
+  }
+}
+
+.nome_produtos {
+    font-family: 'Poppins';
+    font-weight: 600;
+}
+
+
+/* --- Animação Hover Elegante para Produtos --- */
+
+/* 1. Estilo para o container da imagem conter o zoom */
+.ssss {
+  overflow: hidden;
+  border-radius: 10px; /* Garante que a imagem com zoom mantenha as bordas arredondadas */
+}
+
+/* 2. Container Principal do Produto (.banner-container) */
+.banner-container {
+  position: relative;
+  padding: 1.5rem 0;
+  border-radius: 15px; /* Bordas arredondadas para um visual mais suave */
+  transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+  cursor: pointer; /* Muda o cursor para indicar que a área é interativa */
+}
+
+/* Efeito ao passar o mouse sobre o container */
+.banner-container:hover {
+  transform: scale(1.02); /* Aumenta levemente o tamanho do card */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12); /* Adiciona uma sombra para dar profundidade */
+  z-index: 5; /* Garante que o card ativo fique sobre os outros */
+}
+
+/* 3. Imagem do Produto (.produto-img) */
+.produto-img {
+  border-radius: 10px;
+  /* Transição mais elaborada para um efeito de zoom mais natural */
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Efeito de zoom na imagem ao passar o mouse no container */
+.banner-container:hover .produto-img {
+  transform: scale(1.08); /* Aumenta o zoom da imagem */
+}
+
+/* 4. Título do Produto (.nome_produtos) */
+.nome_produtos {
+  transition: color 0.3s ease-in-out;
+}
+
+/* Muda a cor do título para a cor primária do site */
+.banner-container:hover .nome_produtos {
+  color: #1d4264; /* Use a cor principal do seu site */
+}
+
+/* 5. Botões de Ação (.botao-produtos) */
+.botao-produtos {
+  transition: all 0.3s ease-in-out;
+  transform: translateY(0); /* Estado inicial da posição vertical */
+}
+
+/* Efeito nos botões ao passar o mouse no container */
+.banner-container:hover .botao-produtos {
+  transform: translateY(-5px); /* Move os botões levemente para cima */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Efeito adicional ao passar o mouse diretamente sobre um botão */
+.botao-produtos:hover {
+  transform: translateY(-5px) scale(1.05); /* Mantém a elevação e aumenta o tamanho */
+  filter: brightness(1.1); /* Deixa o botão um pouco mais "brilhante" */
+}
+

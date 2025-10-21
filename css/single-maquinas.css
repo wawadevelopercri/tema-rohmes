@@ -1,0 +1,481 @@
+/* =================================================================== */
+/* == CSS ESPECÍFICO PARA A PÁGINA DE PRODUTO (SINGLE-MAQUINA.PHP) == */
+/* =================================================================== */
+
+/* --- Título da Página --- */
+.titulo-produto {
+  font-family: 'Poppins', sans-serif;
+  color: #103b63;
+}
+
+/* --- Galeria de Imagens --- */
+.main-img {
+    height: 500px !important;
+    object-fit: contain;
+}
+
+.carousel-thumbs {
+  max-height: 500px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.carousel-thumbs::-webkit-scrollbar {
+  width: 6px;
+}
+
+.carousel-thumbs::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.thumbnail-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    padding: 5px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.thumbnail-img:hover,
+.thumbnail-img.active {
+    border-color: #002F52;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* --- Vantagens (Abaixo da Galeria) --- */
+.vantagens-maquinas-em-linha ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.vantagens-maquinas-em-linha li {
+    background-color: #103b63;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    flex-basis: 300px;
+    max-width: 380px;
+    min-height: 80px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vantagens-maquinas-em-linha li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(16, 59, 99, 0.2);
+}
+
+.vantagens-maquinas-em-linha i {
+    background-color: transparent;
+    color: #ddd;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* --- Layout das Abas de Potências e Descrição --- */
+.fundo-section {
+    background-color: #f0f5fa;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    border-top: 1px solid #e9ecef;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.potencias-section .titulo-pagina, .descricao-section .titulo-pagina {
+    font-weight: 800;
+    color: #103b63;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 2rem !important;
+    font-size: 20px;
+}
+
+#potenciaTabContent img {
+    margin-bottom: 30px;
+    max-height: 400px;
+    margin: 0 auto;
+}
+
+.potencias-section .titulo-pagina::after,
+.descricao-section .titulo-pagina::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #103b63;
+    transition: width 0.4s ease;
+}
+
+.potencias-section:hover .titulo-pagina::after,
+.descricao-section:hover .titulo-pagina::after {
+    width: 100px;
+}
+
+.potencias-section .nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: -1px;
+}
+
+.potencias-section .nav-tabs .nav-link {
+    background: transparent;
+    border: 1px solid transparent;
+    border-bottom: none;
+    margin: 0 2px;
+    padding: 10px 20px;
+    color: #495057;
+    font-weight: 600;
+    border-radius: 8px 8px 0 0;
+    transition: all 0.3s ease;
+    position: relative;
+    bottom: -1px;
+}
+
+.potencias-section .nav-tabs .nav-link:hover:not(.active) {
+    background-color: #e9ecef;
+}
+
+.potencias-section .nav-tabs .nav-link.active {
+    background-color: #ffffff;
+    color: #103b63;
+    border-color: #dee2e6;
+    border-bottom-color: #ffffff;
+}
+
+.potencias-section .tab-content {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.potencias-section .tab-pane.fade {
+    transition: opacity .4s ease-in-out;
+}
+
+.potencias-section .tab-pane h4 {
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #fff;
+    background-color: #103b63;
+    padding: 11px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.potencia-descricao {
+    display: flex;
+    flex-direction: column;
+}
+
+.potencia-descricao p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: #343a40;
+    text-align: left;
+    font-weight: 400;
+}
+
+.potencia-descricao figure.wp-embedded-content,
+.potencia-descricao figure.wp-block-embed {
+    width: 90%;
+    max-width: 854px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.potencia-descricao figure.wp-block-embed iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+}
+
+/* --- Tabelas de Especificações --- */
+.spec-title {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  background-color: #003660;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 10px;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  width: 60px;
+}
+
+.spec-table {
+  background-color: white;
+  width: 100%;
+}
+
+.table-row {
+  display: flex;
+  padding: 10px;
+}
+
+.spec-left,
+.spec-right {
+  background-color: #f0f5fa;
+  padding: 12px 16px;
+  font-weight: 600;
+  width: 100%;
+  text-transform: uppercase;
+}
+
+.spec-left {
+  border-radius: 10px 0 0 10px;
+}
+
+.spec-right {
+  border-radius: 0 10px 10px 0;
+}
+
+.tabela-adicional-titulo {
+    text-align: left;
+    color: #103b63;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+/* --- Seção de Softwares --- */
+.softwares-compatíveis-section {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+}
+
+.softwares-titulo {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #103b63;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.softwares-titulo::after {
+    content: '';
+    display: block;
+    width: 70px;
+    height: 3px;
+    background-color: #103b63;
+    margin: 10px auto 0;
+}
+
+.software-logo-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 140px;
+}
+
+.software-logo-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(24, 35, 51, 0.1);
+}
+
+.software-logo-card img {
+    max-height: 80px;
+    width: auto;
+    object-fit: contain;
+    opacity: 0.7;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.software-logo-card:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+/* --- Seção de Máquinas Relacionadas --- */
+.maquinas-relacionados-section {
+    padding: 60px 0 80px 0;
+    background-color: #fff;
+    border-top: 1px solid #e9ecef;
+}
+
+.maquinas-relacionados-titulo {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #103b63;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.maquinas-relacionados-titulo::after {
+    content: '';
+    display: block;
+    width: 70px;
+    height: 3px;
+    background-color: #103b63;
+    margin: 10px auto 0;
+}
+
+.maquina-card-relacionado {
+    background-color: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.maquina-card-relacionado:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(24, 35, 51, 0.1);
+}
+
+a.maquina-card-link {
+    text-decoration: none !important;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.maquina-card-imagem-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background-color: #f8f9fa;
+}
+
+.maquina-card-imagem {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 10px;
+    transition: transform 0.4s ease;
+}
+
+.maquina-card-relacionado:hover .maquina-card-imagem {
+    transform: scale(1.07);
+}
+
+.maquina-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(16, 59, 99, 0.2) 0%, rgba(16, 59, 99, 0) 40%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.maquina-card-relacionado:hover .maquina-card-overlay {
+    opacity: 1;
+}
+
+.maquina-card-conteudo {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.maquina-card-categoria {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.maquina-card-titulo {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #103b63 !important;
+    line-height: 1.4;
+    flex-grow: 1;
+    margin-bottom: 15px;
+}
+
+.maquina-card-relacionado .btn {
+    padding: 8px 20px;
+    font-weight: 600;
+    width: fit-content;
+    align-self: center;
+    margin-top: auto;
+    border-radius: 50px;
+    background-color: #103b63;
+    border-color: #103b63;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.maquina-card-relacionado:hover .btn {
+    background-color: #000;
+    border-color: #000;
+    transform: scale(1.05);
+}
+
+/* --- Media Queries Específicos --- */
+@media (max-width: 991px) {
+    .descricao-section {
+        margin-top: 2rem;
+    }
+    .descricao-section .descricao-produto {
+        padding-left: 0;
+    }
+}

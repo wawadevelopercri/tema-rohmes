@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 831.7 558.6">
+  <defs>
+    <style>
+      .outline {
+        fill: #fff;
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+
+  <!-- Caminho principal: curva e trajetória visual -->
+  <path class="outline" d="M551.6,277.2c43.1-34,63.8-85.7,53.6-162.8
+    -17.4-66.9-58.2-98.6-116-105.8H100.2v87.6h360
+    c35.9,3.8,52.5,21.9,53.6,51.7
+    -2.3,35.9-22.3,50.6-53.6,51.7h-205.8
+    l206.6,89.1l127.7,237.6l113.3-1.1
+    -150.3-248.2-.1.2Z"/>
+
+  <!-- Polígono: forma adicional integrada -->
+  <polygon class="outline" points="253.6,363.7 352.9,363.7 352.9,288.9 460.9,288.9 253.6,199.8 253.6,363.7"/>
+</svg>

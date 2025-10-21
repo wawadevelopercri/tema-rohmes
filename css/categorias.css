@@ -1,0 +1,204 @@
+/* css/categorias.css */
+
+/* --- Estilos do Loader (Originais) --- */
+.loader-wrapper {
+  position: absolute;
+  top: 80%; /* ajustado para aparecer mais acima */
+  left: 50%;
+  transform: translate(-50%, -30%);
+  z-index: 10;
+}
+
+.custom-loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #ccc;
+  border-top: 5px solid #1d4264;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.tab-loading {
+  opacity: 0.4;
+  pointer-events: none; /* impede clique durante o carregamento */
+  transition: opacity 0.3s ease;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- Animação Hover Elegante para Produtos (Originais) --- */
+
+/* 1. Estilo para o container da imagem conter o zoom */
+.ssss {
+  overflow: hidden;
+  border-radius: 10px; /* Garante que a imagem com zoom mantenha as bordas arredondadas */
+}
+
+/* 2. Container Principal do Produto (.banner-container) */
+.banner-container {
+  /* Adiciona uma transição suave para a sombra e a transformação */
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+  border-radius: 8px; /* Cantos arredondados para um visual mais moderno */
+}
+
+/* 2. Efeito de "flutuar" ao passar o mouse */
+.banner-container:hover {
+  /* Levanta o card sutilmente no eixo Y */
+  transform: translateY(-8px); 
+  /* Adiciona uma sombra para dar profundidade e destacar o card */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* 3. Container da imagem (Opcional, mas bom para estrutura) */
+.produto-imagem-container {
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+/* 4. Preparação dos botões para a animação de entrada */
+.botao-produtos {
+  opacity: 1; /* Começam invisíveis */
+  transform: translateY(20px); /* Começam 20px para baixo */
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+/* 5. Animação de entrada dos botões ao passar o mouse no container */
+.banner-container:hover .botao-produtos {
+  opacity: 1; /* Tornam-se visíveis */
+  transform: translateY(0); /* Voltam para a posição original */
+}
+
+/* 6. Adiciona um pequeno atraso no segundo botão para um efeito escalonado */
+.banner-container:hover .botao-produtos.botao-whatsapp {
+  transition-delay: 0.1s; /* O segundo botão aparece um pouco depois do primeiro */
+}
+
+/* 7. Título do produto com uma sutil mudança de cor */
+.nome_produtos {
+    transition: color 0.3s ease;
+    font-weight: revert-layer;
+    color: #103b63;
+}
+
+.banner-container:hover .nome_produtos {
+    color: #1d4264; /* Cor primária, para dar destaque */
+}
+
+/* --- Estilos da Navegação (Originais) --- */
+.nav-link {
+    transition: none;
+    color: #000;
+}
+
+.nav-tabs .nav-link.active {
+    font-weight: 700;
+}
+
+.nav-tabs .nav-link:hover {
+    color: #103b63;
+}
+
+.nav-link {
+    font-size: 23px;
+}
+
+@media (max-width: 768px) {
+    .nav-link {
+        font-size: 16px;
+    }
+}
+
+/* --- Estilos dos Botões de Ação (Originais) --- */
+.botao-produtos {
+  transition: all 0.3s ease-in-out;
+  transform: translateY(0); /* Estado inicial da posição vertical */
+}
+
+/* Efeito nos botões ao passar o mouse no container */
+.banner-container:hover .botao-produtos {
+  transform: translateY(-5px); /* Move os botões levemente para cima */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Efeito adicional ao passar o mouse diretamente sobre um botão */
+.botao-produtos:hover {
+  transform: translateY(-5px) scale(1.05); /* Mantém a elevação e aumenta o tamanho */
+  filter: brightness(1.1); /* Deixa o botão um pouco mais "brilhante" */
+}
+
+/* ============================================================
+--- (NOVO) Estilização Elegante do Contador de Produto ---
+============================================================
+*/
+
+/* 1. Estilo base do contador */
+.product-counter {
+    position: absolute;
+    top: 35px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1d4264, #103b63);
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 50%;
+    box-shadow: 0 8px 20px rgba(29, 66, 100, 0.3);
+    z-index: 5;
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+    transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* 2. Variação para o contador na direita */
+.product-counter.counter-right {
+  left: auto; /* Remove o alinhamento esquerdo */
+  right: 20px; /* Alinha à direita */
+}
+
+/* 3. Classe que ativa a animação quando o elemento está visível */
+.product-counter.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Ajuste no container principal para garantir o posicionamento correto do contador */
+.banner-container {
+  position: relative; /* Essencial para o posicionamento absoluto do filho (.product-counter) */
+  /* O restante dos seus estilos .banner-container permanece o mesmo */
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+  border-radius: 8px;
+}
+
+/* ============================================================
+--- (NOVO) Gradiente Suave para Imagem do Produto ---
+============================================================
+*/
+
+/* 1. Prepara o container para o gradiente */
+.ssss {
+  position: relative; /* Essencial para posicionar o gradiente sobre a imagem */
+}
+
+/* 2. Cria o pseudo-elemento com o gradiente */
+.ssss::after {
+  content: ''; /* Necessário para que o pseudo-elemento seja gerado */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%; /* Ajuste a altura do gradiente conforme necessário */
+  background: linear-gradient(to top, 
+    rgba(255, 255, 255, 1) 20%, /* Começa com branco sólido */
+    rgba(255, 255, 255, 0) 100% /* Transição para totalmente transparente */
+  );
+  pointer-events: none; /* Garante que o gradiente não interfira nos cliques do mouse */
+  border-radius: 0 0 10px 10px; /* Mantém os cantos arredondados da base se o container tiver */
+}

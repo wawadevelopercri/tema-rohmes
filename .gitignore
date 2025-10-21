@@ -1,0 +1,14 @@
+# WordPress
+*.log
+*.tmp
+*.swp
+*.bak
+*.old
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Node (se usar build com npm)
+node_modules/
+dist/

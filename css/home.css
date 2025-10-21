@@ -1,0 +1,1253 @@
+/* home.css */
+
+/* =================== BASE (Applied via get_header()) =================== */
+body {
+  font-family: 'Poppins', sans-serif; /* */
+  margin: 0; /* */
+  padding: 0; /* */
+}
+
+/* Header styles that might be included via get_header() if selectors match */
+header {
+  height: auto; /* */
+  background-color: #f4f4f4; /* */
+}
+
+/* =================== GLOBAL COMPONENT STYLES (from index.php usage) =================== */
+.carousel-item {
+  transition: transform 0.6s ease; /* */
+}
+
+.solda-laser {
+  padding-left: 50px !important; /* */
+}
+
+/* =================== FADE SECTIONS =================== */
+.fade-section {
+  opacity: 0; /* */
+  transition: opacity 1s ease-in-out; /* */
+}
+
+.fade-section.visible {
+  opacity: 1; /* */ /* Applied via JavaScript */
+}
+
+/* =================== SPACING =================== */
+.space {
+  margin-top: 40px; /* */
+}
+
+/* =================== PRODUTOS SECTION (Home Page Specific) =================== */
+.produtos .carousel-inner { /* .produtos is a section class */
+  padding: 80px 130px 65px 130px; /* */
+}
+
+.produtos .carousel-control-next-icon { /* For #carouselProdutos */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23062745'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important; /* */
+}
+
+.icones-carrosel {
+  /* This class is present, but its direct img child rule from style.css might not apply if structure is divs */
+  /* .icones-carrosel img { height: 82px; } */ /* */
+  /* .icones-carrosel .borda { ... } */ /* .borda class not used in index.php for this section */
+}
+
+/* =================== FUNDO PRODUTOS (DIAGONAL OVERLAY SECTION) =================== */
+.fundo-produtos {
+  position: relative; /* */
+  height: 902px; /* */
+  padding-left: 30px; /* */
+}
+
+.fundo-produtos .row {
+  position: relative; /* */
+  z-index: 1; /* */
+}
+
+.diagonal-overlay-2 { /* Used for the SVG element */
+  position: absolute; /* */
+  left: -31vw; /* */
+  width: 122%; /* */
+  height: 100%; /* */
+  z-index: -1; /* */
+  pointer-events: none; /* */
+  max-width: none; /* */
+  /* fill is set in the <g> tag in index.php, CSS rule for fill might be redundant or for other uses */
+  /* fill: "#0f3c63"; (from style.css SVG <g> attributes, class is on <svg>) */
+}
+
+/* =================== TITULO PRODUTOS =================== */
+.titulo-produtos {
+  padding: 50px; /* */
+}
+
+.titulo-produtos h2 {
+  color: #fff; /* */
+  font-style: italic; /* */
+  font-weight: 400; /* */
+  font-size: 50px; /* */
+  line-height: 1.2; /* */
+}
+
+.titulo-produtos h3 {
+  color: #fff; /* */
+  font-style: italic; /* */
+  font-weight: 100; /* */
+  font-size: 32px; /* */
+  line-height: 56px; /* */
+  margin: 60px 0 27px; /* */
+}
+
+.titulo-produtos b { /* Applies to <b> tags within .titulo-produtos h2, h3 */
+  font-weight: 500; /* */
+}
+
+/* =================== BLOCO ICONE (Carousel Items in Produtos Section) =================== */
+.carousel-item .icone-bloco { /* .icone-bloco is used directly */
+  min-height: 250px; /* */
+  background-size: cover; /* */
+  background-position: center; /* */
+  background-repeat: no-repeat; /* */
+  background-blend-mode: overlay; /* */
+  /* background-image is set inline in PHP: linear-gradient(to bottom, white, black), url(...) */ /* */
+  filter: grayscale(100%); /* */
+  padding: 30px; /* */
+  border-radius: 20px 0 20px 0; /* */
+  position: relative; /* */
+  display: flex; /* */
+  justify-content: center; /* */
+  align-items: center; /* */
+  height: 465px; /* */
+  text-align: center; /* */
+  color: white; /* */
+  transition: all 0.4s ease; /* */
+  flex-direction: column; /* */
+  overflow: hidden; /* */
+}
+
+.icone-bloco:hover {
+  filter: grayscale(0%); /* */
+  background-color: rgba(6, 39, 69, 0.8); /* */
+  background-blend-mode: overlay; /* */
+}
+
+.icone-bloco .texto {
+  position: absolute; /* */
+  top: 50%; /* */
+  left: 50%; /* */
+  transform: translate(-50%, -50%); /* */
+  transition: opacity 0.4s ease; /* */
+  z-index: 1; /* */
+  font-size: 24px; /* */
+  line-height: 1.4; /* */
+  color: #103c64; /* */
+  width: 180px; /* */
+}
+
+.icone-bloco .texto p {
+  margin: 0; /* */
+  font-size: 1.1rem; /* */
+  font-weight: 600; /* */
+  color: #000; /* */
+  opacity: 1; /* */
+  transition: opacity 0.4s ease; /* */
+  background-color: #fff; /* */
+  padding: 10px; /* */
+  border-radius: 5px; /* */
+}
+
+.icone-bloco:hover .texto p {
+  opacity: 0; /* */
+}
+
+.hover-content {
+  position: absolute; /* */
+  top: 50%; /* */
+  left: 50%; /* */
+  transform: translate(-50%, -50%); /* */
+  text-align: center; /* */
+  opacity: 0; /* */
+  transition: opacity 0.4s ease; /* */
+  z-index: 2; /* */
+  display: flex; /* */
+  flex-direction: column; /* */
+  align-items: center; /* */
+  gap: 12px; /* */
+  pointer-events: none; /* */
+}
+
+.icone-bloco:hover .hover-content {
+  opacity: 1; /* */
+  pointer-events: auto; /* */
+}
+
+.hover-frase {
+  font-size: 1rem; /* */
+  font-weight: 600; /* */
+  color: white; /* */
+  border: 1px solid #fff; /* */
+  padding: 5px; /* */
+  border-radius: 20px 0 20px 0; /* */
+  width: 73%; /* */
+}
+
+/* =================== BOTÕES 'LEARN MORE' =================== */
+/* Base style for .learn-more (used in Produtos carousel) */
+a.learn-more {
+  position: relative; /* */
+  display: inline-block; /* */
+  cursor: pointer; /* */
+  outline: none; /* */
+  border: 0; /* */
+  vertical-align: middle; /* */
+  text-decoration: none; /* */
+  background: transparent; /* */
+  padding: 10px; /* */
+  font-size: inherit; /* */
+  font-family: inherit; /* */
+  width: 10rem; /* */
+  height: auto; /* */
+}
+
+.learn-more .circle {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1); /* */
+  position: relative; /* */
+  display: block; /* */
+  margin: -12px 0 0 0; /* */
+  border-radius: 1.625rem; /* */
+  width: 33px; /* */
+  height: 33px; /* */
+  background: #fff; /* */
+}
+
+.learn-more .icon {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1); /* */
+  position: absolute; /* */
+  top: 0; /* */
+  bottom: 0; /* */
+  margin: auto; /* */
+  background: #fff; /* */
+}
+
+.learn-more .icon.arrow {
+  left: 3px; /* */
+  width: 16px; /* */
+  height: 0.125rem; /* */
+  background: none; /* */
+}
+
+.learn-more .icon.arrow::before {
+  content: ''; /* */
+  position: absolute; /* */
+  top: -0.25rem; /* */
+  right: 0.0625rem; /* */
+  width: 0.625rem; /* */
+  height: 0.625rem; /* */
+  border-top: 0.125rem solid #062745; /* */
+  border-right: 0.125rem solid #062745; /* */
+  transform: rotate(45deg); /* */
+}
+
+.learn-more .button-text {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1); /* */
+  position: absolute; /* */
+  top: 0; /* */
+  left: 0; /* */
+  right: 0; /* */
+  bottom: 0; /* */
+  margin-left: 1.85rem; /* */
+  color: #fff; /* */
+  font-weight: 400; /* */
+  text-align: center; /* */
+  line-height: 1.6; /* */
+}
+
+.learn-more:hover .circle {
+  width: 100%; /* */
+}
+
+.learn-more:hover .icon.arrow {
+  transform: translate(1rem, 0); /* */
+}
+
+.learn-more:hover .button-text {
+  color: #062745; /* */
+}
+
+/* learn-more-2 (Used in Titulo Produtos) */
+a.learn-more-2 {
+  position: relative; /* */
+  display: inline-block; /* */
+  cursor: pointer; /* */
+  outline: none; /* */
+  border: 0; /* */
+  vertical-align: middle; /* */
+  text-decoration: none; /* */
+  background: transparent; /* */
+  padding: 10px; /* */
+  font-size: inherit; /* */
+  font-family: inherit; /* */
+  width: 320px; /* */
+  height: auto; /* */
+  z-index: 10; /* */
+}
+
+a.learn-more-2 .circle-2 {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1); /* */
+  position: relative; /* */
+  display: block; /* */
+  margin: 0; /* */
+  width: 43px; /* */
+  height: 43px; /* */
+  background: #fff; /* */
+  border-radius: 1.625rem; /* */
+}
+
+a.learn-more-2:hover {
+  color: #113b63; /* */
+}
+
+a.learn-more-2 .circle-2 .icon-2 {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1); /* */
+  position: absolute; /* */
+  top: 0; /* */
+  bottom: 0; /* */
+  margin: auto; /* */
+  background: #fff; /* */
+}
+
+a.learn-more-2 .circle-2 .icon-2.arrow-2 {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1); /* */
+  left: 9px; /* */
+  width: 16px; /* */
+  height: 0.125rem; /* */
+  background: none; /* */
+}
+
+a.learn-more-2 .circle-2 .icon-2.arrow-2::before {
+  position: absolute; /* */
+  content: ''; /* */
+  top: -0.25rem; /* */
+  right: 0.0625rem; /* */
+  width: 0.625rem; /* */
+  height: 0.625rem; /* */
+  border-top: 0.125rem solid #113b63; /* */
+  border-right: 0.125rem solid #113b63; /* */
+  transform: rotate(45deg); /* */
+}
+
+a.learn-more-2 .button-text-2 {
+  font-weight: 200; /* */
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1); /* */
+  position: absolute; /* */
+  top: 0; /* */
+  left: 0; /* */
+  right: 0; /* */
+  bottom: 0; /* */
+  padding: 0.75rem 0; /* */
+  margin: 0 0 0 3.85rem; /* */
+  color: #fff; /* */
+  line-height: 1.4; /* */
+  text-align: center; /* */
+  font-size: 25px; /* */
+}
+
+a.learn-more-2:hover .circle-2 {
+  width: 100%; /* */
+}
+
+a.learn-more-2:hover .circle-2 .icon-2.arrow-2 {
+  transform: translate(1rem, 0); /* */
+}
+
+a.learn-more-2:hover .button-text-2 {
+  color: #113b63; /* */
+}
+
+/* Variant 3 for learn-more (Used in Banner Promocional) */
+.learn-more.variant-3 .circle {
+  width: 48px; /* */
+  height: 48px; /* */
+  background: #103b63; /* */
+}
+
+.learn-more.variant-3 .icon {
+  background: #103b63; /* */
+}
+
+.learn-more.variant-3 .icon.arrow::before {
+  right: -6px; /* */
+  border-color: #fff; /* */
+}
+
+.learn-more.variant-3 .button-text {
+  margin-left: 3.5rem; /* */
+  color: #103b63; /* */
+  font-weight: 400; /* */
+  line-height: 2.6; /* */
+}
+
+.learn-more.variant-3:hover .circle {
+  width: 174px; /* */
+}
+
+.learn-more.variant-3:hover .button-text {
+  color: #fff; /* */
+}
+
+/* Botão learn-more-5 (Used in Pós Vendas) */
+a.learn-more-5 {
+  position: relative; /* */
+  display: inline-block; /* */
+  cursor: pointer; /* */
+  outline: none; /* */
+  border: 0; /* */
+  vertical-align: middle; /* */
+  text-decoration: none; /* */
+  background: transparent; /* */
+  padding: 10px; /* */
+  font-size: inherit; /* */
+  font-family: inherit; /* */
+  width: 64%; /* */
+  height: auto; /* */
+}
+
+a.learn-more-5 .circle-5 {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1); /* */
+  position: relative; /* */
+  display: block; /* */
+  margin: 0; /* */
+  width: 43px; /* */
+  height: 43px; /* */
+  background: #c2d4e6; /* */
+  border-radius: 1.625rem; /* */
+}
+
+a.learn-more-5:hover {
+  color: #113b63; /* */
+}
+
+a.learn-more-5 .circle-5 .icon-5 {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1); /* */
+  position: absolute; /* */
+  top: 0; /* */
+  bottom: 0; /* */
+  margin: auto; /* */
+  background: #c2d4e6; /* */
+}
+
+a.learn-more-5 .circle-5 .icon-5.arrow-5 {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1); /* */
+  left: 9px; /* */
+  width: 16px; /* */
+  height: 0.125rem; /* */
+  background: none; /* */
+}
+
+a.learn-more-5 .circle-5 .icon-5.arrow-5::before {
+  position: absolute; /* */
+  content: ''; /* */
+  top: -0.25rem; /* */
+  right: 0.0625rem; /* */
+  width: 0.625rem; /* */
+  height: 0.625rem; /* */
+  border-top: 0.125rem solid #113b63; /* */
+  border-right: 0.125rem solid #113b63; /* */
+  transform: rotate(45deg); /* */
+}
+
+a.learn-more-5 .button-text-5 {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1); /* */
+  position: absolute; /* */
+  top: 0; /* */
+  left: 0; /* */
+  right: 0; /* */
+  bottom: 0; /* */
+  padding: 0.75rem 0; /* */
+  margin: 0 0 0 3.85rem; /* */
+  color: #0f3c63; /* */
+  font-weight: 300; /* */
+  line-height: 1.3; /* */
+  text-align: center; /* */
+  font-size: 28px; /* */
+}
+
+a.learn-more-5:hover .circle-5 {
+  width: 100%; /* */
+}
+
+a.learn-more-5:hover .circle-5 .icon-5.arrow-5 {
+  transform: translate(1rem, 0); /* */
+}
+
+a.learn-more-5:hover .button-text-5 {
+  color: #113b63; /* */
+}
+
+.botao { /* General container for a button, used in Pós Vendas */
+  text-align: center; /* */
+  margin-top: 30px; /* */
+}
+
+/* =================== BANNER PROMOCIONAL =================== */
+.solda { /* Class for "Solda a" text */
+  color: #062745; /* */
+  font-size: 50px; /* */
+  font-weight: 300; /* */
+}
+
+.laser { /* Class for "LASER" / "CNC" text */
+  color: #062745; /* */
+  font-size: 78px; /* */
+  font-weight: 900; /* */
+}
+
+.banner-promocional {
+  background-image: url(assets/img/fundo-banner-promocional.png); /* */
+  background-size: cover; /* */
+  height: 930px; /* */
+  margin-top: -320px; /* */
+  padding-left: 30px; /* */
+  z-index: 0; /* */
+  position: relative; /* */
+}
+
+.banner-promocional h2 {
+  line-height: 47px; /* */
+  margin-top: 320px; /* */
+}
+
+.banner-promocional p {
+  font-size: 19px; /* */
+  line-height: 27px; /* */
+  color: #062745; /* */
+  margin-top: 20px; /* */
+}
+
+#carrosel-promocional .carousel-item { /* ID used in index.php */
+  transition: opacity 1s ease-in-out; /* */
+  min-height: 780px; /* */
+}
+
+/* =================== POS-VENDAS =================== */
+.pos-vendas h2 {
+  font-size: 40px; /* */
+  color: #113b63; /* */
+  text-align: center; /* */
+}
+
+.video-img { /* Used for the image in Pós Vendas */
+  margin: 0 auto; /* */
+  display: block; /* */
+  height: 370px !important; /* */
+}
+
+/* =================== LOGO SECTION (PÓS-VENDAS) =================== */
+.logo { /* Container for certification logos */
+  display: flex; /* */
+  flex-direction: column; /* */
+  align-items: center; /* */
+}
+
+.logo-top {
+  display: flex; /* */
+  gap: 10px; /* */
+}
+
+.logo-bottom {
+  margin-top: 10px; /* */
+}
+
+.logo-bottom img { /* More specific selector used */
+  display: block; /* */
+  margin: 0 auto; /* */
+}
+
+.logo img { /* Applies to all images within .logo */
+  width: 100px; /* */
+}
+
+/* =================== SOBRE-NOS =================== */
+.sobre-nos {
+  background-color: #e7e7e7; /* */
+  background-size: contain; /* */
+  background-position: right; /* */
+  background-repeat: no-repeat; /* */
+  background-image: linear-gradient(to bottom, rgba(231, 231, 231, 0.5) 84%, rgba(255, 255, 255, 1) 0%), url(assets/img/fundo-sobre-nos.png); /* */
+  padding: 20px; /* */
+  text-align: center; /* */
+}
+
+.sobre-nos h2 {
+  color: #103c64; /* */
+  font-size: 38px; /* */
+  font-weight: 700; /* */
+  text-align: left; /* */
+}
+
+.sobre-nos p {
+  font-size: 20px; /* */
+  font-weight: 200; /* */
+  color: #103c64; /* */
+  line-height: 40px; /* */
+  text-align: left; /* */
+}
+
+.frase-sobre {
+  margin-top: 20px; /* */
+  padding: 10px 0; /* */
+}
+
+.frase-sobre h4 {
+  margin: 0; /* */
+  font-style: italic; /* */
+  font-weight: 600; /* */
+  color: #103c64; /* */
+  text-align: left; /* */
+  font-size: 1.8rem; /* */
+}
+
+.sobre-nos-imagens {
+  display: flex; /* */
+  justify-content: center; /* */
+  align-items: flex-start; /* */
+  gap: 20px; /* */
+  overflow-x: auto; /* */
+  padding: 0 10px 10px; /* */
+  scroll-behavior: smooth; /* */
+  -webkit-overflow-scrolling: touch; /* */
+  -ms-overflow-style: none; /* */
+  scrollbar-width: none; /* */
+}
+
+.sobre-nos-imagens::-webkit-scrollbar {
+  display: none; /* */
+}
+
+.sobre-nos .photo {
+  flex: 0 0 auto; /* */
+  position: relative; /* */
+  overflow: hidden; /* */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.35); /* */
+  border-radius: 10px; /* */
+}
+
+.sobre-nos .photo img {
+  width: 100%; /* */
+  max-width: 286px; /* */
+  height: auto; /* */
+  object-fit: cover; /* */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25); /* */
+  display: block; /* */
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1); /* */
+  border-radius: 10px; /* */
+}
+
+.sobre-nos .glow-wrap {
+  overflow: hidden; /* */
+  position: absolute; /* */
+  width: 100%; /* */
+  height: 100%; /* */
+  top: 0; /* */
+}
+
+.sobre-nos .glow {
+  display: block; /* */
+  position: absolute; /* */
+  width: 40%; /* */
+  height: 200%; /* */
+  background: rgba(255, 255, 255, .2); /* */
+  top: 0; /* */
+  filter: blur(5px); /* */
+  transform: rotate(45deg) translate(-450%, 0); /* */
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1); /* */
+}
+
+.sobre-nos .photo:hover .glow {
+  transform: rotate(45deg) translate(450%, 0); /* */
+  transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1); /* */
+}
+
+.sobre-nos .photo:hover img,
+.sobre-nos .photo:hover .glow-wrap {
+  margin-top: 0; /* */
+}
+
+/* =================== DEPOIMENTOS =================== */
+.depoimentos { /* Section class */
+  margin-top: 60px; /* */
+}
+
+.fundo-depoimentos { /* Used on columns inside carousel items */
+  background-image: url(assets/img/fundo-depoimentos.png); /* */
+  background-size: contain; /* */
+  background-repeat: no-repeat; /* */
+  height: 300px; /* */
+  background-position: center; /* */
+}
+
+.fundo-depoimentos-center { /* Wrapper inside .fundo-depoimentos */
+  display: flex; /* */
+  flex-direction: column; /* */
+  justify-content: center; /* */
+  height: 100%; /* */
+  text-align: center; /* */
+}
+
+#carouselDoisItens .carousel-control-prev-icon, /* ID used in index.php */
+#carouselDoisItens .carousel-control-next-icon {
+  background-image: none; /* */
+}
+
+#carouselDoisItens .carousel-control-prev-icon::after,
+#carouselDoisItens .carousel-control-next-icon::after {
+  content: ''; /* */
+  display: inline-block; /* */
+  width: 2rem; /* */
+  height: 2rem; /* */
+  border-top: 0.35rem solid #103b63; /* */
+  border-right: 0.35rem solid #103b63; /* */
+}
+
+#carouselDoisItens .carousel-control-prev-icon::after {
+  transform: rotate(-135deg); /* */
+}
+
+#carouselDoisItens .carousel-control-next-icon::after {
+  transform: rotate(45deg); /* */
+}
+
+.depoimentos .stars { /* Stars container */
+  display: flex; /* */
+  justify-content: center; /* */
+}
+
+.depoimentos .stars i { /* FontAwesome icons */
+  margin: 2px 10px 10px; /* */
+  color: #103c64; /* */
+}
+
+.depoimentos .testimonial { /* Testimonial text block */
+  position: relative; /* */
+  max-width: 390px; /* */
+  margin: 0 auto; /* */
+  font-size: 12px; /* */
+  color: #444; /* */
+  text-align: center; /* */
+  line-height: 1.6; /* */
+  font-weight: 200; /* */
+}
+
+.depoimentos .testimonial strong { /* Strong tag within testimonial */
+  color: #444; /* */
+}
+
+.depoimentos .acoes { /* Container for video link and name */
+  display: flex; /* */
+  justify-content: space-between; /* */
+  padding: 0 6vh; /* */
+}
+
+.depoimentos .acoes a { /* "Ver Vídeo" link */
+  text-decoration: none; /* */
+  color: #103c64; /* */
+  font-size: 14px; /* */
+  transition: color 0.3s ease; /* */
+}
+
+.depoimentos .acoes a:hover {
+  color: #000; /* */
+}
+
+.depoimentos .nome { /* Client name block */
+  font-size: 12px; /* */
+  line-height: 14px; /* */
+}
+
+/* =================== MAPA CLIENTES =================== */
+.mapa-clientes .numeros { /* Container for counters */
+  display: flex; /* */
+  justify-content: flex-end; /* */
+  align-items: center; /* */
+  margin-bottom: 0; /* */
+}
+
+.mapa-container { /* ID #mapa-area uses this class implicitly if it's on the same element */
+  position: relative; /* */
+  text-align: center; /* */
+  margin-top: -50px; /* */
+}
+
+.mapa-mundi { /* Image of world map */
+  width: 100%; /* */
+  height: auto; /* */
+}
+
+.mapa-brasil { /* Image of Brazil map (ID #mapa-brasil also styled) */
+  position: absolute; /* */
+  top: 22%; /* */
+  left: 38%; /* */
+  transform: translate(-50%, -50%); /* */
+  width: 360px; /* */
+  opacity: 0; /* */
+  transition: opacity 0.6s ease; /* */
+}
+
+@keyframes scaleIn { /* Used by .mapa-brasil.scale-in (JS dependent) */
+  0% {
+    transform: translate(-50%, -50%) scale(0.3); /* */
+    opacity: 0; /* */
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1); /* */
+    opacity: 1; /* */
+  }
+}
+
+.mapa-brasil.scale-in { /* JS dependent for adding .scale-in */
+  animation: scaleIn 2s ease-out forwards, bounce 2s ease-in-out infinite 2s; /* */
+}
+
+@keyframes bounce { /* Used by .mapa-brasil.scale-in (JS dependent) */
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1); /* */
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.05); /* */
+  }
+}
+
+.counter { /* Class for counter numbers (IDs #counter-projetos, #counter-maquinas also styled) */
+  font-size: 2rem; /* */
+  font-weight: bold; /* */
+  margin-top: 20px; /* */
+  color: #003965; /* */
+}
+
+.numeros p { /* Text next to counters */
+  font-size: 20px; /* */
+  font-weight: 300; /* */
+  color: #003965; /* */
+  margin-right: 70px; /* */
+  margin-bottom: -20px; /* */
+  line-height: 22px; /* */
+  margin-left: 20px; /* */
+}
+
+.item-numero { /* Wrapper for a counter and its text */
+  display: flex; /* */
+  align-items: center; /* */
+}
+
+.frase { /* Text block in Mapa Clientes section */
+  color: #003965; /* */
+  width: 100%; /* */
+  padding: 2% 0 0 53%; /* */
+  font-weight: 200; /* */
+}
+
+/* =================== CAROUSEL INDICATORS & GENERAL CAROUSEL STYLES =================== */
+.carousel-indicators { /* Used for all carousels with indicators */
+  position: relative !important; /* */ /* Check if this global change is intended */
+}
+
+.carousel-indicators [data-bs-target] {
+  width: 25px !important; /* */
+  height: 25px !important; /* */
+  border-radius: 50% !important; /* */
+  background-color: #0f3c63 !important; /* */
+  border: 2px solid transparent !important; /* */
+  margin: 0 5px !important; /* */
+  opacity: 1 !important; /* */
+  transition: background-color 0.3s, transform 0.3s, border-color 0.3s, box-shadow 0.3s !important; /* */
+}
+
+@keyframes pulse { /* Used by indicator hover */
+  0% {
+    transform: scale(1); /* */
+    box-shadow: 0 0 0 0 rgba(15, 60, 99, 0.6); /* */
+  }
+  50% {
+    transform: scale(1.1); /* */
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(244, 244, 244, 0); /* */
+  }
+  100% {
+    transform: scale(1); /* */
+    box-shadow: 0 0 0 0 rgba(244, 244, 244, 0); /* */
+  }
+}
+
+.carousel-indicators [data-bs-target]:hover {
+  border-color: #0f3c63; /* */
+  transform: scale(1.1); /* */
+  box-shadow: 0 0 8px rgba(15, 60, 99, 0.6); /* */
+  animation: pulse 1s infinite; /* */
+}
+
+.carousel-indicators .active {
+  background-color: #333 !important; /* */
+  transform: scale(1.2); /* */
+  border-color: #0f3c63; /* */
+  box-shadow: 0 0 8px rgba(15, 60, 99, 0.6); /* */
+}
+
+.carousel-inner { /* General carousel inner style */
+  transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1) !important; /* */
+}
+
+/* Styles for .carousel-fade functionality */
+.carousel-fade .carousel-item {
+  opacity: 0; /* */
+  transition: opacity 0.6s ease; /* */
+  display: block; /* */
+}
+
+.carousel-fade .carousel-item.active,
+.carousel-fade .carousel-item-next.carousel-item-start,
+.carousel-fade .carousel-item-prev.carousel-item-end {
+  opacity: 1; /* */
+  z-index: 1; /* */
+}
+
+/* =================== MEDIA QUERIES (Styles for elements in index.php) =================== */
+
+@media (max-width: 992px) {
+  .banner-promocional h2 {
+    margin-top: 370px !important; /* */
+  }
+  .banner-promocional p {
+    height: auto !important; /* */
+  }
+  .banner-promocional {
+    height: auto; /* */
+    margin-top: -400px; /* */
+  }
+
+  a.learn-more-2 {
+    width: 270px; /* */
+  }
+  a.learn-more-5 .button-text-5 {
+    font-size: 18px !important; /* */
+    line-height: 2.3 !important; /* */
+  }
+
+  .produtos { /* Refers to the carousel container */
+    margin-top: -100px; /* */
+  }
+  .produtos .carousel-inner {
+    padding: 0 0 65px 0 !important; /* */
+  }
+
+  .carousel { /* General carousel adjustments */
+    margin-left: -10px; /* */
+  }
+  
+  .hover-frase { /* Inside .icone-bloco */
+    font-size: 10px !important; /* */
+    width: 42% !important; /* */
+  }
+
+  .icone-bloco .texto {
+    width: 90px !important; /* */
+  }
+  .icone-bloco .texto p {
+    font-size: 13px !important; /* */
+  }
+  .icone-bloco {
+    height: 215px !important; /* */
+  }
+
+  .diagonal-overlay-2 { /* For .fundo-produtos */
+    top: -10vw; /* */
+    left: -55vw; /* */
+    width: 150vw; /* */
+  }
+  .fundo-produtos {
+    height: auto; /* */
+    background-size: cover; /* */
+  }
+
+  .titulo-produtos {
+    padding: 15px; /* */
+  }
+  .titulo-produtos h2 {
+    font-size: 24px; /* */
+  }
+  .titulo-produtos h3 {
+    font-size: 16px; /* */
+    width: 100%; /* */
+    line-height: 27px; /* */
+    margin: 20px 0 15px; /* */
+  }
+  
+  .video-img { /* In .pos-vendas */
+    height: 240px !important; /* */
+  }
+
+  .mapa-container { /* ID #mapa-area */
+    padding: 130px 0 !important; /* */
+  }
+  .mapa-brasil { /* ID #mapa-brasil */
+    top: 8%; /* */
+    left: 22%; /* */
+    transform: translate(-50%, -50%); /* */
+    width: 31%; /* */
+    opacity: 0; /* */
+  }
+  .mapa-clientes .numeros {
+    justify-content: center !important; /* */
+  }
+  .mapa-clientes .numeros p {
+    margin-right: 20px; /* */
+    margin-left: 10px; /* */
+    font-size: 16px; /* */
+    text-align: center; /* */
+  }
+  .item-numero { /* For individual number + text block in .mapa-clientes */
+    display: block !important; /* */
+    text-align: center; /* */
+  }
+  .frase { /* Text associated with mapa-clientes */
+    padding: 0 !important; /* */
+    margin-top: 40px !important; /* */
+    text-align: center; /* */
+    width: 100%; /* */
+  }
+
+  .depoimentos {
+    margin-top: 0px !important; /* */
+  }
+  .fundo-depoimentos {
+    background-image: none !important; /* */
+    height: auto; /* */
+    margin-bottom: 30px; /* */
+  }
+  .depoimentos .carousel-inner { /* For #carouselDoisItens */
+    padding: 0 20px; /* */
+  }
+  #carouselDoisItens { /* Testimonials carousel */
+    padding: 20px 15px 0; /* */
+  }
+  .depoimentos .stars i {
+    margin: 0 7px 0 0; /* */
+    font-size: 14px; /* */
+  }
+  .depoimentos .testimonial {
+    max-width: 100%; /* */
+    margin: 20px auto; /* */
+    font-size: 14px; /* */
+    padding: 0 10px; /* */
+  }
+  .depoimentos .acoes {
+    flex-direction: column; /* */
+    align-items: center; /* */
+    padding: 10px; /* */
+    text-align: center; /* */
+  }
+  .depoimentos .acoes .video, /* Class .video inside .acoes */
+  .depoimentos .acoes .nome {  /* Class .nome inside .acoes */
+    margin: 10px 0; /* */
+  }
+  .depoimentos .acoes a {
+    font-size: 12px; /* */
+  }
+  .depoimentos .nome {
+    font-size: 11px; /* */
+  }
+
+  .sobre-nos {
+    background-size: cover; /* */
+    background-position: center; /* */
+  }
+  .sobre-nos h2 {
+    font-size: 24px !important; /* */
+    text-align: center; /* */
+  }
+  .sobre-nos p {
+    font-size: 15px; /* */
+    line-height: 24px; /* */
+    text-align: center; /* */
+  }
+  .sobre-nos-imagens {
+    padding-top: 8px; /* */
+    justify-content: flex-start; /* */
+  }
+  .sobre-nos .photo {
+    box-shadow: none; /* */
+    margin: 10px; /* */
+  }
+  .sobre-nos .photo img {
+    max-width: 180px; /* */
+  }
+  .frase-sobre {
+    position: static; /* */
+    margin-top: 20px; /* */
+    text-align: center; /* */
+    width: 100%; /* */
+  }
+  .frase-sobre h4 {
+    font-size: 20px; /* */
+    text-align: center; /* */
+  }
+
+  .pos-vendas h2 {
+    font-size: 30px; /* */
+  }
+  .logo { /* In pos-vendas */
+    width: auto !important; /* */
+    flex-direction: column; /* */
+  }
+
+  .mapa-clientes { /* Section class */
+    margin-top: 0px; /* */
+  }
+
+  #carrosel-promocional .carousel-item {
+    min-height: auto !important; /* */
+    height: auto !important; /* */
+  }
+}
+
+
+@media (max-width: 767.98px) { /* Typically for mobile phones */
+  .frase-sobre h4 { /* In .sobre-nos section */
+    font-size: 1.5rem; /* */
+    text-align: center; /* */
+    margin-top: 15px; /* */
+  }
+
+  .titulo-produtos h2 {
+    font-size: 20px; /* */
+  }
+  .titulo-produtos h3 {
+    font-size: 14px; /* */
+    line-height: 1.5; /* */
+  }
+}
+
+
+@media (max-width: 480px) { /* Very small screens */
+  .diagonal-overlay-2 { /* In .fundo-produtos */
+    top: -20vw; /* */
+    left: -42vw; /* */
+    width: 200vw; /* */
+  }
+
+  .titulo-produtos h2 {
+    font-size: 18px; /* */
+    margin-top: 170px; /* */
+  }
+  .titulo-produtos h3 {
+    font-size: 12px; /* */
+    width: 100%; /* */
+  }
+  
+  a.learn-more-2 {
+    width: 90%; /* */
+    margin: 0 auto; /* */
+  }
+  a.learn-more-2 .button-text-2 {
+    font-size: 20px; /* */
+  }
+
+  .solda { font-size: 36px; } /* */
+  .laser { font-size: 50px; } /* */
+  .banner-promocional h2 { margin-top: 280px !important; } /* */
+
+  .mapa-brasil { /* ID #mapa-brasil */
+    width: 50%; /* */
+    left: 50%; /* */
+    top: 15%; /* */
+  }
+  .numeros p { font-size: 14px; margin-right: 10px; margin-left: 10px;} /* */
+  .counter { font-size: 1.5rem; } /* */
+}
+
+
+@media (min-width: 992px) { /* Larger screens, e.g., desktops */
+  .container { /* Common Bootstrap class, if you want to override */
+    max-width: 1200px; /* */
+    margin: 0 auto; /* */
+  }
+}
+
+/* Styles for footer elements that might be included via get_footer() if selectors match */
+footer p {
+  margin-bottom: 20px; /* */
+  color: #fff; /* */
+  font-size: 15px; /* */
+  font-weight: 200; /* */
+  line-height: 30px; /* */
+}
+footer h3 {
+  color: #fff; /* */
+  text-decoration: none; /* */
+  font-weight: 500; /* */
+  font-size: 26px; /* */
+  margin-bottom: 25px; /* */
+}
+footer a {
+  color: #fff; /* */
+  transition: color 0.3s ease; /* */
+  text-decoration: none; /* */
+  font-size: 15px; /* */
+  font-weight: 200; /* */
+}
+footer a:hover {
+  color: #7fb0dd; /* */
+}
+
+/* Media query adjustments for footer elements, if used by get_footer() */
+@media (max-width: 992px) {
+  footer p, footer h3 {
+    text-align: center; /* */
+  }
+  footer .row > div { /* If Bootstrap grid is used in footer */
+    padding-left: 0px; /* */
+    text-align: center; /* */
+  }
+  footer .empresa-footer ul { /* If .empresa-footer is used */
+    justify-content: center; /* */
+    margin-left: 0; /* */
+  }
+  .duas-colunas li { /* If .duas-colunas is used in footer */
+    width: 100%; /* */
+    text-align: center; /* */
+  }
+  .duas-colunas { /* If .duas-colunas is used in footer */
+    margin-left: 0; /* */
+    align-items: center; /* */
+  }
+}
+
+#carrosel-promocional,
+#carrosel-promocional .carousel-inner,
+#carrosel-promocional .carousel-item {
+    height: 100vh; /* Define a altura como 100% da altura da viewport */
+    min-height: 400px; /* Opcional: define uma altura mínima para telas muito pequenas */
+}
+
+#carrosel-promocional .carousel-item img {
+    object-fit: cover; /* Garante que a imagem cubra todo o espaço sem distorcer */
+    height: 100%;
+    width: 100%;
+}
+
+/* Opcional: Para alinhar o conteúdo verticalmente dentro do slide */
+#carrosel-promocional .carousel-item .row {
+    height: 100%;
+    display: flex;
+    align-items: center; /* Alinha verticalmente ao centro */
+}
+
+/* Ajuste para o conteúdo textual e a imagem dentro do .row */
+#carrosel-promocional .carousel-item .solda-laser,
+#carrosel-promocional .carousel-item .col-md-9, /* Para o primeiro slide */
+#carrosel-promocional .carousel-item .col-md-8  /* Para os outros slides */ {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza o conteúdo verticalmente dentro da coluna */
+}

@@ -1,0 +1,75 @@
+/* css/processa-formulario.css */
+
+section.trabalhe-conosco .titulo {
+  padding: 2rem 0;
+  background-color: #f8f9fa;
+  margin-bottom: 2rem;
+}
+
+section.trabalhe-conosco .titulo h2 {
+  text-align: center;
+  color: #0f3c63;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+section.trabalhe-conosco .container-fluid.py-5 > p { /* Target the main intro paragraph */
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 0 10%; /* Example to narrow it */
+}
+
+section.trabalhe-conosco form {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.05);
+  max-width: 800px; /* Example max-width */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section.trabalhe-conosco .form-label {
+  font-weight: 500;
+  color: #333;
+}
+
+section.trabalhe-conosco .btn-primary { /* Assuming Bootstrap primary button */
+  background-color: #0f3c63;
+  border-color: #0f3c63;
+  padding: 0.75rem 2rem;
+}
+section.trabalhe-conosco .btn-primary:hover {
+  background-color: #0a2c47;
+  border-color: #0a2c47;
+}
+
+/* Styles for dynamically echoed messages (success/error for upload) */
+.form-submission-message { /* You'd need to wrap PHP echos in a div with this class */
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  text-align: center;
+}
+.form-submission-message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+.form-submission-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Styles for mapa-clientes on this page */
+/* If mapa-clientes is identical on all pages, move to style.css */
+section.trabalhe-conosco .mapa-clientes {
+  padding: 3rem 0;
+  /* background-color: #e9ecef; Example different bg */
+}
+/* (Rest of .mapa-clientes styles similar to contato.css) */

@@ -1,0 +1,222 @@
+/* =================================================================== */
+/* == ESTILOS PARA A PÁGINA DE ERRO 404 (VERSÃO FINAL - ANIMADA)    == */
+/* =================================================================== */
+
+/* Animação para o conteúdo principal */
+@keyframes fadeInUpV2 {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animação para os ícones flutuantes */
+@keyframes floatingIcons {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-80px) rotate(30deg);
+    opacity: 0;
+  }
+}
+
+
+/* == CONTAINER PRINCIPAL == */
+/* Ajustado para centralizar perfeitamente na tela */
+.error-404-v2 {
+    position: relative; /* Necessário para posicionar os ícones */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Ocupa toda a altura da tela */
+    padding: 40px 15px;
+    background-color: #f0f5fa;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden; /* Garante que os ícones não saiam da seção */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.error-container-v2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 650px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative; /* Garante que o conteúdo fique sobre os ícones */
+    z-index: 2;
+}
+
+
+/* == ESTILOS DO CONTEÚDO == */
+
+.error-heading-v2 {
+    font-size: clamp(120px, 30vw, 220px);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: -40px;
+    z-index: 1;
+    position: relative;
+    background: linear-gradient(45deg, #103b63, #7fb0dd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeInUpV2 0.8s 0.2s ease-out both;
+}
+
+.error-box-v2 {
+    background-color: #ffffff;
+    padding: 40px 50px;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 2;
+    animation: fadeInUpV2 0.8s 0.4s ease-out both;
+}
+
+.error-box-v2 .titulo-pagina {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #103b63;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.error-box-v2 p {
+    color: #343a40;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin: 20px 0 35px 0;
+}
+
+
+/* == FORMULÁRIO DE BUSCA E BOTÃO == */
+
+.error-box-v2 .search-form-404 {
+    margin: 0 auto 35px;
+}
+.error-box-v2 .search-form-404 .search-form {
+    background-color: #f3f4f4;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 5px 15px;
+    transition: all 0.3s ease;
+}
+.error-box-v2 .search-form-404 .search-form:hover {
+    border-color: #103b63;
+    box-shadow: 0 4px 15px rgba(16, 59, 99, 0.1);
+}
+.error-box-v2 .search-form-404 .search-field {
+    color: #002F52;
+}
+.error-box-v2 .search-form-404 .search-field::placeholder {
+    color: #6c757d !important;
+}
+.error-box-v2 .search-submit {
+    color: #103b63;
+}
+.error-box-v2 .search-submit:hover {
+    color: #000;
+}
+
+.error-box-v2 .btn-banner {
+    background-color: #002F52;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 16px 34px;
+    transition: all 0.3s ease;
+}
+.error-box-v2 .btn-banner:hover {
+  background-color: #062745;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(1, 20, 34, 0.2);
+}
+
+
+/* == NOVOS ESTILOS PARA ÍCONES ANIMADOS == */
+
+.floating-icons-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.floating-icons-container i {
+    position: absolute;
+    color: rgba(16, 59, 99, 0.15); /* Cor suave para não distrair */
+    animation: floatingIcons 12s infinite ease-in-out;
+}
+
+.icon-1 {
+    font-size: 40px;
+    top: 15%;
+    left: 10%;
+    animation-delay: 0s;
+}
+.icon-2 {
+    font-size: 60px;
+    top: 20%;
+    right: 12%;
+    animation-delay: 2s;
+}
+.icon-3 {
+    font-size: 30px;
+    bottom: 10%;
+    left: 20%;
+    animation-delay: 5s;
+}
+.icon-4 {
+    font-size: 50px;
+    bottom: 15%;
+    right: 25%;
+    animation-delay: 7s;
+}
+.icon-5 {
+    font-size: 45px;
+    top: 50%;
+    left: 30%;
+    animation-delay: 9s;
+}
+.icon-6 {
+    font-size: 55px;
+    top: 60%;
+    right: 8%;
+    animation-delay: 11s;
+}
+
+
+/* == AJUSTES RESPONSIVOS == */
+
+@media (max-width: 768px) {
+    .error-heading-v2 {
+        margin-bottom: -20px;
+    }
+    .error-box-v2 {
+        padding: 30px;
+    }
+    .error-box-v2 .titulo-pagina {
+        font-size: 1.8rem;
+    }
+    .error-box-v2 p {
+        font-size: 1rem;
+    }
+    /* Oculta alguns ícones em telas menores para não poluir */
+    .icon-5, .icon-6 {
+        display: none;
+    }
+}

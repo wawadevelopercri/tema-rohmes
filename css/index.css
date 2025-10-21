@@ -1,0 +1,1495 @@
+/* =================================================================== */
+/* == ESTILOS PARA A SEÇÃO DE PRODUTOS (<section class="produtos">) == */
+/* =================================================================== */
+
+.produtos {
+  background: linear-gradient(180deg,rgba(255, 255, 255, 1) 0%, rgba(241, 241, 241, 1) 100%);
+  margin-top: 50px;
+}
+
+.fundo-produtos {
+    position: relative;
+    padding-bottom: 50px;
+    padding-left: 30px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.diagonal-overlay-2 {
+    position: absolute;
+    left: -11vw;
+    width: 111vw; /* Adicione esta linha */
+    height: 1000px;
+    pointer-events: none;
+    max-width: none;
+}
+
+.titulo-produtos {
+    position: relative;
+    width: 50%;
+}
+
+.titulo-produtos h2 {
+    color: #fff;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1.2;
+    font-family: 'Poppins', sans-serif;
+    padding-top: 100px;
+    margin-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+  .titulo-produtos h2 {
+    margin-bottom: 0px;
+}
+}
+
+
+
+
+.titulo-produtos b {
+    font-weight: bold;
+}
+
+.produtos .col-12 {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.categoriaSwiper {
+  width: 100%;
+  padding: 20px 0;
+  position: relative;
+  /* ALTERAÇÃO: Trocado de 'clip' para 'visible' para as setas aparecerem fora */
+  overflow: visible; 
+}
+
+.categoriaSwiper .swiper-slide {
+  width: auto;
+  min-width: 250px;
+  box-sizing: border-box;
+}
+
+/* Bloco de código com a transição mais suave */
+.produtos .swiper-slide, .produtos .categoria-slide {
+    height: 421px;
+    aspect-ratio: 4 / 3;
+    border-radius: 0;
+    border-bottom-right-radius: 70px;
+    border-top-left-radius: 70px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins';
+    transition: border-color 0.3s ease;
+    /* Removemos a transição de background-size daqui */
+}
+
+/* NOVO: Pseudo-elemento para a imagem de fundo */
+.categoria-slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Usamos a variável --bg-image que definimos no PHP */
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    /* A transição agora é no 'transform' (muito mais rápido) */
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* NOVO: Aplicamos o zoom no pseudo-elemento */
+.categoria-slide:hover::before {
+    transform: scale(1.15); /* Aplicamos o zoom com scale() */
+}
+
+/* Sobrescreve a regra antiga para garantir que o overlay fique por cima */
+.produtos .overlay {
+    background-color: rgba(9, 35, 59, 0.6);
+    position: absolute;
+    inset: 0;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.produtos .overlay:hover .nome {
+  transform: translateY(-90px);
+}
+
+.produtos .nome {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    z-index: 2;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    text-transform: uppercase;
+}
+
+.produtos .hover-content {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 2;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    inset: 0;
+    text-align: center;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.produtos .overlay:hover .hover-content {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.produtos .descricao {
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-transform: lowercase;
+}
+
+.produtos .descricao::first-letter {
+  text-transform: uppercase;
+}
+
+.border-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+}
+
+.categoria-slide:hover .border-svg {
+  opacity: 1;
+}
+
+.border-path {
+  fill: transparent;
+  stroke-width: 3px;
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  filter: drop-shadow(0 0 4px #fff) drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+.categoria-slide:hover .border-path {
+  stroke-dashoffset: 0;
+}
+
+.produtos .swiper-pagination {
+    margin-top: 50px;
+}
+
+.veja-mais {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+
+.fundo .swiper-horizontal .swiper-pagination-bullet {
+    width: 25px;
+    height: 25px;
+    background-color: #003964;
+    opacity: 1;
+    border: none;
+}
+
+.fundo .swiper-pagination-bullet-active {
+    background-color: #001e35 !important;
+}
+
+/* =================================================================== */
+/* == ESTILOS PARA A SEÇÃO BANNER PROMOCIONAL                       == */
+/* =================================================================== */
+
+.banner-promocional {
+    background-image: url(../assets/img/fundo-banner-promocional-2.png);
+    background-size: contain;
+    margin-top: clamp(0px, -25vw, -100px);
+    z-index: 0;
+    position: relative;
+    padding: 50px 0px 0px 0px;
+    background-repeat: no-repeat;
+}
+
+.banner-promocional h2 {
+    line-height: 47px;
+    margin-top: 120px;
+}
+
+.banner-promocional p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    line-height: 24px;
+    color: #062745;
+}
+
+.swiper-promocional{
+  margin-top: -150px;
+}
+
+.solda-laser {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 170px;
+}
+.solda {
+  font-family: 'Poppins', sans-serif;
+  color: #062745;
+  font-size: 50px;
+  font-weight: 300;
+}
+
+.laser {
+  font-family: 'Poppins', sans-serif;
+  color: #062745;
+  font-size: 78px;
+  font-weight: 900;
+}
+
+.banner-promocional .swiper-pagination {
+    margin-top: 0px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.swiper-pagination-promocional .swiper-pagination-bullet {
+  width: 25px !important;
+  height: 25px !important;
+  border-radius: 50% !important;
+  background-color: #0f3c63 !important;
+  border: 2px solid transparent !important;
+  margin: 0 5px !important;
+  opacity: 1 !important;
+  transition: background-color 0.3s, transform 0.3s, border-color 0.3s, box-shadow 0.3s !important;
+  cursor: pointer;
+}
+
+.swiper-pagination-promocional .swiper-pagination-bullet:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(15, 60, 99, 0.6);
+}
+
+.swiper-pagination-promocional .swiper-pagination-bullet-active {
+  background-color: #103c64 !important;
+  transform: scale(1.2);
+  border-color: #0f3c63;
+  box-shadow: 0 0 8px rgba(15, 60, 99, 0.6);
+}
+
+/* =================================================================== */
+/* == ESTILOS PARA A SEÇÃO PÓS-VENDAS                               == */
+/* =================================================================== */
+
+.pos-vendas .row {
+    position: relative; /* ADICIONADO: Essencial para o z-index funcionar corretamente */
+}
+
+.pos-vendas h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #103b63;
+    font-size: 38px;
+    font-weight: 700;
+    text-align: left;
+    margin: 0px 0px 50px 0px;
+}
+
+.video iframe {
+    border-radius: 15px;
+}
+
+.pos-vendas .certifications-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+}
+.pos-vendas p{
+    line-height: 31px;
+    font-size: 15px;
+}
+.pos-vendas b {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    padding: 6px 8px; /* <-- Valor alterado */
+    margin: 0 3px;
+    font-weight: 500;
+    z-index: 1;
+    vertical-align: middle;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+.pos-vendas b::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* substitui top/left/width/height para alinhar perfeitamente */
+  background: #0c3e68; /* azul escuro */
+  transform: skew(-10deg); /* ângulo mais suave e elegante */
+  border-radius: 3px; /* cantos levemente arredondados */
+  z-index: -1;
+}
+.pos-vendas .certification-item {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 160px;
+    position: relative;
+    height: 160px;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    background-color: #0e385d;
+    border-bottom-right-radius: 22px;
+    border-top-left-radius: 22px;
+}
+
+.pos-vendas .icon-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    z-index: 2;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.pos-vendas .icon-wrapper img {
+    width: 60%;
+    filter: brightness(0) invert(1);
+}
+
+.pos-vendas .description {
+    position: absolute;
+    top: 105%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    height: auto;
+    background-color: #0f3c63;
+    color: #fff;
+    border: 1px solid #0f3c63;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    font-weight: 400;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 30; /* AUMENTADO: Garante que o tooltip fique acima de tudo */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.pos-vendas .description::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 9px;
+    border-style: solid;
+    border-color: transparent transparent #062745 transparent;
+}
+
+.pos-vendas .certification-item:hover .description {
+    opacity: 1;
+    visibility: visible;
+}
+
+.botao {
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 50px;
+}
+
+/* =================================================================== */
+/* == ESTILOS PARA A SEÇÃO SOBRE NÓS                                == */
+/* =================================================================== */
+
+.space {
+    display: block; /* Visível em desktop, escondido em mobile */
+}
+
+.secao-sobre-nos-fundo {
+  min-height: 100vh;
+  width: 100%;
+  background-image: url('../assets/img/fundo-sobre-nos-2.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  padding: 80px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.secao-sobre-nos-fundo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(16, 60, 100, 0.9);
+  z-index: 1;
+}
+
+.conteudo-sobreposto {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  color: white;
+}
+
+.conteudo-sobreposto h2,
+.conteudo-sobreposto h4 {
+    color: white;
+}
+
+.video-flutuante {
+  float: right;
+  width: 48%;
+  margin-left: 30px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.sobre-nos h2 {
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  font-size: 38px;
+  font-weight: 700;
+  text-align: left;
+  padding-left: 30px;
+}
+
+.sobre-nos p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+  color: #fff;
+  line-height: 40px;
+  text-align: left;
+  padding-left: 30px;
+}
+
+.frase-sobre {
+  margin-top: 20px;
+  padding: 10px 0;
+}
+
+.frase-sobre h4 {
+    margin: 0 0 50px 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+/* Para limpar o float do vídeo */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* =================================================================== */
+/* == ESTILOS PARA A SEÇÃO DEPOIMENTOS                              == */
+/* =================================================================== */
+
+.depoimentos {
+    padding: 50px 10px 50px 10px;
+    margin-top: 0px;
+}
+
+.depoimentos h2 {
+  margin-bottom: 50px;
+  color: #002F52;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+}
+
+.depoimentos .swiper {
+    height: 370px;
+}
+
+.video-slide-item {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  height: 300px;
+  border-radius: 12px;
+  border: 2px solid #e0e0e0;
+  box-sizing: border-box;
+  padding: 6px;
+}
+
+.video-slide-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+  border-radius: 6px;
+}
+
+.video-slide-item:hover img {
+  transform: scale(1.1);
+}
+
+.video-slide-item::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  border-radius: 6px;
+  background-color: rgba(9, 35, 59, 0.6);
+  z-index: 1;
+  transition: background-color 0.3s ease;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  padding: 20px;
+  z-index: 2;
+}
+
+.video-slide-item:hover .video-overlay {
+  opacity: 1;
+}
+
+.video-overlay-text {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.video-overlay-play-icon {
+  font-size: 4rem;
+  color: #fff;
+}
+
+.nossos-clientes-swiper .swiper-pagination {
+    margin-bottom: 10px;
+}
+
+.depoimentos .swiper-pagination-bullet {
+  width: 25px !important;
+  height: 25px !important;
+  border-radius: 50% !important;
+  background-color: #0f3c63 !important;
+  border: 2px solid transparent !important;
+  margin: 0 5px !important;
+  opacity: 1 !important;
+  transition: background-color 0.3s, transform 0.3s, border-color 0.3s, box-shadow 0.3s !important;
+  cursor: pointer;
+}
+
+.depoimentos .swiper-pagination-bullet:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(15, 60, 99, 0.6);
+}
+
+.depoimentos .swiper-pagination-bullet-active {
+  background-color: #103c64 !important;
+  transform: scale(1.2);
+  border-color: #0f3c63;
+  box-shadow: 0 0 8px rgba(15, 60, 99, 0.6);
+}
+
+/* =================================================================== */
+/* == ESTILOS PARA A SEÇÃO DE LOGOS DE CLIENTES (MARQUEE)           == */
+/* =================================================================== */
+
+.clientes {
+    background-color: #002F52;
+    padding: 50px 0 50px 0;
+}
+
+.clientes-marquee {
+  overflow: hidden;
+  width: 100%;
+}
+
+.clientes-track {
+    display: flex;
+    width: max-content;
+    animation: slide-left 40s linear infinite;
+    align-items: center;
+    gap: 100px;
+}
+
+.cliente-logo img {
+    height: 50px;
+    object-fit: contain;
+    display: block;
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* =================================================================== */
+/* == ESTILOS PARA A SEÇÃO MAPA DE CLIENTES                         == */
+/* =================================================================== */
+
+.mapa-clientes .numeros {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.item-numero {
+  display: flex;
+  align-items: center;
+}
+
+.counter {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 20px;
+  font-family: 'Poppins', sans-serif;
+  color: #003965;
+}
+
+.numeros p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: #003965;
+  margin: 0 70px -20px 20px;
+  line-height: 22px;
+}
+
+.frase {
+    font-family: 'Poppins', sans-serif;
+    color: #003965;
+    width: 100%;
+    padding: 2% 0% 3% 54%;
+    font-weight: 200;
+    z-index: 1;
+    position: relative;
+}
+
+.mapa-container {
+  position: relative;
+  text-align: center;
+  margin-top: -80px;
+}
+
+.mapa-mundi {
+  width: 100%;
+  height: auto;
+}
+
+.mapa-brasil {
+  position: absolute;
+  top: 22%;
+  left: 38%;
+  transform: translate(-50%, -50%);
+  width: 360px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.mapa-brasil.scale-in {
+  animation: scaleIn 2s ease-out forwards, bounce 2s ease-in-out infinite 2s;
+}
+
+.sede-ponto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 4px #fff, 0 0 7px #fff, 0 0 10px #fff;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.sede-ponto.pontos-visiveis {
+  opacity: 1;
+  visibility: visible;
+  z-index: 10;
+  animation: blink-animation 1.5s infinite;
+}
+
+@keyframes scaleIn {
+  0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.05); }
+}
+
+@keyframes blink-animation {
+  0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.7); }
+}
+
+
+/* =================================================================== */
+/* == ESTILOS GERAIS DE BOTÕES (LEARN MORE)                         == */
+/* =================================================================== */
+
+a.learn-more,
+a.learn-more-2,
+a.learn-more-5 {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: max-content; /* Linha alterada */
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    height: auto;
+}
+
+.learn-more .circle,
+.learn-more-2 .circle-2,
+.learn-more-5 .circle-5 {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    margin: 0;
+    border-radius: 1.625rem;
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+.learn-more .button-text,
+.learn-more-2 .button-text-2,
+.learn-more-5 .button-text-5 {
+    position: relative;
+    z-index: 2;
+    display: block;
+    text-align: left;
+    white-space: nowrap;
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+.learn-more .icon,
+.learn-more-2 .icon-2,
+.learn-more-5 .icon-5 {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+.learn-more .icon.arrow,
+.learn-more-2 .arrow-2,
+.learn-more-5 .arrow-5 {
+    width: 16px;
+    height: 0.125rem;
+    background: none;
+}
+
+.learn-more .icon.arrow::before,
+.learn-more-2 .arrow-2::before,
+.learn-more-5 .arrow-5::before {
+    position: absolute;
+    content: '';
+    width: 0.625rem;
+    height: 0.625rem;
+    transform: rotate(45deg);
+}
+
+/* --- Botão Padrão (Saiba mais escuro) - .learn-more --- */
+.learn-more .circle {
+    width: 40px;
+    height: 40px;
+    background: #103b63;
+}
+.learn-more .icon.arrow { left: 8px; }
+.learn-more .icon.arrow::before { top: -0.25rem; right: 0.0625rem; border-top: 0.125rem solid #fff; border-right: 0.125rem solid #fff; }
+.learn-more .button-text {
+    padding: 0.4rem 1rem 0.5rem 2.8rem;
+    color: #103b63;
+    font-weight: 400;
+    font-size: clamp(0.85rem, 0.8rem + 0.25vw, 1rem);
+    margin-left: 10px;
+}
+a.learn-more:hover .circle { width: 100%; }
+a.learn-more:hover .icon.arrow { transform: translate(1rem, 0); }
+a.learn-more:hover .button-text { color: #fff; }
+
+/* Variação para a seção de produtos */
+.produtos .learn-more .circle {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+}
+.produtos .learn-more .button-text {
+    color: #fff;
+}
+.produtos .learn-more .icon.arrow::before {
+    border-top-color: #000000;
+    border-right-color: #000000;
+}
+.produtos a.learn-more:hover .button-text {
+    color: #000000;
+}
+.produtos a.learn-more:hover .icon.arrow::before {
+    border-top-color: #000000;
+    border-right-color: #000000;
+}
+
+
+/* --- Botão learn-more-2 (grande, fundo branco no hover) --- */
+a.learn-more-2:hover { color: #113b63; }
+.learn-more-2 .circle-2 { width: 43px; height: 43px; background: #fff; }
+.learn-more-2 .arrow-2 { left: 12px; }
+.learn-more-2 .arrow-2::before { top: -0.25rem; right: 0.0625rem; border-top: 0.125rem solid #113b63; border-right: 0.125rem solid #113b63; }
+.learn-more-2 .button-text-2 {
+    padding: 0.1rem 1.5rem 0.75rem 4rem;
+    color: #fff;
+    font-weight: 200;
+    font-size: clamp(1.1rem, 0.8rem + 1.2vw, 1.56rem);
+}
+a.learn-more-2:hover .circle-2 { width: 100%; }
+a.learn-more-2:hover .arrow-2 { transform: translate(1rem, 0); }
+a.learn-more-2:hover .button-text-2 { color: #113b63; }
+
+/* --- Botão learn-more-5 (grande, fundo cinza-azulado) --- */
+a.learn-more-5:hover { color: #113b63; }
+.learn-more-5 .circle-5 {
+    width: 43px;
+    height: 43px;
+    background: #0e385d;
+}
+.learn-more-5 .arrow-5 { left: 12px; }
+.learn-more-5 .arrow-5::before {
+    top: -0.25rem;
+    right: 0.065rem;
+    border-top: 0.125rem solid #ffffff;
+    border-right: 0.125rem solid #ffffff;
+}
+
+.learn-more-5 .button-text-5:hover {
+    color: #fff;
+}
+.learn-more-5 .button-text-5 {
+    padding: 0.3rem 1.5rem 0.75rem 4rem;
+    color: #0f3c63;
+    font-weight: 300;
+    font-size: clamp(0.9rem, 0.8rem + 1vw, 1.2rem);
+}
+a.learn-more-5:hover .circle-5 { width: 100%; }
+a.learn-more-5:hover .arrow-5 { transform: translate(1rem, 0); }
+
+
+/* --- Variação 3 (Fundo Azul Escuro) - .learn-more.variant-3 --- */
+.learn-more.variant-3 .circle { width: 48px; height: 48px; background: #103b63; }
+.learn-more.variant-3 .icon.arrow::before { right: -2px; border-color: #fff; }
+.learn-more.variant-3 .button-text {
+    padding: 0.7rem 1.5rem 0.7rem 4rem;
+    color: #103b63;
+    font-weight: 400;
+    font-size: clamp(0.9rem, 0.8rem + 0.5vw, 1.1rem);
+}
+.learn-more.variant-3:hover .circle { width: 100%; }
+.learn-more.variant-3:hover .button-text { color: #fff; }
+
+
+/* =================================================================== */
+/* == ESTILOS RESPONSIVOS (MEDIA QUERIES)                           == */
+/* =================================================================== */
+
+@media (min-width: 1600px) {
+  .diagonal-overlay-2 {
+    left: clamp(-300px, -11vw, 0px);
+    width: 100%;
+    height: auto;
+    max-width: 2500px;
+  }
+  .fundo-produtos {
+    height: auto;
+    min-height: 902px;
+    padding-bottom: 50px;
+  }
+}
+
+@media (max-width: 992px) {
+  .veja-mais {
+    margin: 0 auto;
+    padding: 0;
+  }
+  a.learn-more-2 .button-text-2 {
+    font-size: 20px;
+    line-height: 1.7;
+    color: #0f3c63;
+  }
+  .learn-more-2 .circle-2 {
+    background: #0f3c63;
+  }
+  .learn-more-2 .arrow-2::before {
+    border-top: 0.125rem solid #fff;
+    border-right: 0.125rem solid #fffd;
+  }
+  a.learn-more-2:hover .button-text-2 {
+    color: #ffffff;
+  }
+  a.learn-more-2:hover .circle-2 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .botao-produtos, .botao-produtos-2 {
+    font-size: 12px;
+}
+
+
+  /* Seção Produtos */
+  .fundo-produtos .diagonal-overlay-2 {
+    display: none;
+  }
+  .fundo-produtos {
+    background-color: #0f3c63;
+    background-image: none;
+    padding: 40px 0;
+    height: auto !important;
+    overflow: hidden;
+  }
+  .titulo-produtos {
+    width: 100%;
+    max-width: 100%;
+    flex-grow: 1;
+    padding: 10px;
+    padding-bottom: 10px;
+  }
+    .titulo-produtos h2 {
+        padding-top: 20px;
+        padding-bottom: 40px;
+        font-size: 29px;
+        text-align: center;
+    }
+  .categoriaSwiper {
+    padding-bottom: 0 !important;
+    margin-bottom: 30px !important;
+  }
+  .categoriaSwiper .swiper-slide {
+    min-width: auto;
+  }
+  .categoriaSwiper .swiper-pagination {
+    position: relative;
+    bottom: auto;
+    margin-top: 25px;
+  }
+  .produtos .overlay:hover .nome {
+    transform: translateY(-100px);
+  }
+  .veja-mais {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  a.learn-more-2 .button-text-2 {
+    color: #ffffff;
+    font-size: 20px;
+  }
+  .learn-more-2 .circle-2 {
+    background: #ffffff;
+  }
+  .learn-more-2 .arrow-2::before {
+    border-top-color: #0f3c63;
+    border-right-color: #0f3c63;
+  }
+  a.learn-more-2:hover .button-text-2 {
+    color: #0f3c63;
+  }
+
+  /* Banner Promocional */
+  .banner-promocional {
+    height: auto !important;
+    min-height: auto !important;
+    margin-top: 0px;
+    background-size: cover;
+  }
+  .banner-promocional h2 {
+    margin: 0 auto;
+    text-align: center;
+  }
+  .banner-promocional p {
+    height: auto !important;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .banner-promocional .swiper-pagination {
+    margin-top: 70px;
+  }
+
+  .swiper-promocional {
+    margin-top: 0px;
+  }
+
+  /* Seção Pós-vendas */
+  .pos-vendas h2 {
+    font-size: 28px;
+    text-align: center;
+    padding-left: 0;
+  }
+  .pos-vendas p {
+    text-align: center;
+  }
+  .pos-vendas b {
+    white-space: normal;
+  }
+  .pos-vendas .certifications-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .pos-vendas .certification-item {
+    height: auto;
+    width: 90%;
+    max-width: 350px;
+    padding: 2rem 1.5rem;
+    cursor: default;
+  }
+  .pos-vendas .icon-wrapper,
+  .pos-vendas .description {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    width: 100%;
+    height: auto;
+  }
+  .pos-vendas .icon-wrapper {
+    margin-bottom: 1.5rem;
+  }
+  .pos-vendas .icon-wrapper img {
+    width: 43%;
+  }
+  .pos-vendas .description {
+    box-shadow: none;
+    border: none;
+    background-color: transparent;
+    color: #ffffff;
+    padding: 0;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 400;
+  }
+  .pos-vendas .description::before {
+    display: none;
+  }
+
+  /* Seção Sobre Nós */
+  .space {
+    display: none;
+  }
+  .video-flutuante {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+  }
+  .sobre-nos h2 {
+    font-size: 28px !important;
+    text-align: center;
+    margin: 50px 0;
+    padding-left: 0 !important;
+  }
+  .sobre-nos p {
+    font-size: 21px;
+    line-height: 33px;
+    text-align: center;
+    padding-left: 0 !important;
+  }
+  .frase-sobre h4 {
+    text-align: center;
+    margin: 0;
+    font-size: 18px;
+  }
+  .video {
+    margin-bottom: 50px;
+  }
+
+  /* Seção Depoimentos e Clientes */
+ 
+  .clientes {
+    padding: 10px 0;
+    margin-top: -1px;
+  }
+
+  /* Seção Mapa */
+  .mapa-clientes {
+    margin-top: 0;
+  }
+ .mapa-container {
+        padding: 130px 0 !important;
+        margin-bottom: -100px;
+    }
+  .mapa-brasil {
+    top: 40%;
+    left: 37%;
+    width: 31%;
+  }
+  .mapa-clientes .numeros {
+    justify-content: center !important;
+  }
+  .item-numero {
+    display: block !important;
+  }
+  .mapa-clientes .numeros p {
+    margin: 0 20px 0 10px;
+    font-size: 16px;
+  }
+  .frase {
+    padding: 0 !important;
+    margin-top: 40px !important;
+    text-align: center;
+    font-size: 20px;
+  }
+}
+
+.swiper-pagination-categorias .swiper-horizontal .swiper-pagination-bullet {
+    width: 25px;
+    height: 25px;
+    background-color: #fff;
+    opacity: 1;
+    border: 1px solid #b8b8b8;
+
+}
+
+
+/* =================================================================== */
+/* == CSS ESPECÍFICO PARA OS SWIPERS DA HOMEPAGE (INDEX.PHP)        == */
+/* =================================================================== */
+
+/* --- Estilos Gerais para os Swipers da Página --- */
+/* Este padding é útil para dar espaço para a paginação abaixo dos slides */
+.swiper {
+  padding-bottom: 40px;
+}
+
+/* --- Estilos da Paginação (Bullets) --- */
+/* Container da paginação */
+.swiper-pagination {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+/* Estilo base dos 'bullets' (bolinhas) */
+.swiper-pagination-bullet {
+  background-color: #fff;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  margin: 0 6px !important;
+  position: relative;
+}
+
+.swiper-horizontal .swiper-pagination-bullet {
+    width: 25px;
+    height: 25px;
+    background-color: #fff;
+    opacity: 1;
+    border: 1px solid #b8b8b8;
+}
+
+/* Bullet ativo */
+.swiper-pagination-bullet-active {
+  background-color: #103c64;
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* Efeito hover nos bullets */
+.swiper-pagination-bullet:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  animation: pulseWhite 1s infinite;
+}
+
+/* Animação para o hover */
+@keyframes pulseWhite {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+.swiper-pagination-bullet:hover::after,
+.swiper-pagination-bullet:hover::before {
+  opacity: 1;
+}
+
+/* =================================================================== */
+/* == EFEITO HOVER AZUL PARA PAGINAÇÃO DO BANNER PROMOCIONAL        == */
+/* =================================================================== */
+
+/* --- 1. Animação de Pulso (Azul) --- */
+/* (Se já adicionou no header-swiper.css, não precisa duplicar, mas não há problema se o fizer) */
+@keyframes pulseBlue {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 59, 99, 0.7); /* Cor azul do tema */
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(16, 59, 99, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 59, 99, 0);
+  }
+}
+
+
+
+
+/* --- 4. Efeito Hover no Dot do Banner Promocional --- */
+.swiper-pagination-promocional .swiper-pagination-bullet:hover {
+    animation: pulseBlue 1.5s infinite; /* Usa a animação azul */
+}
+
+/* --- 5. Mostrar Tooltip no Hover --- */
+.swiper-pagination-promocional .swiper-pagination-bullet:hover::after,
+.swiper-pagination-promocional .swiper-pagination-bullet:hover::before {
+    opacity: 1; /* Torna o tooltip e a seta visíveis */
+}
+
+/* =================================================================== */
+/* == EFEITO HOVER COM TOOLTIP PARA PAGINAÇÃO DAS CATEGORIAS        == */
+/* =================================================================== */
+
+/* --- 1. Estilo do Tooltip (Caixa de Texto) --- */
+.swiper-pagination-categorias .swiper-pagination-bullet::after {
+    content: attr(data-tooltip); /* Pega o texto do atributo data-tooltip */
+    position: absolute;
+    bottom: 150%; /* Posição acima do dot */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff; /* Fundo branco */
+    color: #103b63; /* Texto azul */
+    padding: 6px 12px;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+/* --- 2. Estilo da Seta do Tooltip --- */
+.swiper-pagination-categorias .swiper-pagination-bullet::before {
+    content: "";
+    position: absolute;
+    bottom: 110%; /* Posição entre o dot e a caixa */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent; /* Seta branca */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* --- 3. Efeito Hover no Dot das Categorias --- */
+/* A animação 'pulseWhite' já existe no seu CSS, então apenas a ativamos no hover */
+.swiper-pagination-categorias .swiper-pagination-bullet:hover {
+    animation: pulseWhite 1.5s infinite;
+}
+
+/* --- 4. Mostrar Tooltip no Hover --- */
+.swiper-pagination-categorias .swiper-pagination-bullet:hover::after,
+.swiper-pagination-categorias .swiper-pagination-bullet:hover::before {
+    opacity: 1; /* Torna o tooltip e a seta visíveis */
+}
+
+/* =================================================================== */
+/* == ESTILOS OTIMIZADOS PARA O CARROSSEL E NAVEGAÇÃO (COM WRAPPER) == */
+/* =================================================================== */
+
+/* NOVO: Define o wrapper como o container de posicionamento e cria o espaço para as setas */
+.swiper-navigation-wrapper {
+  position: relative;
+  /* Puxa o container 55px para fora em cada lado para criar o espaço necessário */
+  margin: 0 -55px;
+  /* Adiciona um preenchimento interno para que o carrossel não ocupe esse novo espaço */
+  padding: 0 55px;
+}
+
+/* O contêiner do Swiper agora volta a esconder o que transborda */
+.categoriaSwiper {
+  width: 100%;
+  padding: 20px 0;
+  position: relative;
+  /* MODIFICADO: Voltamos para 'clip' para garantir que o conteúdo interno não vaze */
+  overflow: clip;
+}
+
+/* Estilo base para as flechas (sem alteração) */
+.swiper-button-categorias {
+  width: 50px;
+  height: 50px;
+  background-color: #103b63;
+  border-radius: 50%;
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Efeito de hover para as flechas (sem alteração) */
+.swiper-button-categorias:hover {
+  background-color: #062745;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+/* Conteúdo da flecha com CSS (sem alteração) */
+.swiper-button-categorias::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-style: solid;
+  border-color: white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* --- ALTERAÇÃO PRINCIPAL NO POSICIONAMENTO --- */
+/* A flecha "Próximo" agora se alinha à borda direita do espaço criado pelo wrapper */
+.swiper-button-next.swiper-button-categorias {
+  right: 0;
+}
+.swiper-button-next.swiper-button-categorias::after {
+  transform: rotate(-45deg);
+  margin-left: -5px;
+}
+.swiper-button-next.swiper-button-categorias:hover::after {
+  transform: rotate(-45deg) translateX(3px);
+}
+
+/* A flecha "Anterior" agora se alinha à borda esquerda do espaço criado pelo wrapper */
+.swiper-button-prev.swiper-button-categorias {
+  left: 0;
+}
+.swiper-button-prev.swiper-button-categorias::after {
+  transform: rotate(135deg);
+  margin-right: -5px;
+}
+.swiper-button-prev.swiper-button-categorias:hover::after {
+  transform: rotate(135deg) translateX(-3px);
+}
+
+/* --- AJUSTES RESPONSIVOS --- */
+@media (max-width: 768px) {
+  /* Remove o espaço lateral e esconde as setas em telas menores */
+  .swiper-navigation-wrapper {
+    margin: 0;
+    padding: 0;
+  }
+  .swiper-button-categorias {
+    display: none;
+  }
+
+  .solda {
+  font-size: 40px;
+}
+
+.laser {
+  font-size: 60px;
+}
+
+.banner-promocional .swiper-pagination{
+    margin-bottom: 0px;
+}
+
+.solda-laser {
+    margin-top: 0px;
+    align-items: center;
+    text-align: center;
+}
+
+}
+
+.mapa-clientes{
+    margin-top: 50px;
+}

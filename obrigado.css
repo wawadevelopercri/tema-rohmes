@@ -1,0 +1,22 @@
+/* css/obrigado.css */
+
+/* Assuming .contato section on obrigado page has similar base as contact.php */
+section.contato .titulo h3 { /* For the "Formulário enviado com sucesso!" message */
+  text-align: center;
+  color: #28a745; /* Success green */
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-top: 1rem; /* Space below the main title */
+  margin-bottom: 2rem;
+}
+
+/* If the form is present and needs styling, it might share styles with contato.css
+   or have its own subtle differences here. */
+
+/* Styles for mapa-clientes on obrigado page */
+/* If mapa-clientes is identical on all pages, move these to style.css */
+section.obrigado .mapa-clientes { /* Use specific parent if styling differs */
+  padding: 3rem 0;
+  background-color: #f8f9fa;
+}
+/* (Rest of .mapa-clientes styles similar to contato.css) */

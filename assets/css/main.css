@@ -1,0 +1,18 @@
+/* assets/css/main.css */
+
+/* Diretivas do Tailwind (essencial) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Importe seus arquivos CSS personalizados */
+/* Garanta que estes arquivos estejam na mesma pasta que o main.css */
+@import "style.css";
+@import "index.css";
+@import "home.css";
+@import "carousel-style.css";
+@import "categorias.css";
+@import "contato.css";
+@import "page-busca.css";
+@import "breadcrumb.css";
+@import "404.css";
