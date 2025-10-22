@@ -304,8 +304,8 @@ if ($is_corte_laser):
         <h2 class="text-center mb-4">Formulário de Cotação</h2>
         
         <form id="corteLaserForm">
-            <input type="hidden" name="maquina_nome" value="<?php the_title_attribute(); ?>">
-            <input type="hidden" name="maquina_link" value="<?php the_permalink(); ?>">
+            <input type="hidden" name="maquinanome" value="<?php the_title_attribute(); ?>">
+            <input type="hidden" name="maquinalink" value="<?php the_permalink(); ?>">
 
             <div class="row mb-3">
                 <div class="col-md-6">
@@ -320,14 +320,14 @@ if ($is_corte_laser):
                 </div>
                 <div class="col-md-6">
                     <label for="cl-nomeEmpresa" class="form-label">Nome da empresa</label>
-                    <input type="text" class="form-control" id="cl-nomeEmpresa" name="nomeEmpresa" required>
+                    <input type="text" class="form-control" id="cl-nomeEmpresa" name="empresa" required>
                 </div>
             </div>
 
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <label for="cl-seuNome" class="form-label">Seu nome</label>
-                    <input type="text" class="form-control" id="cl-seuNome" name="seuNome" required>
+                    <label for="cl-nome" class="form-label">Seu nome</label>
+                    <input type="text" class="form-control" id="cl-nome" name="nome" required>
                 </div>
                 <div class="col-md-6">
                     <label for="cl-telefone" class="form-label">Telefone</label>
@@ -370,6 +370,7 @@ if ($is_corte_laser):
         </form>
     </div>
 </div>
+
 <?php
 endif;
 
@@ -383,56 +384,51 @@ if ($is_dobradeira):
         <h2 class="text-center mb-4">Formulário de Cotação</h2>
         
         <form id="dobradeiraForm">
-            <input type="hidden" name="maquina_nome" value="<?php the_title_attribute(); ?>">
-            <input type="hidden" name="maquina_link" value="<?php the_permalink(); ?>">
-            
-            <div class="mb-4">
-                <label class="form-label d-block mb-2">Quando busca investir em uma dobradeira?</label>
-                <textarea class="form-control" name="quando_investir" rows="3" placeholder="Descreva quando pretende investir..." required></textarea>
+    <input type="hidden" name="maquinanome" value="<?php the_title_attribute(); ?>">
+    <input type="hidden" name="maquinalink" value="<?php the_permalink(); ?>">
+    
+    <div class="mb-4">
+        <label class="form-label d-block mb-2">Quando busca investir em uma dobradeira?</label>
+        <textarea class="form-control" name="quandoinvestir" rows="3" placeholder="Descreva quando pretende investir..." required></textarea>
+    </div>
+    <div class="mb-4">
+        <label class="form-label d-block mb-2">Qual espessura e comprimento do metal que busca dobrar?</label>
+        <textarea class="form-control" name="especificacoes" rows="4" placeholder="Insira sua resposta..." required></textarea>
+    </div>
+    <hr class="my-4">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="d-cnpj" class="form-label">CNPJ</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="d-cnpj" name="cnpj" placeholder="Digite apenas números">
+                <span class="input-group-text" id="d-cnpj-status" style="display: none;">
+                    <div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>
+                </span>
             </div>
-            
-            <div class="mb-4">
-                <label class="form-label d-block mb-2">Qual espessura e comprimento do metal que busca dobrar?</label>
-                <textarea class="form-control" name="especificacoes" rows="4" placeholder="Insira sua resposta..." required></textarea>
-            </div>
-            
-            <hr class="my-4">
+            <div id="d-cnpj-error-message" class="invalid-feedback"></div>
+        </div>
+        <div class="col-md-6">
+            <label for="d-nomeEmpresa" class="form-label">Nome da empresa</label>
+            <input type="text" class="form-control" id="d-nomeEmpresa" name="empresa" required>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="d-nome" class="form-label">Seu nome</label>
+            <input type="text" class="form-control" id="d-nome" name="nome" required>
+        </div>
+        <div class="col-md-6">
+            <label for="d-telefone" class="form-label">Telefone</label>
+            <input type="tel" class="form-control" id="d-telefone" name="telefone" required>
+        </div>
+    </div>
+    <div class="mb-4">
+        <label for="d-email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="d-email" name="email" required>
+    </div>
+    <button type="submit" class="botao-produtos-2 w-100 mt-3">Enviar Cotação</button>
+</form>
 
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="d-cnpj" class="form-label">CNPJ</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="d-cnpj" name="cnpj" placeholder="Digite apenas números">
-                        <span class="input-group-text" id="d-cnpj-status" style="display: none;">
-                            <div class="spinner-border spinner-border-sm"></div>
-                        </span>
-                    </div>
-                    <div id="d-cnpj-error-message" class="invalid-feedback"></div>
-                </div>
-                <div class="col-md-6">
-                    <label for="d-nomeEmpresa" class="form-label">Nome da empresa</label>
-                    <input type="text" class="form-control" id="d-nomeEmpresa" name="nomeEmpresa" required>
-                </div>
-            </div>
-            
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="d-seuNome" class="form-label">Seu nome</label>
-                    <input type="text" class="form-control" id="d-seuNome" name="seuNome" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="d-telefone" class="form-label">Telefone</label>
-                    <input type="tel" class="form-control" id="d-telefone" name="telefone" required>
-                </div>
-            </div>
-            
-            <div class="mb-4">
-                <label for="d-email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="d-email" name="email" required>
-            </div>
-            
-            <button type="submit" class="botao-produtos-2 w-100 mt-3">Enviar Cotação</button>
-        </form>
     </div>
 </div>
 <?php
@@ -447,70 +443,65 @@ if ($is_solda_laser):
         <h2 class="text-center mb-4">Formulário de Cotação</h2>
         
         <form id="soldaLaserForm">
-            <input type="hidden" name="maquina_nome" value="<?php the_title_attribute(); ?>">
-            <input type="hidden" name="maquina_link" value="<?php the_permalink(); ?>">
+    <input type="hidden" name="maquinanome" value="<?php the_title_attribute(); ?>">
+    <input type="hidden" name="maquinalink" value="<?php the_permalink(); ?>">
+    
+    <div class="mb-4">
+        <label class="form-label d-block mb-3">Qual é o material que sua empresa geralmente processa?</label>
+        <div class="custom-radio-group">
+            <label class="custom-radio-label"><input type="radio" name="material" value="Aço carbono" required><span>Aço carbono</span></label>
+            <label class="custom-radio-label"><input type="radio" name="material" value="Aço inoxidável"><span>Aço inoxidável</span></label>
+            <label class="custom-radio-label"><input type="radio" name="material" value="Alumínio"><span>Alumínio</span></label>
+            <label class="custom-radio-label"><input type="radio" name="material" value="Ferro"><span>Ferro</span></label>
+            <label class="custom-radio-label"><input type="radio" name="material" value="Latão"><span>Latão</span></label>
+            <label class="custom-radio-label"><input type="radio" name="material" value="Outros metais"><span>Outros metais</span></label>
+        </div>
+    </div>
+    <div class="mb-4">
+        <label class="form-label d-block mb-3">Quando busca investir em uma solda a laser?</label>
+        <div class="custom-radio-group">
+            <label class="custom-radio-label"><input type="radio" name="investimento" value="Imediato" required><span>Imediato</span></label>
+            <label class="custom-radio-label"><input type="radio" name="investimento" value="Em até 3 meses"><span>Em até 3 meses</span></label>
+            <label class="custom-radio-label"><input type="radio" name="investimento" value="De 3 a 6 meses"><span>De 3 a 6 meses</span></label>
+            <label class="custom-radio-label"><input type="radio" name="investimento" value="Dentro de 1 ano"><span>Dentro de 1 ano</span></label>
+            <label class="custom-radio-label"><input type="radio" name="investimento" value="Mais que 1 ano"><span>Mais que 1 ano</span></label>
+            <label class="custom-radio-label"><input type="radio" name="investimento" value="Apenas sondando informações"><span>Apenas sondando informações, não tenho certeza de quando quero investir</span></label>
+        </div>
+    </div>
+    <hr class="my-4">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="s-cnpj" class="form-label">CNPJ</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="s-cnpj" name="cnpj" placeholder="Digite apenas números">
+                <span class="input-group-text" id="s-cnpj-status" style="display: none;">
+                    <div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>
+                </span>
+            </div>
+            <div id="s-cnpj-error-message" class="invalid-feedback"></div>
+        </div>
+        <div class="col-md-6">
+            <label for="s-nomeEmpresa" class="form-label">Nome da empresa</label>
+            <input type="text" class="form-control" id="s-nomeEmpresa" name="empresa" required>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="s-nome" class="form-label">Seu nome</label>
+            <input type="text" class="form-control" id="s-nome" name="nome" required>
+        </div>
+        <div class="col-md-6">
+            <label for="s-telefone" class="form-label">Telefone</label>
+            <input type="tel" class="form-control" id="s-telefone" name="telefone" required>
+        </div>
+    </div>
+    <div class="mb-4">
+        <label for="s-email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="s-email" name="email" required>
+    </div>
+    <button type="submit" class="botao-produtos-2 w-100 mt-3">Enviar Cotação</button>
+</form>
 
-            <div class="mb-4">
-                <label class="form-label d-block mb-3">Qual é o material que sua empresa geralmente processa?</label>
-                <div class="custom-radio-group">
-                    <label class="custom-radio-label"><input type="radio" name="material" value="Aço carbono" required><span>Aço carbono</span></label>
-                    <label class="custom-radio-label"><input type="radio" name="material" value="Aço inoxidável"><span>Aço inoxidável</span></label>
-                    <label class="custom-radio-label"><input type="radio" name="material" value="Alumínio"><span>Alumínio</span></label>
-                    <label class="custom-radio-label"><input type="radio" name="material" value="Ferro"><span>Ferro</span></label>
-                    <label class="custom-radio-label"><input type="radio" name="material" value="Latão"><span>Latão</span></label>
-                    <label class="custom-radio-label"><input type="radio" name="material" value="Outros metais"><span>Outros metais</span></label>
-                </div>
-            </div>
-            
-            <div class="mb-4">
-                <label class="form-label d-block mb-3">Quando busca investir em uma solda a laser?</label>
-                <div class="custom-radio-group">
-                    <label class="custom-radio-label"><input type="radio" name="investimento" value="Imediato" required><span>Imediato</span></label>
-                    <label class="custom-radio-label"><input type="radio" name="investimento" value="Em até 3 meses"><span>Em até 3 meses</span></label>
-                    <label class="custom-radio-label"><input type="radio" name="investimento" value="De 3 a 6 meses"><span>De 3 a 6 meses</span></label>
-                    <label class="custom-radio-label"><input type="radio" name="investimento" value="Dentro de 1 ano"><span>Dentro de 1 ano</span></label>
-                    <label class="custom-radio-label"><input type="radio" name="investimento" value="Mais que 1 ano"><span>Mais que 1 ano</span></label>
-                    <label class="custom-radio-label"><input type="radio" name="investimento" value="Apenas sondando informações, não tenho certeza de quando quero investir"><span>Apenas sondando informações, não tenho certeza de quando quero investir</span></label>
-                </div>
-            </div>
-
-            <hr class="my-4">
-                            
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="s-cnpj" class="form-label">CNPJ</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="s-cnpj" name="cnpj" placeholder="Digite apenas números">
-                        <span class="input-group-text" id="s-cnpj-status" style="display: none;">
-                            <div class="spinner-border spinner-border-sm"></div>
-                        </span>
-                    </div>
-                    <div id="s-cnpj-error-message" class="invalid-feedback"></div>
-                </div>
-                <div class="col-md-6">
-                    <label for="s-nomeEmpresa" class="form-label">Nome da empresa</label>
-                    <input type="text" class="form-control" id="s-nomeEmpresa" name="nomeEmpresa" required>
-                </div>
-            </div>
-            
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="s-seuNome" class="form-label">Seu nome</label>
-                    <input type="text" class="form-control" id="s-seuNome" name="seuNome" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="s-telefone" class="form-label">Telefone</label>
-                    <input type="tel" class="form-control" id="s-telefone" name="telefone" required>
-                </div>
-            </div>
-            
-            <div class="mb-4">
-                <label for="s-email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="s-email" name="email" required>
-            </div>
-            
-            <button type="submit" class="botao-produtos-2 w-100 mt-3">Enviar Cotação</button>
-        </form>
     </div>
 </div>
 <?php

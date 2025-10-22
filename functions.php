@@ -176,7 +176,6 @@ function rohmes_enqueue_assets() {
         wp_enqueue_style('css-pecas', get_template_directory_uri() . '/css/pecas-e-consumiveis.css', array(), $style_version);
     }
 
-    // Carrega o CSS da página de agradecimento (usando a verificação de template, que é mais segura)
     if (is_page_template('page-agradecimento.php')) {
         $agradecimento_css_path = get_template_directory() . '/css/agradecimento.css';
         if (file_exists($agradecimento_css_path)) {
@@ -205,9 +204,6 @@ function rohmes_enqueue_assets() {
         wp_enqueue_style('css-breadcrumb', get_template_directory_uri() . '/css/breadcrumb.css', array(), filemtime($breadcrumb_css_path));
     }
 
-
-
-    // Carrega o JS específico da página de máquina APENAS quando necessário
     if ( is_singular('maquina') ) {
         $single_maquina_js_path = get_template_directory() . '/js/single-maquina.js';
         if ( file_exists( $single_maquina_js_path ) ) {
@@ -223,9 +219,12 @@ function rohmes_enqueue_assets() {
 }
 add_action('wp_enqueue_scripts', 'rohmes_enqueue_assets');
 
+
 // =========================================================================
 //  4. AJAX E PROCESSAMENTO DE FORMULÁRIOS
 // =========================================================================
+
+// --- FUNÇÃO ANTIGA DE ANTI-ROBÔ (MANTIDA CASO OUTRO FORMULÁRIO USE) ---
 function rohmes_get_anti_robo_question() {
     if(!session_id()) { session_start(); }
     $num1 = rand(1, 10);
@@ -236,16 +235,85 @@ function rohmes_get_anti_robo_question() {
 add_action('wp_ajax_get_anti_robo_question', 'rohmes_get_anti_robo_question');
 add_action('wp_ajax_nopriv_get_anti_robo_question', 'rohmes_get_anti_robo_question');
 
+
+// --- NOVA FUNÇÃO PARA PROCESSAR O FORMULÁRIO DE CONTATO (contato.php) ---
 function rohmes_process_contact_form() {
-    if(!session_id()) { session_start(); }
-    if (empty($_POST['resposta_robo']) || !isset($_SESSION['soma_correta']) || intval($_POST['resposta_robo']) !== $_SESSION['soma_correta']) {
-        wp_send_json_error('A verificação anti-robô falhou.');
-        return;
+    // ** PASSO 1: Verificação do reCAPTCHA **
+    $recaptcha_secret = 'COLE_AQUI_SUA_CHAVE_SECRETA_RECAPTCHA'; // ⚠️ substitua pela sua
+    $recaptcha_response = isset($_POST['g-recaptcha-response']) ? $_POST['g-recaptcha-response'] : '';
+
+    if (empty($recaptcha_response)) {
+        wp_send_json_error(['message' => 'Por favor, marque a caixa "Não sou um robô".']);
+        wp_die();
     }
-    unset($_SESSION['soma_correta']);
+
+    $response = wp_remote_post('https://www.google.com/recaptcha/api/siteverify', [
+        'body' => [
+            'secret'   => $recaptcha_secret,
+            'response' => $recaptcha_response,
+        ],
+    ]);
+
+    $result = json_decode(wp_remote_retrieve_body($response), true);
+    if (empty($result['success'])) {
+        wp_send_json_error(['message' => 'Falha na verificação do reCAPTCHA.']);
+        wp_die();
+    }
+
+    // ** PASSO 2: Sanitização dos dados **
+    $nome     = sanitize_text_field($_POST['nome'] ?? '');
+    $empresa  = sanitize_text_field($_POST['empresa'] ?? '');
+    $whatsapp = sanitize_text_field($_POST['whatsapp'] ?? '');
+    $email    = sanitize_email($_POST['email'] ?? '');
+    $motivo   = sanitize_textarea_field($_POST['motivo'] ?? '');
+
+    if (empty($nome) || empty($empresa) || empty($whatsapp) || !is_email($email) || empty($motivo)) {
+        wp_send_json_error(['message' => 'Por favor, preencha todos os campos corretamente.']);
+        wp_die();
+    }
+
+    // ** PASSO 3: Envio ao Pluga Webhook **
+    $pluga_webhook_url = 'https://hooks.zapier.com/hooks/catch/18740176/urg0s7c/'; // ⚠️ substitua
+
+    $payload = [
+        'nome'            => $nome,
+        'empresa'         => $empresa,
+        'whatsapp'        => $whatsapp,
+        'email'           => $email,
+        'motivo_contato'  => $motivo,
+        'origem'          => 'Formulário de Contato Site'
+    ];
+
+    $response = wp_remote_post($pluga_webhook_url, [
+        'headers' => ['Content-Type' => 'application/json; charset=utf-8'],
+        'body'    => json_encode($payload),
+        'timeout' => 30,
+    ]);
+
+    // ** PASSO 4: Tratamento de erros e logs **
+    if (is_wp_error($response)) {
+        error_log('❌ Erro ao enviar para Pluga: ' . $response->get_error_message());
+        wp_send_json_error(['message' => 'Erro ao conectar com o servidor Pluga.']);
+        wp_die();
+    }
+
+    $status = wp_remote_retrieve_response_code($response);
+    $body   = wp_remote_retrieve_body($response);
+
+    if ($status !== 200) {
+        error_log("❌ Erro no Webhook Pluga (HTTP $status): $body");
+        wp_send_json_error(['message' => 'Falha ao enviar para o Pluga (erro ' . $status . ').']);
+        wp_die();
+    }
+
+    error_log("✅ Envio bem-sucedido para Pluga: $body");
+
+    // ** PASSO 5: Resposta de sucesso **
+    wp_send_json_success(['message' => 'Mensagem enviada com sucesso!']);
 }
-add_action('wp_ajax_enviar_formulario_ajax', 'rohmes_process_contact_form');
-add_action('wp_ajax_nopriv_enviar_formulario_ajax', 'rohmes_process_contact_form');
+add_action('wp_ajax_process_contact_form', 'rohmes_process_contact_form');
+add_action('wp_ajax_nopriv_process_contact_form', 'rohmes_process_contact_form');
+
 
 // =========================================================================
 //  5. FUNÇÕES AUXILIARES E DO PAINEL ADMIN
@@ -329,7 +397,9 @@ add_action('init', 'rohmes_modal_rewrite_rule');
 //  8. AJAX - PROCESSAMENTO DO FORMULÁRIO DE COTAÇÃO (VERSÃO SEM EMAIL)
 // =========================================================================
 function rohmes_enviar_cotacao_ajax() {
-    if ( empty($_POST['seuNome']) || empty($_POST['email']) ) {
+    error_log('INICIO AJAX CORTE LASER');
+
+    if ( empty($_POST['nome']) || empty($_POST['email']) ) {
         wp_send_json_error('Dados do formulário ausentes.');
         wp_die();
     }
@@ -339,58 +409,80 @@ function rohmes_enviar_cotacao_ajax() {
 add_action('wp_ajax_enviar_cotacao_ajax', 'rohmes_enviar_cotacao_ajax');
 add_action('wp_ajax_nopriv_enviar_cotacao_ajax', 'rohmes_enviar_cotacao_ajax');
 
-// Adicione esta NOVA FUNÇÃO ao final do seu arquivo functions.php
-// =========================================================================
-//  9. AJAX - PROCESSAMENTO DO FORMULÁRIO DE CORTE A LASER
-// =========================================================================
-function rohmes_enviar_corte_laser_ajax() {
-    // Validação mínima para garantir que um campo obrigatório foi enviado.
-    if ( empty($_POST['seuNome']) || empty($_POST['email']) ) {
+function rohmesenviarcortelaserajax() {
+    if ( empty($_POST['nome']) || empty($_POST['email']) ) {
         wp_send_json_error('Dados do formulário ausentes.');
         wp_die();
     }
 
-    // A função não envia e-mail, apenas confirma o recebimento para o JS.
-    // O rastreamento ocorrerá na página de agradecimento.
-    wp_send_json_success('Submissão recebida. Redirecionando...');
+    $dados = array(
+        'maquina_nome'  => sanitize_text_field($_POST['maquina_nome'] ?? ''),  // CORRIGIDO
+        'maquina_link'  => esc_url_raw($_POST['maquina_link'] ?? ''),         // CORRIGIDO
+        'empresa'   => sanitize_text_field($_POST['empresa'] ?? ''),
+        'nome'       => sanitize_text_field($_POST['nome'] ?? ''),
+        'telefone'      => sanitize_text_field($_POST['telefone'] ?? ''),
+        'email'         => sanitize_email($_POST['email'] ?? ''),
+        'cnpj'          => sanitize_text_field($_POST['cnpj'] ?? ''),
+        'material'      => sanitize_text_field($_POST['material'] ?? ''),
+        'investimento'  => sanitize_text_field($_POST['investimento'] ?? ''),
+        'origem'        => 'Formulário Corte a Laser (Site)'
+    );
+    error_log('Dados enviados ao Pluga: ' . print_r($dados,true));
+    
+$plugawebhookurl = 'https://hooks.zapier.com/hooks/catch/18740176/urq9dvs'; // Use sua URL real do Zapier
 
+$response = wp_remote_post($plugawebhookurl, array(
+    'headers' => array('Content-Type' => 'application/json; charset=utf-8'),
+    'body'    => json_encode($dados),
+    'timeout' => 30,
+));
+
+
+    if ( is_wp_error( $response ) ) {
+        error_log( 'Erro ao enviar para Pluga: ' . $response->get_error_message() );
+        wp_send_json_error('Erro ao conectar com o servidor Pluga.');
+        wp_die();
+    }
+
+    $status_code = wp_remote_retrieve_response_code( $response );
+    $body = wp_remote_retrieve_body( $response );
+
+    if ( $status_code != 200 ) {
+        error_log( 'Erro no Webhook do Pluga. Status ' . $status_code . ' - Resposta: ' . $body );
+        wp_send_json_error('Falha ao enviar para o Pluga. Código: ' . $status_code);
+        wp_die();
+    }
+
+    error_log( 'Envio bem-sucedido para Pluga: ' . $body );
+    wp_send_json_success('Formulário enviado com sucesso!');
     wp_die();
 }
-add_action('wp_ajax_enviar_corte_laser_ajax', 'rohmes_enviar_corte_laser_ajax');
-add_action('wp_ajax_nopriv_enviar_corte_laser_ajax', 'rohmes_enviar_corte_laser_ajax');
 
-// Adicione esta NOVA FUNÇÃO ao final do seu arquivo functions.php
 
 // =========================================================================
 //  10. AJAX - PROCESSAMENTO DO FORMULÁRIO DE DOBRADEIRA
 // =========================================================================
 function rohmes_enviar_dobradeira_ajax() {
-    if ( empty($_POST['seuNome']) || empty($_POST['email']) ) {
+    if ( empty($_POST['nome']) || empty($_POST['email']) ) {
         wp_send_json_error('Dados do formulário ausentes.');
         wp_die();
     }
-
     wp_send_json_success('Submissão recebida. Redirecionando...');
     wp_die();
 }
-add_action('wp_ajax_enviar_dobradeira_ajax', 'rohmes_enviar_dobradeira_ajax');
-add_action('wp_ajax_nopriv_enviar_dobradeira_ajax', 'rohmes_enviar_dobradeira_ajax');
+add_action('wp_ajax_enviarcortelaserajax', 'rohmesenviarcortelaserajax');
+add_action('wp_ajax_nopriv_enviarcortelaserajax', 'rohmesenviarcortelaserajax');
 
-// Adicione esta NOVA FUNÇÃO ao final do seu arquivo functions.php
 
 // =========================================================================
 //  11. AJAX - PROCESSAMENTO DO FORMULÁRIO DE SOLDA A LASER
 // =========================================================================
 function rohmes_enviar_solda_laser_ajax() {
-    // Validação mínima para garantir que um campo obrigatório foi enviado.
-    if ( empty($_POST['seuNome']) || empty($_POST['email']) ) {
+    if ( empty($_POST['nome']) || empty($_POST['email']) ) {
         wp_send_json_error('Dados do formulário ausentes.');
         wp_die();
     }
-
-    // Apenas confirma o recebimento para o JS redirecionar.
     wp_send_json_success('Submissão recebida. Redirecionando...');
-
     wp_die();
 }
 add_action('wp_ajax_enviar_solda_laser_ajax', 'rohmes_enviar_solda_laser_ajax');
